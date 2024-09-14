@@ -3,11 +3,8 @@ import { useCardano } from "@cardano-foundation/cardano-connect-with-wallet";
 import { NetworkType } from "@cardano-foundation/cardano-connect-with-wallet-core";
 import WalletModal from "./WalletModal";
 
-const WalletConnect2 = () => {
-  const network =
-    process.env.NODE_ENV === "development"
-      ? NetworkType.TESTNET
-      : NetworkType.MAINNET;
+const WalletConnect = () => {
+  const network = NetworkType.MAINNET;
   const { isConnected, stakeAddress, disconnect, accountBalance } = useCardano({
     limitNetwork: network,
   });
@@ -53,4 +50,4 @@ const WalletConnect2 = () => {
   );
 };
 
-export default WalletConnect2;
+export default WalletConnect;

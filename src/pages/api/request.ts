@@ -1,4 +1,4 @@
-import { Blockfrost, Lucid } from "@lucid-evolution/lucid";
+import { Koios, Lucid } from "@lucid-evolution/lucid";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(
@@ -7,34 +7,21 @@ export default async function handler(
 ) {
   if (req.method === "POST") {
     // Process a POST request
-    const initLucid = () => {
-      if (process.env.NODE_ENV === "development") {
-        const b = new Blockfrost(
-          process.env.API_URL_PREPROD!,
-          process.env.BLOCKFROST_KEY_PREPROD!
-        );
-        return Lucid(b, "Preprod");
-      } else {
-        const b = new Blockfrost(
-          process.env.API_URL_MAINNET!,
-          process.env.BLOCKFROST_KEY_MAINNET!
-        );
-        return Lucid(b, "Mainnet");
-      }
-    };
+   const initLucid = () => {
+    const b = new Koios("https://api.koios.rest/api/v1");
+    return Lucid(b, "Mainnet");
+
+   };
+
     const lucid = await initLucid();
     const data = req.body;
 
     lucid.selectWallet.fromAddress(data.address, [])
     const rewardAddress = await lucid.wallet().rewardAddress();
+    const poolID = "pool1xs34q2z06a46nk7hl48d27dj5gzc6hh9trugw2ehs9ajsevqffx";
     const tx = await lucid
       .newTx()
-      .delegateTo(
-        rewardAddress!,
-        process.env.NODE_ENV === "development"
-          ? process.env.POOL_ID_PREPROD!
-          : process.env.POOL_ID_MAINNET!
-      )
+      .delegateTo(rewardAddress, poolID)
       .complete();
     res.status(200).json({ tx: tx.toCBOR() });
   } else {

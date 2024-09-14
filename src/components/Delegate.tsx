@@ -8,17 +8,14 @@ import {
 } from "@lucid-evolution/lucid";
 
 const Delegate = () => {
-  const network =
-    process.env.NODE_ENV === "development"
-      ? NetworkType.TESTNET
-      : NetworkType.MAINNET;
+  const network = NetworkType.MAINNET;
   const { isConnected, usedAddresses, enabledWallet } = useCardano({
     limitNetwork: network,
   });
   const handleAPI = async () => {
     if (isConnected && enabledWallet) {
       try {
-        const lucid = await Lucid(new Emulator([]), "Preprod");
+        const lucid = await Lucid(new Emulator([]), "Mainnet");
         const api = await window.cardano[enabledWallet].enable();
         lucid.selectWallet.fromAPI(api);
         const response = await fetch("/api/request", {
