@@ -12,7 +12,7 @@ export default async function Home() {
         <Image
           className="relative"
           src="logo.svg"
-          width={60}
+          width={40}
           height={40}
           priority
         />

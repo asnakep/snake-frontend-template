@@ -13,8 +13,8 @@ export default function Footer() {
             className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70]"
             src="logo-x.svg"
             alt="X Logo"
-            width={20}
-            height={20}
+            width={12}
+            height={12}
             priority
           />
         </Link>
