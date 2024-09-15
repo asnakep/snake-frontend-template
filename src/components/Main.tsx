@@ -4,7 +4,7 @@ const Stake = dynamic(() => import("./Delegate"), { ssr: false });
 
 export default function Main() {
   return (
-    <div className="flex">
+    <div className="absolute top-18 right-20">
       <Stake />
     </div>
   );
