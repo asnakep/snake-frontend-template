@@ -40,7 +40,7 @@ const Delegate = () => {
   return (
     <>
       {isConnected ? (
-        <div className="relative flex flex-col items-center gap-3 sm:gap-6 lg:gap-8">
+        <div className="relative flex flex-col items-center gap-3 sm:gap-6 lg:gap-8 mt-[-54px] mr-[-30px]">
           <button
             onClick={handleAPI}
             onMouseEnter={() => setHovered(true)}
@@ -51,8 +51,8 @@ const Delegate = () => {
             <Image
               src="logo.svg" 
               alt="Delegate"
-              width={80}
-              height={80}
+              width={60}
+              height={60}
               priority
             />
           </button>
