@@ -43,7 +43,7 @@ const Koios = () => {
       {error ? (
         <p>Error: {error}</p>
       ) : (
-        <p>Last Block: {lastBlock !== null ? lastBlock : ""}</p>
+        <p>Block num: {lastBlock !== null ? lastBlock : ""}</p>
       )}
     </div>
   );

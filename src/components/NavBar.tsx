@@ -1,8 +1,6 @@
 import dynamic from "next/dynamic";
 import Image from "next/image";
-const WalletConnect = dynamic(() => import("./WalletConnect"), {
-  ssr: false,
-});
+const WalletConnect = dynamic(() => import("./WalletConnect"), { ssr: false });
 
 export default function NavBar() {
   return (

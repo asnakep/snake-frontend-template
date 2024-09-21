@@ -49,7 +49,7 @@ const Delegate = () => {
             className={`transition-transform duration-300 ease-in-out ${hovered ? 'scale-110 shadow-lg' : 'scale-100'}`}
           >
             <Image
-              src="logo.svg" 
+              src="logo.svg"
               alt="Delegate"
               width={60}
               height={60}
