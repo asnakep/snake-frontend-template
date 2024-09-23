@@ -15,22 +15,22 @@
     "@harmoniclabs/cbor": "^1.3.0",
     "@harmoniclabs/crypto": "^0.2.4",
     "@harmoniclabs/pair": "^1.0.0",
-    "@lucid-evolution/lucid": "^0.3.36",
+    "@lucid-evolution/lucid": "^0.3.41",
     "@types/node": "22.5.5",
     "@types/react": "18.3.8",
     "@types/react-dom": "18.3.0",
-    "autoprefixer": "10.4.20",
-    "eslint": "9.10.0",
+    "eslint": "9.11.0",
     "fast-check": "^3.22.0",
     "lucid-cardano": "^0.10.10",
     "next": "^14.2.13",
-    "postcss": "8.4.47",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "tailwindcss": "3.4.12",
     "typescript": "5.6.2"
   },
   "devDependencies": {
-    "daisyui": "^4.12.10"
+    "autoprefixer": "10.4.20",
+    "daisyui": "^4.12.10",
+    "postcss": "8.4.47",
+    "tailwindcss": "3.4.12"
   }
 }

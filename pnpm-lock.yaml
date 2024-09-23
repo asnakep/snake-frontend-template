@@ -27,8 +27,8 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0
       '@lucid-evolution/lucid':
-        specifier: ^0.3.36
-        version: 0.3.36(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/cbor@1.3.0)(@harmoniclabs/crypto@0.2.4)(@harmoniclabs/pair@1.0.0)(fast-check@3.22.0)
+        specifier: ^0.3.41
+        version: 0.3.41(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/cbor@1.3.0)(@harmoniclabs/crypto@0.2.4)(@harmoniclabs/pair@1.0.0)(fast-check@3.22.0)
       '@types/node':
         specifier: 22.5.5
         version: 22.5.5
@@ -38,12 +38,9 @@ importers:
       '@types/react-dom':
         specifier: 18.3.0
         version: 18.3.0
-      autoprefixer:
-        specifier: 10.4.20
-        version: 10.4.20(postcss@8.4.47)
       eslint:
-        specifier: 9.10.0
-        version: 9.10.0(jiti@1.21.6)
+        specifier: 9.11.0
+        version: 9.11.0(jiti@1.21.6)
       fast-check:
         specifier: ^3.22.0
         version: 3.22.0
@@ -53,25 +50,28 @@ importers:
       next:
         specifier: ^14.2.13
         version: 14.2.13(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      postcss:
-        specifier: 8.4.47
-        version: 8.4.47
       react:
         specifier: ^18.3.1
         version: 18.3.1
       react-dom:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
-      tailwindcss:
-        specifier: 3.4.12
-        version: 3.4.12
       typescript:
         specifier: 5.6.2
         version: 5.6.2
     devDependencies:
+      autoprefixer:
+        specifier: 10.4.20
+        version: 10.4.20(postcss@8.4.47)
       daisyui:
         specifier: ^4.12.10
         version: 4.12.10(postcss@8.4.47)
+      postcss:
+        specifier: 8.4.47
+        version: 8.4.47
+      tailwindcss:
+        specifier: 3.4.12
+        version: 3.4.12
 
 packages:
 
@@ -150,16 +150,16 @@ packages:
     resolution: {integrity: sha512-4Bfj15dVJdoy3RfZmmo86RK1Fwzn6SstsvK9JS+BaVKqC6QQQQyXekNaC+g+LKNgkQ+2VhGAzm6hO40AhMR3zQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@eslint/js@9.10.0':
-    resolution: {integrity: sha512-fuXtbiP5GWIn8Fz+LWoOMVf/Jxm+aajZYkhi6CuEm4SxymFM+eUWzbO9qXT+L0iCkL5+KGYMCSGxo686H19S1g==}
+  '@eslint/js@9.11.0':
+    resolution: {integrity: sha512-LPkkenkDqyzTFauZLLAPhIb48fj6drrfMvRGSL9tS3AcZBSVTllemLSNyCvHNNL2t797S/6DJNSIwRwXgMO/eQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
   '@eslint/object-schema@2.1.4':
     resolution: {integrity: sha512-BsWiH1yFGjXXS2yvrf5LyuoSIIbPrGUWob917o+BTKuZ7qJdxX8aJLRxs1fS9n6r7vESrq1OUqb68dANcFXuQQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@eslint/plugin-kit@0.1.0':
-    resolution: {integrity: sha512-autAXT203ixhqei9xt+qkYOvY8l6LAFIdT2UXc/RPNeUVfqRF1BV94GTJyVPFKT8nFM6MyVJhjLj9E8JWvf5zQ==}
+  '@eslint/plugin-kit@0.2.0':
+    resolution: {integrity: sha512-vH9PiIMMwvhCx31Af3HiGzsVNULDbyVkHXwlemn/B0TFj/00ho3y55efXrUZTfQipxoHC5u4xq6zblww1zm1Ig==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
   '@fabianbormann/cardano-peer-connect@1.2.17':
@@ -240,8 +240,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
-  '@lucid-evolution/core-types@0.1.20':
-    resolution: {integrity: sha512-g0dNrAZIJFeKe8GjrEZQrkQLSVLt1CzA9Pgqd9FotyW3rpID2ZWprO/qVRtysqFR7oxez8V1+pL8buFU8bF36g==}
+  '@lucid-evolution/core-types@0.1.21':
+    resolution: {integrity: sha512-HPTU7eaWUNp1mmbbF46dyh6CLZNH8kLWyD1yu2OrPDWo5KfeF2EAXcnS3VsyjhjyFtzBLbsoQxjuy1j4jBY0zg==}
 
   '@lucid-evolution/core-utils@0.1.16':
     resolution: {integrity: sha512-fNKZiGl1h6tf48bji067uxHZpDlhkrIDrwhZLt5DQC/c6GVdZb4TSvqgs7MOmMqp1dj9dy6NDYWnCHeTqZAhJw==}
@@ -249,26 +249,26 @@ packages:
   '@lucid-evolution/crc8@0.1.8':
     resolution: {integrity: sha512-88+/S6n+sPgxYtG05rvbJDVb8MoFGzckkR3p26uGrzngYzlJGfxBWIzNhVwfI2mgINPo2C5lkZW3GYnfY0MjuA==}
 
-  '@lucid-evolution/lucid@0.3.36':
-    resolution: {integrity: sha512-SWQQkj9cegVYbcfNzt15E9XuEC1uj+QYUeTNxPO9RjYiTmay9XIT3mAo8V/UnYvgfoo9eSHFxsQnBYnTKRxhTA==}
+  '@lucid-evolution/lucid@0.3.41':
+    resolution: {integrity: sha512-W4EfwVhRlrR+A/Z0fJ9dSbEIEJcBBG6nUValsW/I7G+IxdtkZY7+lWSsHa4mSJtkKchlOxsgRwyoYDP8aRYGsQ==}
 
-  '@lucid-evolution/plutus@0.1.26':
-    resolution: {integrity: sha512-HVSVTsklFO0YB084BkoRCiHUz5gNHmZrV8RB5QOgIXULv4kmmIfUssVNF7CB/2LxXyywQ8feAtG6R94AyFw+VQ==}
+  '@lucid-evolution/plutus@0.1.27':
+    resolution: {integrity: sha512-izBGkjIcWq3XK+pj9bCmTtRxjWM2brV0WTX4NkIFe2TgFMDVoqaYfkizIrOHwP2vIL8QbSPGShJQQwacl+i8Xg==}
 
-  '@lucid-evolution/provider@0.1.60':
-    resolution: {integrity: sha512-qvJjChXPeH7EsBgfx2yprAjxaeaKAitBncQpo2N3Ti1aoa6do8MT+0JEZ0ycjbPLHscz7rwqLov83LkaocmRrw==}
+  '@lucid-evolution/provider@0.1.64':
+    resolution: {integrity: sha512-aulrpq1C2/G/hYUEfq+rJpLU/Gr+6ohu9Nki5xpwbDZA//BroR/Juxofi6bbUPz/R2i6Ysd1dCa3CO721qw4jw==}
 
-  '@lucid-evolution/sign_data@0.1.23':
-    resolution: {integrity: sha512-V1dreDntGRgVV3nArdFVH3LC83jSNZeTCPVf3Mr9FjnRXmRbGdqjptMjdVKJSVkCxNAFsWHCgYSnB3p0Y0m5bg==}
+  '@lucid-evolution/sign_data@0.1.24':
+    resolution: {integrity: sha512-8K/FuSUYAffRB4JjjjAzjOUqUXDI+r3HyJIAETlJ8Kbo7SZe1IrX6bo82qjaK/WGK4w4kBcoheceWnnsiYPfrQ==}
 
-  '@lucid-evolution/uplc@0.2.13':
-    resolution: {integrity: sha512-uMLSvU+dbwNBhGtgPrBzLp1avs1KmXegDuPzoNSQJkjkctReip+epcZ21is/gUOYlZysShc2p0QUlpXgFmcipg==}
+  '@lucid-evolution/uplc@0.2.16':
+    resolution: {integrity: sha512-UqZZh5z5VQCq/OlvBkiewuYZYvO3xAzfC6+GyuMlvjtlgtEswL7GLDxLGqisqUPTX/gcuaQrd7eUBdrezz4fZQ==}
 
-  '@lucid-evolution/utils@0.1.45':
-    resolution: {integrity: sha512-DkqMxmvMAEaCauWlScKJBilrLVlPnbEa03w9MPmjQxdcasb8sUO3Ei95x4TAsJLC7ot7NY9WOWmRqwFX0KndhQ==}
+  '@lucid-evolution/utils@0.1.49':
+    resolution: {integrity: sha512-G/P16DIW7x04f2wA9Kv+Ee+wAVR7KvZCbc0Pxt95SHjIgkFjkYAVLhyqbhFH4GylHfOZZ+l0s3uuiDvysoa0bg==}
 
-  '@lucid-evolution/wallet@0.1.51':
-    resolution: {integrity: sha512-i/kg/9nqi+r9izvnfShoTTEP8U57tXJw3yIISmpXboW9VktUduOqHqZqDkzcZUIiIoBxhnl2MTMu+1251Nzavw==}
+  '@lucid-evolution/wallet@0.1.55':
+    resolution: {integrity: sha512-mVrZEc1Vge3i30SwY4DZddWJS8HIiTs+JXuSX5QuGF/sNp0Rqi3LR9265y7fhmPiydfHvtnpWCkXB5gX1HcqxQ==}
 
   '@next/env@14.2.13':
     resolution: {integrity: sha512-s3lh6K8cbW1h5Nga7NNeXrbe0+2jIIYK9YaA9T7IufDWnZpozdFUp6Hf0d5rNWUKu4fEuSX2rCKlGjCrtylfDw==}
@@ -736,8 +736,8 @@ packages:
   effect@3.8.3:
     resolution: {integrity: sha512-ZHTNRik0mJWK+g12/HHwsouOux0OE2v+qRD7zsEJLtZ1RJdrlxvCpSXdJ+KgOqJ4wigIToDSb5e5HG885uKs/w==}
 
-  electron-to-chromium@1.5.26:
-    resolution: {integrity: sha512-Z+OMe9M/V6Ep9n/52+b7lkvYEps26z4Yz3vjWL1V61W0q+VLF1pOHhMY17sa4roz4AWmULSI8E6SAojZA5L0YQ==}
+  electron-to-chromium@1.5.27:
+    resolution: {integrity: sha512-o37j1vZqCoEgBuWWXLHQgTN/KDKe7zwpiY5CPeq2RvUqOyJw9xnrULzZAEVQ5p4h+zjMk7hgtOoPdnLxr7m/jw==}
 
   emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -774,8 +774,8 @@ packages:
     resolution: {integrity: sha512-OtIRv/2GyiF6o/d8K7MYKKbXrOUBIK6SfkIRM4Z0dY3w+LiQ0vy3F57m0Z71bjbyeiWFiHJ8brqnmE6H6/jEuw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  eslint@9.10.0:
-    resolution: {integrity: sha512-Y4D0IgtBZfOcOUAIQTSXBKoNGfY0REGqHJG6+Q81vNippW5YlKjHFj4soMxamKK1NXHUWuBZTLdU3Km+L/pcHw==}
+  eslint@9.11.0:
+    resolution: {integrity: sha512-yVS6XODx+tMFMDFcG4+Hlh+qG7RM6cCJXtQhCKLSsr3XkLvWggHjCqjfh0XsPPnt1c56oaT6PMgW9XWQQjdHXA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     hasBin: true
     peerDependencies:
@@ -1889,9 +1889,9 @@ snapshots:
 
   '@emurgo/cardano-message-signing-nodejs@1.0.1': {}
 
-  '@eslint-community/eslint-utils@4.4.0(eslint@9.10.0(jiti@1.21.6))':
+  '@eslint-community/eslint-utils@4.4.0(eslint@9.11.0(jiti@1.21.6))':
     dependencies:
-      eslint: 9.10.0(jiti@1.21.6)
+      eslint: 9.11.0(jiti@1.21.6)
       eslint-visitor-keys: 3.4.3
 
   '@eslint-community/regexpp@4.11.1': {}
@@ -1918,11 +1918,11 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@eslint/js@9.10.0': {}
+  '@eslint/js@9.11.0': {}
 
   '@eslint/object-schema@2.1.4': {}
 
-  '@eslint/plugin-kit@0.1.0':
+  '@eslint/plugin-kit@0.2.0':
     dependencies:
       levn: 0.4.1
 
@@ -2024,7 +2024,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  '@lucid-evolution/core-types@0.1.20':
+  '@lucid-evolution/core-types@0.1.21':
     dependencies:
       '@anastasia-labs/cardano-multiplatform-lib-browser': 6.0.2-2
       '@anastasia-labs/cardano-multiplatform-lib-nodejs': 6.0.2-2
@@ -2036,20 +2036,20 @@ snapshots:
 
   '@lucid-evolution/crc8@0.1.8': {}
 
-  '@lucid-evolution/lucid@0.3.36(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/cbor@1.3.0)(@harmoniclabs/crypto@0.2.4)(@harmoniclabs/pair@1.0.0)(fast-check@3.22.0)':
+  '@lucid-evolution/lucid@0.3.41(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/cbor@1.3.0)(@harmoniclabs/crypto@0.2.4)(@harmoniclabs/pair@1.0.0)(fast-check@3.22.0)':
     dependencies:
       '@anastasia-labs/cardano-multiplatform-lib-browser': 6.0.2-2
       '@anastasia-labs/cardano-multiplatform-lib-nodejs': 6.0.2-2
       '@effect/schema': 0.66.16(effect@3.8.3)(fast-check@3.22.0)
       '@emurgo/cardano-message-signing-nodejs': 1.0.1
-      '@lucid-evolution/core-types': 0.1.20
+      '@lucid-evolution/core-types': 0.1.21
       '@lucid-evolution/core-utils': 0.1.16
-      '@lucid-evolution/plutus': 0.1.26
-      '@lucid-evolution/provider': 0.1.60(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/cbor@1.3.0)(@harmoniclabs/crypto@0.2.4)(@harmoniclabs/pair@1.0.0)
-      '@lucid-evolution/sign_data': 0.1.23
-      '@lucid-evolution/uplc': 0.2.13
-      '@lucid-evolution/utils': 0.1.45(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/cbor@1.3.0)(@harmoniclabs/crypto@0.2.4)(@harmoniclabs/pair@1.0.0)
-      '@lucid-evolution/wallet': 0.1.51(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/cbor@1.3.0)(@harmoniclabs/crypto@0.2.4)(@harmoniclabs/pair@1.0.0)
+      '@lucid-evolution/plutus': 0.1.27
+      '@lucid-evolution/provider': 0.1.64(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/cbor@1.3.0)(@harmoniclabs/crypto@0.2.4)(@harmoniclabs/pair@1.0.0)
+      '@lucid-evolution/sign_data': 0.1.24
+      '@lucid-evolution/uplc': 0.2.16
+      '@lucid-evolution/utils': 0.1.49(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/cbor@1.3.0)(@harmoniclabs/crypto@0.2.4)(@harmoniclabs/pair@1.0.0)
+      '@lucid-evolution/wallet': 0.1.55(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/cbor@1.3.0)(@harmoniclabs/crypto@0.2.4)(@harmoniclabs/pair@1.0.0)
       effect: 3.8.3
     transitivePeerDependencies:
       - '@harmoniclabs/bytestring'
@@ -2058,24 +2058,24 @@ snapshots:
       - '@harmoniclabs/pair'
       - fast-check
 
-  '@lucid-evolution/plutus@0.1.26':
+  '@lucid-evolution/plutus@0.1.27':
     dependencies:
       '@anastasia-labs/cardano-multiplatform-lib-browser': 6.0.2-2
       '@anastasia-labs/cardano-multiplatform-lib-nodejs': 6.0.2-2
-      '@lucid-evolution/core-types': 0.1.20
+      '@lucid-evolution/core-types': 0.1.21
       '@lucid-evolution/core-utils': 0.1.16
       '@sinclair/typebox': 0.32.35
 
-  '@lucid-evolution/provider@0.1.60(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/cbor@1.3.0)(@harmoniclabs/crypto@0.2.4)(@harmoniclabs/pair@1.0.0)':
+  '@lucid-evolution/provider@0.1.64(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/cbor@1.3.0)(@harmoniclabs/crypto@0.2.4)(@harmoniclabs/pair@1.0.0)':
     dependencies:
       '@anastasia-labs/cardano-multiplatform-lib-browser': 6.0.2-2
       '@anastasia-labs/cardano-multiplatform-lib-nodejs': 6.0.2-2
       '@effect/platform': 0.59.3(@effect/schema@0.68.27(effect@3.8.3))(effect@3.8.3)
       '@effect/schema': 0.68.27(effect@3.8.3)
-      '@lucid-evolution/core-types': 0.1.20
+      '@lucid-evolution/core-types': 0.1.21
       '@lucid-evolution/core-utils': 0.1.16
-      '@lucid-evolution/utils': 0.1.45(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/cbor@1.3.0)(@harmoniclabs/crypto@0.2.4)(@harmoniclabs/pair@1.0.0)
-      '@lucid-evolution/wallet': 0.1.51(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/cbor@1.3.0)(@harmoniclabs/crypto@0.2.4)(@harmoniclabs/pair@1.0.0)
+      '@lucid-evolution/utils': 0.1.49(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/cbor@1.3.0)(@harmoniclabs/crypto@0.2.4)(@harmoniclabs/pair@1.0.0)
+      '@lucid-evolution/wallet': 0.1.55(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/cbor@1.3.0)(@harmoniclabs/crypto@0.2.4)(@harmoniclabs/pair@1.0.0)
       effect: 3.8.3
     transitivePeerDependencies:
       - '@harmoniclabs/bytestring'
@@ -2083,29 +2083,29 @@ snapshots:
       - '@harmoniclabs/crypto'
       - '@harmoniclabs/pair'
 
-  '@lucid-evolution/sign_data@0.1.23':
+  '@lucid-evolution/sign_data@0.1.24':
     dependencies:
       '@anastasia-labs/cardano-multiplatform-lib-browser': 6.0.2-2
       '@anastasia-labs/cardano-multiplatform-lib-nodejs': 6.0.2-2
       '@emurgo/cardano-message-signing-browser': 1.0.1
       '@emurgo/cardano-message-signing-nodejs': 1.0.1
-      '@lucid-evolution/core-types': 0.1.20
+      '@lucid-evolution/core-types': 0.1.21
       '@lucid-evolution/core-utils': 0.1.16
 
-  '@lucid-evolution/uplc@0.2.13': {}
+  '@lucid-evolution/uplc@0.2.16': {}
 
-  '@lucid-evolution/utils@0.1.45(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/cbor@1.3.0)(@harmoniclabs/crypto@0.2.4)(@harmoniclabs/pair@1.0.0)':
+  '@lucid-evolution/utils@0.1.49(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/cbor@1.3.0)(@harmoniclabs/crypto@0.2.4)(@harmoniclabs/pair@1.0.0)':
     dependencies:
       '@anastasia-labs/cardano-multiplatform-lib-browser': 6.0.2-2
       '@anastasia-labs/cardano-multiplatform-lib-nodejs': 6.0.2-2
       '@effect/schema': 0.68.27(effect@3.8.3)
       '@harmoniclabs/plutus-data': 1.2.4(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/cbor@1.3.0)
       '@harmoniclabs/uplc': 1.2.4(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/cbor@1.3.0)(@harmoniclabs/crypto@0.2.4)(@harmoniclabs/pair@1.0.0)(@harmoniclabs/plutus-data@1.2.4(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/cbor@1.3.0))
-      '@lucid-evolution/core-types': 0.1.20
+      '@lucid-evolution/core-types': 0.1.21
       '@lucid-evolution/core-utils': 0.1.16
       '@lucid-evolution/crc8': 0.1.8
-      '@lucid-evolution/plutus': 0.1.26
-      '@lucid-evolution/uplc': 0.2.13
+      '@lucid-evolution/plutus': 0.1.27
+      '@lucid-evolution/uplc': 0.2.16
       bip39: 3.1.0
       cborg: 4.2.3
       effect: 3.8.3
@@ -2115,14 +2115,14 @@ snapshots:
       - '@harmoniclabs/crypto'
       - '@harmoniclabs/pair'
 
-  '@lucid-evolution/wallet@0.1.51(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/cbor@1.3.0)(@harmoniclabs/crypto@0.2.4)(@harmoniclabs/pair@1.0.0)':
+  '@lucid-evolution/wallet@0.1.55(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/cbor@1.3.0)(@harmoniclabs/crypto@0.2.4)(@harmoniclabs/pair@1.0.0)':
     dependencies:
       '@anastasia-labs/cardano-multiplatform-lib-browser': 6.0.2-2
       '@anastasia-labs/cardano-multiplatform-lib-nodejs': 6.0.2-2
-      '@lucid-evolution/core-types': 0.1.20
+      '@lucid-evolution/core-types': 0.1.21
       '@lucid-evolution/core-utils': 0.1.16
-      '@lucid-evolution/sign_data': 0.1.23
-      '@lucid-evolution/utils': 0.1.45(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/cbor@1.3.0)(@harmoniclabs/crypto@0.2.4)(@harmoniclabs/pair@1.0.0)
+      '@lucid-evolution/sign_data': 0.1.24
+      '@lucid-evolution/utils': 0.1.49(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/cbor@1.3.0)(@harmoniclabs/crypto@0.2.4)(@harmoniclabs/pair@1.0.0)
       bip39: 3.1.0
     transitivePeerDependencies:
       - '@harmoniclabs/bytestring'
@@ -2459,7 +2459,7 @@ snapshots:
   browserslist@4.23.3:
     dependencies:
       caniuse-lite: 1.0.30001662
-      electron-to-chromium: 1.5.26
+      electron-to-chromium: 1.5.27
       node-releases: 2.0.18
       update-browserslist-db: 1.1.0(browserslist@4.23.3)
 
@@ -2652,7 +2652,7 @@ snapshots:
 
   effect@3.8.3: {}
 
-  electron-to-chromium@1.5.26: {}
+  electron-to-chromium@1.5.27: {}
 
   emoji-regex@8.0.0: {}
 
@@ -2679,14 +2679,14 @@ snapshots:
 
   eslint-visitor-keys@4.0.0: {}
 
-  eslint@9.10.0(jiti@1.21.6):
+  eslint@9.11.0(jiti@1.21.6):
     dependencies:
-      '@eslint-community/eslint-utils': 4.4.0(eslint@9.10.0(jiti@1.21.6))
+      '@eslint-community/eslint-utils': 4.4.0(eslint@9.11.0(jiti@1.21.6))
       '@eslint-community/regexpp': 4.11.1
       '@eslint/config-array': 0.18.0
       '@eslint/eslintrc': 3.1.0
-      '@eslint/js': 9.10.0
-      '@eslint/plugin-kit': 0.1.0
+      '@eslint/js': 9.11.0
+      '@eslint/plugin-kit': 0.2.0
       '@humanwhocodes/module-importer': 1.0.1
       '@humanwhocodes/retry': 0.3.0
       '@nodelib/fs.walk': 1.2.8
