@@ -13,7 +13,7 @@ const componentsConfig = [
   {
     id: "koios",
     component: Koios,
-    position: { top: "130px", left: "90px", position: "fixed" },
+    position: { top: "160px", left: "90px", position: "fixed" },
   },
 ];
 
