@@ -31,16 +31,9 @@ const Koios = () => {
       ) : (
         <div className="max-w-4xl w-full bg-black-800 bg-opacity-80 rounded-lg shadow-md p-6 mb-4 transition-transform duration-300 transform hover:-translate-y-1 hover:shadow-xl">
           <h2 className="text-2xl font-bold text-white mb-4">{"SN₳KE"}</h2>
-          <p className="text-gray-400 mb-2">Ticker: <span className="text-white">{"SNAKE"}</span></p>
-          <p className="text-gray-400 mb-4">ID: <span className="text-white">{poolStats?.poolIDBech}</span></p>
+          <p className="text-white-400">Ticker: <span className="text-white">{"SNAKE"}</span></p>
+          <p className="text-white-400">ID: <span className="text-white">{poolStats?.poolIDBech}</span></p>
           
-          {/* White square button */}
-          <div className="mb-4 flex items-center justify-center">
-            <div className="bg-white w-12 h-12 flex items-center justify-center rounded-md shadow-lg cursor-pointer hover:bg-gray-200">
-              <span className="text-center text-black">Connect</span>
-            </div>
-          </div>
-
           <div className="mt-4">
             <h3 className="text-lg font-semibold text-white">Statistics</h3>
             <ul className="text-gray-300">
