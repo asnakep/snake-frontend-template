@@ -15,7 +15,7 @@ export const getPoolStats = async (poolId: string) => {
 
     // Extracting the needed fields
     return {
-      name: poolData.meta_json.name,
+      //name: poolData.meta_json.name,
       ticker: poolData.meta_json.ticker,
       description: poolData.meta_json.description,
       margin: poolData.margin,
