@@ -32,7 +32,7 @@ export const getPoolStats = async (poolId: string) => {
       livePledge: formatAda(poolData.live_pledge),
       liveStake: formatAda(poolData.live_stake),
       liveDelegators: poolData.live_delegators.toLocaleString(),  // Add thousands separator
-      liveSaturation: `${poolData.live_saturation.toFixed(2)}`,  // Convert live saturation to percentage and fix decimals
+      liveSaturation: `${poolData.live_saturation.toFixed(2)}%`,  // Convert live saturation to percentage and fix decimals
     };
   } else {
     throw new Error("Error fetching pool stats");
