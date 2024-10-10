@@ -15,12 +15,12 @@ export const getPoolStats = async (poolId: string) => {
 
     // Utility function to convert lovelaces to ADA, format to 2 decimals, and add thousands separators
     const formatAda = (value: string | number) => {
-      return `₳${(Number(value) / 1e6).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+      return `₳${(Number(value) / 1e6).toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
     };
 
     // Extracting and formatting the needed fields
     return {
-      margin: `${(poolData.margin * 100).toFixed(1)}`,  // Convert margin to percentage and fix decimals
+      margin: `${(poolData.margin * 100).toFixed(2)}`,  // Convert margin to percentage and fix decimals
       fixedCost: formatAda(poolData.fixed_cost),
       pledge: formatAda(poolData.pledge),
       activeStake: formatAda(poolData.active_stake),
@@ -29,7 +29,7 @@ export const getPoolStats = async (poolId: string) => {
       livePledge: formatAda(poolData.live_pledge),
       liveStake: formatAda(poolData.live_stake),
       liveDelegators: poolData.live_delegators.toLocaleString(),  // Add thousands separator
-      liveSaturation: `${poolData.live_saturation.toFixed(1)}`,  // Convert live saturation to percentage and fix decimals
+      liveSaturation: `${poolData.live_saturation.toFixed(2)}`,  // Convert live saturation to percentage and fix decimals
     };
   } else {
     throw new Error("Error fetching pool stats");
