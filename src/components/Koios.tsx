@@ -32,6 +32,7 @@ const Koios = () => {
         <div>
           <p>Stakepool: {poolStats?.name || ''}</p>
           <p>Ticker: {poolStats?.ticker || ''}</p>
+          <p>Pool ID: {poolStats?.pool_id_bech32 || ''}</p>
           <p>Delegators: {poolStats?.liveDelegators}</p>
           <p>Epoch Cost: {poolStats?.fixedCost}</p>
           <p>Margin: {poolStats?.margin}%</p>
