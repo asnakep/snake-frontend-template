@@ -38,14 +38,38 @@ const Koios = () => {
           <div className="mt-4">
             <h3 className="text-lg font-semibold text-white mb-2">Statistics</h3>
             <ul className="text-gray-300 space-y-2">
-              <li className="flex justify-between"><span><i className="fas fa-hand-holding-usd text-blue-600"></i> Live Stake</span> <span className="text-blue-600">{poolStats?.liveStake}</span></li>
-              <li className="flex justify-between"><span><i className="fas fa-hand-holding-usd text-blue-600"></i> Active Stake</span> <span className="text-blue-600">{poolStats?.activeStake}</span></li>
-              <li className="flex justify-between"><span><i className="fas fa-hand-holding-usd text-blue-600"></i> Pledge</span> <span className="text-blue-600">{poolStats?.pledge}</span></li>
-              <li className="flex justify-between"><span><i className="fas fa-chart-line text-blue-600"></i> Saturation</span> <span className="text-blue-600">{poolStats?.liveSaturation}%</span></li>
-              <li className="flex justify-between"><span><i className="fas fa-users text-blue-600"></i> Delegators</span> <span className="text-blue-600">{poolStats?.liveDelegators}</span></li>
-              <li className="flex justify-between"><span><i className="fas fa-coins text-blue-600"></i> Epoch Cost</span> <span className="text-blue-600">{poolStats?.fixedCost}</span></li>
-              <li className="flex justify-between"><span><i className="fas fa-percentage text-blue-600"></i> Margin</span> <span className="text-blue-600">{poolStats?.margin}%</span></li>
-              <li className="flex justify-between"><span><i className="fas fa-tasks text-blue-600"></i> Lifetime Blocks</span> <span className="text-blue-600">{poolStats?.blockCount}</span></li>
+              <li className="flex justify-between text-xs">
+                <span><i className="fas fa-hand-holding-usd text-blue-600"></i> LIVE STAKE</span>
+                <span className="text-blue-600 text-sm">{poolStats?.liveStake}</span>
+              </li>
+              <li className="flex justify-between text-xs">
+                <span><i className="fas fa-hand-holding-usd text-blue-600"></i> ACTIVE STAKE</span>
+                <span className="text-blue-600 text-sm">{poolStats?.activeStake}</span>
+              </li>
+              <li className="flex justify-between text-xs">
+                <span><i className="fas fa-hand-holding-usd text-blue-600"></i> PLEDGE</span>
+                <span className="text-blue-600 text-sm">{poolStats?.pledge}</span>
+              </li>
+              <li className="flex justify-between text-xs">
+                <span><i className="fas fa-chart-line text-blue-600"></i> SATURATION</span>
+                <span className="text-blue-600 text-sm">{poolStats?.liveSaturation}%</span>
+              </li>
+              <li className="flex justify-between text-xs">
+                <span><i className="fas fa-users text-blue-600"></i> DELEGATORS</span>
+                <span className="text-blue-600 text-sm">{poolStats?.liveDelegators}</span>
+              </li>
+              <li className="flex justify-between text-xs">
+                <span><i className="fas fa-coins text-blue-600"></i> EPOCH COST</span>
+                <span className="text-blue-600 text-sm">{poolStats?.fixedCost}</span>
+              </li>
+              <li className="flex justify-between text-xs">
+                <span><i className="fas fa-percentage text-blue-600"></i> MARGIN</span>
+                <span className="text-blue-600 text-sm">{poolStats?.margin}%</span>
+              </li>
+              <li className="flex justify-between text-xs">
+                <span><i className="fas fa-tasks text-blue-600"></i> LIFETIME BLOCKS</span>
+                <span className="text-blue-600 text-sm">{poolStats?.blockCount}</span>
+              </li>
             </ul>
           </div>
         </div>
