@@ -23,7 +23,7 @@ export const getPoolStats = async (poolId: string) => {
     return {
       poolIDBech: poolData.pool_id_bech32,
       // description: poolData.meta_json.description,
-      margin: `${(poolData.margin * 100).toFixed(1)}`,  // Convert margin to percentage and fix decimals
+      margin: `${(poolData.margin * 100).toFixed(0)}`,  // Convert margin to percentage and fix decimals
       fixedCost: formatAda(poolData.fixed_cost),
       pledge: formatAda(poolData.pledge),
       activeStake: formatAda(poolData.active_stake),
