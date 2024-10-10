@@ -12,7 +12,7 @@ export const getPoolStats = async (poolId: string) => {
 
   if (response.ok) {
     const data = await response.json();
-    const poolData = data[0]; // Assuming the pool data is in the first element of the array.
+    const poolData = data[0] || {}; // Assuming the pool data is in the first element of the array.
 
     // Utility function to convert lovelaces to ADA, format to 2 decimals, and add thousands separators
     const formatAda = (value: string | number) => {
