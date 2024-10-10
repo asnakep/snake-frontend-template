@@ -24,7 +24,7 @@ export const getPoolStats = async (poolId: string) => {
       name: poolData.meta_json.name,
       ticker: poolData.meta_json.ticker,
       description: poolData.meta_json.description,
-      margin: `${(poolData.margin * 100).toFixed(2)}`,  // Convert margin to percentage and fix decimals
+      margin: `${(poolData.margin * 100).toFixed(1)}`,  // Convert margin to percentage and fix decimals
       fixedCost: formatAda(poolData.fixed_cost),
       pledge: formatAda(poolData.pledge),
       activeStake: formatAda(poolData.active_stake),
