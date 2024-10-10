@@ -31,7 +31,7 @@ const Koios = () => {
       ) : (
         <div>
           <p>{poolStats?.name || ''}</p>
-          <p>Ticker: {poolStats?.ticker || ''}</p>
+          <p>Delegation Ticker: {poolStats?.ticker || ''}</p>
           <p>Pool ID: {poolStats?.poolIDBech || ''}</p>
           <p>Delegators: {poolStats?.liveDelegators}</p>
           <p>Epoch Cost: {poolStats?.fixedCost}</p>
