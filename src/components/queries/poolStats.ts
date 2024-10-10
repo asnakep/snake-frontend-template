@@ -13,21 +13,23 @@ export const getPoolStats = async (poolId: string) => {
     const data = await response.json();
     const poolData = data[0]; // Assuming the pool data is in the first element of the array.
 
-    // Extracting the needed fields
+    // Utility function to convert lovelaces to ADA and format with thousands separators
+    const formatAda = (value: string | number) => {
+      return `₳${(Number(value) / 1e6).toLocaleString()}`;
+    };
+
+    // Extracting and formatting the needed fields
     return {
-      //name: poolData.meta_json.name,
-      //ticker: poolData.meta_json.ticker,
-      //description: poolData.meta_json.description,
-      margin: poolData.margin,
-      fixedCost: poolData.fixed_cost,
-      pledge: poolData.pledge,
-      activeStake: poolData.active_stake,
-      sigma: poolData.sigma,
-      blockCount: poolData.block_count,
-      livePledge: poolData.live_pledge,
-      liveStake: poolData.live_stake,
-      liveDelegators: poolData.live_delegators,
-      liveSaturation: poolData.live_saturation,
+      margin: `${poolData.margin * 100}%`,  // Convert margin to percentage
+      fixedCost: formatAda(poolData.fixed_cost),
+      pledge: formatAda(poolData.pledge),
+      activeStake: formatAda(poolData.active_stake),
+      sigma: poolData.sigma.toFixed(5),  // Limit sigma to 5 decimal places
+      blockCount: poolData.block_count.toLocaleString(),  // Add thousands separator
+      livePledge: formatAda(poolData.live_pledge),
+      liveStake: formatAda(poolData.live_stake),
+      liveDelegators: poolData.live_delegators.toLocaleString(),  // Add thousands separator
+      liveSaturation: `${poolData.live_saturation}%`,  // Convert live saturation to percentage
     };
   } else {
     throw new Error("Error fetching pool stats");
