@@ -30,6 +30,7 @@ const Koios = () => {
         <p>Error: {error}</p>
       ) : (
         <div>
+          <p>Name: {poolStats?.name || ''}</p>
           <p>Ticker: {poolStats?.ticker || ''}</p>
           <p>Description: {poolStats?.description || ''}</p>
           <p>Margin: {poolStats?.margin}%</p>
