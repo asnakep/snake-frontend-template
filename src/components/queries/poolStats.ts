@@ -21,8 +21,6 @@ export const getPoolStats = async (poolId: string) => {
 
     // Extracting and formatting the needed fields
     return {
-      name: poolData.meta_json.name,
-      ticker: poolData.meta_json.ticker,
       poolIDBech: poolData.pool_id_bech32,
       description: poolData.meta_json.description,
       margin: `${(poolData.margin * 100).toFixed(1)}`,  // Convert margin to percentage and fix decimals
