@@ -1,32 +1,33 @@
-export const getPoolStats = async () => {
+export const getPoolStats = async (poolId: string) => {
   const response = await fetch('/api/pool_info', {
     method: 'POST',
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      _pool_bech32_ids: ["pool1xs34q2z06a46nk7hl48d27dj5gzc6hh9trugw2ehs9ajsevqffx"],
+      _pool_bech32_ids: [poolId],
     }),
   });
 
   if (response.ok) {
     const data = await response.json();
-    const poolInfo = data[0];
+    const poolData = data[0]; // Assuming the pool data is in the first element of the array.
 
+    // Extracting the needed fields
     return {
-      margin: poolInfo?.margin ? `${poolInfo.margin * 100}%` : "N/A",  // Convert to percentage
-      fixed_cost: poolInfo?.fixed_cost ? `₳${(Number(poolInfo.fixed_cost) / 1e6).toLocaleString()}` : "N/A",  // Convert lovelaces to ADA
-      pledge: poolInfo?.pledge ? `₳${(Number(poolInfo.pledge) / 1e6).toLocaleString()}` : "N/A",  // Convert lovelaces to ADA
-      meta_name: poolInfo?.meta_json?.name || "Unknown",
-      meta_ticker: poolInfo?.meta_json?.ticker || "Unknown",
-      meta_description: poolInfo?.meta_json?.description || "No description",
-      active_stake: poolInfo?.active_stake ? `₳${(Number(poolInfo.active_stake) / 1e6).toLocaleString()}` : "N/A",  // Convert lovelaces to ADA
-      sigma: poolInfo?.sigma ? poolInfo.sigma.toFixed(5) : "N/A",  // Limit to 5 decimal places
-      block_count: poolInfo?.block_count || "N/A",
-      live_pledge: poolInfo?.live_pledge ? `₳${(Number(poolInfo.live_pledge) / 1e6).toLocaleString()}` : "N/A",  // Convert lovelaces to ADA
-      live_stake: poolInfo?.live_stake ? `₳${(Number(poolInfo.live_stake) / 1e6).toLocaleString()}` : "N/A",  // Convert lovelaces to ADA
-      live_delegators: poolInfo?.live_delegators || "N/A",
-      live_saturation: poolInfo?.live_saturation ? `${poolInfo.live_saturation}%` : "N/A",  // Convert to percentage
+      name: poolData.meta_json.name,
+      ticker: poolData.meta_json.ticker,
+      description: poolData.meta_json.description,
+      margin: poolData.margin,
+      fixedCost: poolData.fixed_cost,
+      pledge: poolData.pledge,
+      activeStake: poolData.active_stake,
+      sigma: poolData.sigma,
+      blockCount: poolData.block_count,
+      livePledge: poolData.live_pledge,
+      liveStake: poolData.live_stake,
+      liveDelegators: poolData.live_delegators,
+      liveSaturation: poolData.live_saturation,
     };
   } else {
     throw new Error("Error fetching pool stats");
