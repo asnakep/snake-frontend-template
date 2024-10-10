@@ -32,13 +32,12 @@ const Koios = () => {
         <div>
           <p>Name: {poolStats?.name || ''}</p>
           <p>Ticker: {poolStats?.ticker || ''}</p>
-          <p>Description: {poolStats?.description || ''}</p>
+          // <p>Description: {poolStats?.description || ''}</p>
           <p>Margin: {poolStats?.margin}%</p>
           <p>Fixed Cost: {poolStats?.fixedCost}</p>
           <p>Pledge: {poolStats?.pledge}</p>
           <p>Active Stake: {poolStats?.activeStake}</p>
-          <p>Sigma: {poolStats?.sigma}</p>
-          <p>Block Count: {poolStats?.blockCount}</p>
+          <p>Lifetime Blocks: {poolStats?.blockCount}</p>
           <p>Live Pledge: {poolStats?.livePledge}</p>
           <p>Live Stake: {poolStats?.liveStake}</p>
           <p>Live Delegators: {poolStats?.liveDelegators}</p>

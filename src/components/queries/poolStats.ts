@@ -28,7 +28,6 @@ export const getPoolStats = async (poolId: string) => {
       fixedCost: formatAda(poolData.fixed_cost),
       pledge: formatAda(poolData.pledge),
       activeStake: formatAda(poolData.active_stake),
-      sigma: poolData.sigma.toFixed(5),  // Limit sigma to 5 decimal places
       blockCount: poolData.block_count.toLocaleString(),  // Add thousands separator
       livePledge: formatAda(poolData.live_pledge),
       liveStake: formatAda(poolData.live_stake),
