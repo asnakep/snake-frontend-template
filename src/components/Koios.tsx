@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { getPoolStats } from './queries/poolStats';
-import { inter } from './layout'; // Import the font class
 
 const Koios = () => {
   const [poolStats, setPoolStats] = useState<any>(null);
