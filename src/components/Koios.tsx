@@ -30,7 +30,7 @@ const Koios = () => {
         <p className="text-red-500">Error: {error}</p>
       ) : (
         <div className="max-w-4xl w-full bg-gray-800 bg-opacity-80 rounded-lg shadow-md p-6 mb-4 transition-transform duration-300 transform hover:-translate-y-1 hover:shadow-xl">
-          <h2 className="text-2xl font-bold text-white">{poolStats?.name}</h2>
+          <h2 className="text-2xl font-bold text-white">{"SN₳KE"}</h2>
           <p className="text-gray-400">Ticker: <span className="text-white">{poolStats?.ticker}</span></p>
           <p className="text-gray-400">ID: <span className="text-white">{poolStats?.poolIDBech}</span></p>
           
