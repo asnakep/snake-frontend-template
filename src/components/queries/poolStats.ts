@@ -11,27 +11,22 @@ export const getPoolStats = async () => {
 
   if (response.ok) {
     const data = await response.json();
-
-    // Ensure poolInfo exists before attempting to access its properties
     const poolInfo = data[0];
-    if (!poolInfo) {
-      throw new Error("Pool data is missing");
-    }
 
     return {
-      margin: poolInfo.margin !== null ? `${poolInfo.margin * 100}%` : "N/A",  // Convert to percentage
-      fixed_cost: poolInfo.fixed_cost ? `₳${(Number(poolInfo.fixed_cost) / 1e6).toLocaleString()}` : "N/A",  // Convert lovelaces to ADA
-      pledge: poolInfo.pledge ? `₳${(Number(poolInfo.pledge) / 1e6).toLocaleString()}` : "N/A",  // Convert lovelaces to ADA
-      meta_name: poolInfo.meta_json?.name || "Unknown",
-      meta_ticker: poolInfo.meta_json?.ticker || "Unknown",
-      meta_description: poolInfo.meta_json?.description || "No description",
-      active_stake: poolInfo.active_stake ? `₳${(Number(poolInfo.active_stake) / 1e6).toLocaleString()}` : "N/A",  // Convert lovelaces to ADA
-      sigma: poolInfo.sigma !== null ? poolInfo.sigma.toFixed(5) : "N/A",  // Limit to 5 decimal places
-      block_count: poolInfo.block_count || "N/A",
-      live_pledge: poolInfo.live_pledge ? `₳${(Number(poolInfo.live_pledge) / 1e6).toLocaleString()}` : "N/A",  // Convert lovelaces to ADA
-      live_stake: poolInfo.live_stake ? `₳${(Number(poolInfo.live_stake) / 1e6).toLocaleString()}` : "N/A",  // Convert lovelaces to ADA
-      live_delegators: poolInfo.live_delegators || "N/A",
-      live_saturation: poolInfo.live_saturation !== null ? `${poolInfo.live_saturation}%` : "N/A",  // Convert to percentage
+      margin: poolInfo?.margin ? `${poolInfo.margin * 100}%` : "N/A",  // Convert to percentage
+      fixed_cost: poolInfo?.fixed_cost ? `₳${(Number(poolInfo.fixed_cost) / 1e6).toLocaleString()}` : "N/A",  // Convert lovelaces to ADA
+      pledge: poolInfo?.pledge ? `₳${(Number(poolInfo.pledge) / 1e6).toLocaleString()}` : "N/A",  // Convert lovelaces to ADA
+      meta_name: poolInfo?.meta_json?.name || "Unknown",
+      meta_ticker: poolInfo?.meta_json?.ticker || "Unknown",
+      meta_description: poolInfo?.meta_json?.description || "No description",
+      active_stake: poolInfo?.active_stake ? `₳${(Number(poolInfo.active_stake) / 1e6).toLocaleString()}` : "N/A",  // Convert lovelaces to ADA
+      sigma: poolInfo?.sigma ? poolInfo.sigma.toFixed(5) : "N/A",  // Limit to 5 decimal places
+      block_count: poolInfo?.block_count || "N/A",
+      live_pledge: poolInfo?.live_pledge ? `₳${(Number(poolInfo.live_pledge) / 1e6).toLocaleString()}` : "N/A",  // Convert lovelaces to ADA
+      live_stake: poolInfo?.live_stake ? `₳${(Number(poolInfo.live_stake) / 1e6).toLocaleString()}` : "N/A",  // Convert lovelaces to ADA
+      live_delegators: poolInfo?.live_delegators || "N/A",
+      live_saturation: poolInfo?.live_saturation ? `${poolInfo.live_saturation}%` : "N/A",  // Convert to percentage
     };
   } else {
     throw new Error("Error fetching pool stats");
