@@ -30,9 +30,9 @@ const Koios = () => {
         <p>Error: {error}</p>
       ) : (
         <div>
-          <p>{poolStats?.name || ''}</p>
-          <p>Delegation Ticker: {poolStats?.ticker || ''}</p>
-          <p>ID: {poolStats?.poolIDBech || ''}</p>
+          <p>{poolStats?.name}</p>
+          <p>Ticker: {poolStats?.ticker}</p>
+          <p>ID: {poolStats?.poolIDBech}</p>
           <p>Delegators: {poolStats?.liveDelegators}</p>
           <p>Epoch Cost: {poolStats?.fixedCost}</p>
           <p>Margin: {poolStats?.margin}%</p>
