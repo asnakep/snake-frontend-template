@@ -32,7 +32,7 @@ const Koios = () => {
         <div className="max-w-4xl w-full bg-black-800 bg-opacity-80 rounded-lg shadow-md p-6 mb-4 transition-transform duration-300 transform hover:-translate-y-1 hover:shadow-xl">
           
           {/* Cornice style element */}
-          <div className="bg-white w-full h-2 rounded-t-lg mb-4"></div>
+          <div className="bg-white w-full h-1 rounded-t-lg mb-2"></div>
 
           <h2 className="text-2xl font-bold text-white mb-4">{"SN₳KE"}</h2>
           <p className="text-gray-400 mb-2">Ticker: <span className="text-white">{"SNAKE"}</span></p>
