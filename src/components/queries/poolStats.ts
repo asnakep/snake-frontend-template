@@ -17,7 +17,7 @@ export const getPoolStats = async (poolId: string) => {
     return {
       //name: poolData.meta_json.name,
       //ticker: poolData.meta_json.ticker,
-      description: poolData.meta_json.description,
+      //description: poolData.meta_json.description,
       margin: poolData.margin,
       fixedCost: poolData.fixed_cost,
       pledge: poolData.pledge,
