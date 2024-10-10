@@ -39,7 +39,7 @@ const Koios = () => {
           <p>Active Stake: {poolStats?.activeStake}</p>
           <p>Live Stake: {poolStats?.liveStake}</p>
           <p>Lifetime Blocks: {poolStats?.blockCount}</p>
-          <p>Saturation: {poolStats?.liveSaturation}</p>
+          <p>Saturation: {poolStats?.liveSaturation}%</p>
         </div>
       )}
     </div>
