@@ -37,14 +37,14 @@ const Koios = () => {
           <div className="mt-4">
             <h3 className="text-lg font-semibold text-white">Statistics</h3>
             <ul className="text-gray-300">
-              <li><i className="fas fa-users text-green-400"></i> Delegators: <span className="text-green-400">{poolStats?.liveDelegators}</span></li>
-              <li><i className="fas fa-coins text-green-400"></i> Epoch Cost: <span className="text-green-400">{poolStats?.fixedCost}</span></li>
-              <li><i className="fas fa-percentage text-green-400"></i> Margin: <span className="text-green-400">{poolStats?.margin}%</span></li>
-              <li><i className="fas fa-hand-holding-usd text-green-400"></i> Pledge: <span className="text-green-400">{poolStats?.pledge}</span></li>
-              <li><i className="fas fa-hand-holding-usd text-green-400"></i> Active Stake: <span className="text-green-400">{poolStats?.activeStake}</span></li>
-              <li><i className="fas fa-hand-holding-usd text-green-400"></i> Live Stake: <span className="text-green-400">{poolStats?.liveStake}</span></li>
-              <li><i className="fas fa-tasks text-green-400"></i> Lifetime Blocks: <span className="text-green-400">{poolStats?.blockCount}</span></li>
-              <li><i className="fas fa-chart-line text-green-400"></i> Saturation: <span className="text-green-400">{poolStats?.liveSaturation}%</span></li>
+              <li><i className="fas fa-users text-blue-400"></i> Delegators <span className="text-blue-400">{poolStats?.liveDelegators}</span></li>
+              <li><i className="fas fa-coins text-blue-400"></i> Epoch Cost <span className="text-blue-400">{poolStats?.fixedCost}</span></li>
+              <li><i className="fas fa-percentage text-blue-400"></i> Margin <span className="text-blue-400">{poolStats?.margin}%</span></li>
+              <li><i className="fas fa-hand-holding-usd text-blue-400"></i> Pledge <span className="text-blue-400">{poolStats?.pledge}</span></li>
+              <li><i className="fas fa-hand-holding-usd text-blue-400"></i> Active Stake <span className="text-blue-400">{poolStats?.activeStake}</span></li>
+              <li><i className="fas fa-hand-holding-usd text-blue-400"></i> Live Stake <span className="text-blue-400">{poolStats?.liveStake}</span></li>
+              <li><i className="fas fa-tasks text-blue-400"></i> Lifetime Blocks <span className="text-blue-400">{poolStats?.blockCount}</span></li>
+              <li><i className="fas fa-chart-line text-blue-400"></i> Saturation <span className="text-blue-400">{poolStats?.liveSaturation}%</span></li>
             </ul>
           </div>
         </div>
