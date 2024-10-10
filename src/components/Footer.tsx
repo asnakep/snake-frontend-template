@@ -14,8 +14,8 @@ export default function Footer() {
               className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70]"
               src="logo-govtool.svg"
               alt="Govtool Logo"
-              width={22}
-              height={22}
+              width={auto}
+              height={auto}
               priority
             />
           </Link>
