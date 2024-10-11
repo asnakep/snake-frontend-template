@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 const Stake = dynamic(() => import("./Delegate"), { ssr: false });
 const PoolStats = dynamic(() => import("./PoolStats"), { ssr: false });
 const TopHeaders = dynamic(() => import("./TopHeaders"), { ssr: false });
+const EpochSchedules = dynamic(() => import("./EpochSchedules"), { ssr: false });
 
 const componentsConfig = [
   {
@@ -20,6 +21,11 @@ const componentsConfig = [
     id: "topheader",
     component: TopHeaders,
     position: { top: "150px", right: "60px", position: "fixed" },
+  },
+  {
+    id: "epochschedules",
+    component: EpochSchedules,
+    position: { top: "200px", right: "20px", position: "fixed" },
   },
 ];
 
