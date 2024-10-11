@@ -14,7 +14,7 @@ export const getTip = async () => {
         absSlot: data[0]?.abs_slot,
         epochSlot: data[0]?.epoch_slot,
         blockNum: data[0]?.block_no,
-        blockTime: data[0]?.block_time,
+        blockTime: new Date(data[0]?.block_time * 1000).toLocaleString(),
       };
     } else {
       throw new Error("Error fetching data");
