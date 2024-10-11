@@ -18,7 +18,7 @@ export const EpochStats = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const data = await fetchEpochData();
+        const data = await fetchEpochData(); // Correct usage
         setEpochData(data);
       } catch (error) {
         setError('Failed to fetch epoch data.');
