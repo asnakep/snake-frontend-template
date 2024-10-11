@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { getTip } from './queries/topHeaders';
 
 
-const Koios = () => {
+const TopHeaders = () => {
   const [poolStats, setPoolStats] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -79,4 +79,4 @@ const Koios = () => {
   );
 };
 
-export default Koios;
+export default TopHeaders;
