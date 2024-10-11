@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 
 const Stake = dynamic(() => import("./Delegate"), { ssr: false });
 const PoolStats = dynamic(() => import("./PoolStats"), { ssr: false });
-const TopHeaders = dynamic(() => import("./TopHeader"), { ssr: false });
+const TopHeaders = dynamic(() => import("./TopHeaders"), { ssr: false });
 
 const componentsConfig = [
   {
