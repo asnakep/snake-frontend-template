@@ -1,6 +1,6 @@
 export const fetchEpochSchedules = async () => {
-    const currentUrl = '/api/current';
-    const nextUrl = '/api/next';
+    const currentUrl = 'http://136.243.208.16:12777/json/current.json';
+    const nextUrl = 'http://136.243.208.16:12777/json/next.json';
   
     const [currentResponse, nextResponse] = await Promise.all([
       fetch(currentUrl),
