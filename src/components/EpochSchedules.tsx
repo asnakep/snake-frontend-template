@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { fetchEpochSchedules } from './queries/epochSchedules';
+import { fetchEpochSchedules } from './queries/epochSchedules'; // Correct import
 
 interface EpochData {
   epoch: number;
@@ -18,10 +18,10 @@ export const EpochStats = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const data = await fetchEpochData(); // Correct usage
+        const data = await fetchEpochSchedules(); // Correct usage of fetchEpochSchedules
         setEpochData(data);
       } catch (error) {
-        setError('Failed to fetch epoch data.');
+        setError('Failed to fetch epoch data.'); // Set a proper error message
       } finally {
         setLoading(false);
       }
