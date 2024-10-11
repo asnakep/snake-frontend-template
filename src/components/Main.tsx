@@ -19,7 +19,7 @@ const componentsConfig = [
   {
     id: "topheader",
     component: TopHeaders,
-    position: { top: "100px", right: "60px", position: "fixed" },
+    position: { top: "50px", right: "60px", position: "fixed" },
   },
 ];
 
