@@ -24,7 +24,7 @@ const TopHeaders: React.FC = () => {
     };
 
     fetchData();
-    const interval = setInterval(fetchData, 60000); // Refresh every 60 seconds
+    const interval = setInterval(fetchData, 20000); // Refresh every 20 seconds
 
     return () => clearInterval(interval); // Cleanup the interval on component unmount
   }, []);
