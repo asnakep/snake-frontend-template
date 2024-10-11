@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { fetchEpochData } from '../queries/epochSchedules';
+import { fetchEpochData } from './queries/epochSchedules';
 
 interface EpochData {
   epoch: number;
