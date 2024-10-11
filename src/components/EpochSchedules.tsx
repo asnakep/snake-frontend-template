@@ -59,3 +59,5 @@ export const EpochStats = () => {
     </div>
   );
 };
+
+export default EpochStats;
