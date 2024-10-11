@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 
 const Stake = dynamic(() => import("./Delegate"), { ssr: false });
 const PoolStats = dynamic(() => import("./PoolStats"), { ssr: false });
+const TopHeaders = dynamic(() => import("./TopHeader"), { ssr: false });
 
 const componentsConfig = [
   {
@@ -14,6 +15,11 @@ const componentsConfig = [
     id: "poolstats",
     component: PoolStats,
     position: { top: "100px", left: "60px", position: "fixed" },
+  },
+  {
+    id: "topheader",
+    component: TopHeaders,
+    position: { top: "100px", left: "120px", position: "fixed" },
   },
 ];
 
