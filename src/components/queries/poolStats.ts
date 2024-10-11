@@ -14,7 +14,7 @@ export const getPoolStats = async (poolId: string) => {
     const data = await response.json();
     const poolData = data[0] || {}; // Assuming the pool data is in the first element of the array.
 
-    // Utility function to convert lovelaces to ADA, format to 2 decimals, and add thousands separators
+    // Utility function to convert lovelaces to ADA, format to 0 decimals, and add thousands separators
     const formatAda = (value: string | number) => {
       return `₳${(Number(value) / 1e6).toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
     };
@@ -22,7 +22,7 @@ export const getPoolStats = async (poolId: string) => {
     // Extracting and formatting the needed fields
     return {
       poolIDBech: poolData.pool_id_bech32,
-      // description: poolData.meta_json.description,
+      //description: poolData.meta_json.description,
       margin: `${(poolData.margin * 100).toFixed(0)}`,  // Convert margin to percentage and fix decimals
       fixedCost: formatAda(poolData.fixed_cost),
       pledge: formatAda(poolData.pledge),

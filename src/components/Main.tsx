@@ -2,7 +2,7 @@
 import dynamic from "next/dynamic";
 
 const Stake = dynamic(() => import("./Delegate"), { ssr: false });
-const Koios = dynamic(() => import("./Koios"), { ssr: false });
+const PoolStats = dynamic(() => import("./PoolStats"), { ssr: false });
 
 const componentsConfig = [
   {
@@ -11,8 +11,8 @@ const componentsConfig = [
     position: { top: "83px", right: "80px", position: "fixed" },
   },
   {
-    id: "koios",
-    component: Koios,
+    id: "poolstats",
+    component: PoolStats,
     position: { top: "100px", left: "60px", position: "fixed" },
   },
 ];
