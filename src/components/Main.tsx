@@ -25,7 +25,7 @@ const componentsConfig = [
   {
     id: "epochschedules",
     component: EpochSchedules,
-    position: { bottom: "20px", right: "10px", position: "fixed" },
+    position: { top: "20px", right: "100px", position: "fixed" },
   },
 ];
 
