@@ -1,4 +1,4 @@
-export const getLatestBlock = async () => {
+export const getTip = async () => {
     const response = await fetch('/api/tip', {
       method: 'GET',
       headers: {

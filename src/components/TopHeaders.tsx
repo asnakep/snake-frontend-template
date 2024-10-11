@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { getPoolStats } from './queries/poolStats';
+import { getTip } from './queries/topHeaders';
 
-const PoolStats = () => {
+
+const Koios = () => {
   const [poolStats, setPoolStats] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -78,4 +79,4 @@ const PoolStats = () => {
   );
 };
 
-export default PoolStats;
+export default Koios;
