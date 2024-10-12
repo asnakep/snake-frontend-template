@@ -1,14 +1,26 @@
 import { useState, useEffect } from "react";
 import { getPoolStats } from './queries/poolStats';
+import { getBlocksCount } from './queries/blocksCount'; // Import blocks count query
+import { getTip } from './queries/queryTip'; // Import to get the current epoch number
+
+const poolId = "pool1xs34q2z06a46nk7hl48d27dj5gzc6hh9trugw2ehs9ajsevqffx"
 
 const PoolStats = () => {
   const [poolStats, setPoolStats] = useState<any>(null);
+  const [blockCount, setBlockCount] = useState<number | null>(null); // State to hold block count
+  const [currentEpoch, setCurrentEpoch] = useState<number | null>(null); // State to hold current epoch
   const [error, setError] = useState<string | null>(null);
 
   const fetchPoolStats = async () => {
     try {
-      const stats = await getPoolStats('pool1xs34q2z06a46nk7hl48d27dj5gzc6hh9trugw2ehs9ajsevqffx');
+      const stats = await getPoolStats(poolId);
       setPoolStats(stats);
+
+      const tip = await getTip(); // Get the current epoch from the tip
+      setCurrentEpoch(tip.currEpoch);
+
+      const count = await getBlocksCount(poolId, tip.currEpoch);
+      setBlockCount(count); // Fetch and set the block count for the current epoch
     } catch (err) {
       setError((err as Error).message);
     }
@@ -34,6 +46,11 @@ const PoolStats = () => {
           <p className="text-gray-400 mb-2">Ticker: <span className="text-white">{"SNAKE"}</span></p>
           <p className="text-gray-400 mb-4">ID: <span className="text-white">{poolStats?.poolIDBech}</span></p>
           
+          {/* New entry for confirmed blocks in current epoch */}
+          <p className="text-white-400 mb-4">
+            Epoch {currentEpoch} - Confirmed Blocks : <span className="text-white">{blockCount ?? 'Loading...'}</span>
+          </p>
+
           <div className="mt-4">
             <h3 className="text-lg font-semibold text-white mb-2">Statistics</h3>
             <ul className="text-gray-300 space-y-2">
