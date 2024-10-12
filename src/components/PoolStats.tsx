@@ -36,16 +36,22 @@ const PoolStats = () => {
     return () => clearInterval(intervalId);
   }, []);
 
+  // Function to shorten the pool ID string
+  const shortenString = (str: string | undefined, length: number = 10): string => {
+    if (!str) return ""; // Handle undefined or empty string
+    if (str.length <= length) return str; // Return if string is already short enough
+    return `${str.slice(0, length)}...${str.slice(-length)}`; // Shorten the string
+  };
+
   return (
     <div className="flex flex-col items-center">
       {error ? (
         <p className="text-red-500">Error: {error}</p>
       ) : (
         <div className="max-w-4xl w-full bg-black-800 bg-opacity-80 rounded-lg shadow-md p-6 mb-4 transition-transform duration-300 transform hover:-translate-y-1 hover:shadow-xl">
-
           <p className="text-gray-400 mb-2">Ticker: <span className="text-white">{"SNAKE"}</span></p>
-          <p className="text-gray-400 mb-4">ID: <span className="text-white">{poolStats?.poolIDBech}</span></p>
-          
+          <p className="text-gray-400 mb-4">ID: <span className="text-white">{shortenString(poolStats?.poolIDBech)}</span></p>
+
           {/* New entry for confirmed blocks in current epoch */}
           <p className="text-white-400 mb-4">
             Epoch {currentEpoch} - Confirmed Blocks : <span className="text-white">{blockCount ?? 'Loading...'}</span>
