@@ -52,9 +52,6 @@ const TopHeaders: React.FC = () => {
           Cardano Stakepool SN₳KE
         </div>
         <div className="text-white font-semibold text-xl mr-8"> {/* Added more margin-right */}
-          Epoch {tipData.currEpoch}
-        </div>
-        <div className="text-white font-semibold text-xl mr-8"> {/* Added more margin-right */}
           Block {formatNumber(tipData.blockNum)}
         </div>
       </div>
@@ -69,7 +66,7 @@ const TopHeaders: React.FC = () => {
           className="absolute inset-0 flex justify-center items-center text-white-900 font-semibold text-lg"
           style={{ zIndex: 1 }}
         >
-          <span>Slot {formatNumber(tipData.epochSlot)} ({epochProgressPercent}%)</span>
+          <span>Epoch {formatNumber(tipData.currEpoch)} ({epochProgressPercent}%)</span>
         </div>
       </div>
     </div>

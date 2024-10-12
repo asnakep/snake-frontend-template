@@ -48,7 +48,7 @@ const PoolStats = () => {
           
           {/* New entry for confirmed blocks in current epoch */}
           <p className="text-white-400 mb-4">
-            Epoch {currentEpoch} - Confirmed Blocks : <span className="text-white">{blockCount ?? 'Loading...'}</span>
+            Epoch {currentEpoch} - Minted Blocks : <span className="text-white">{blockCount ?? 'Loading...'}</span>
           </p>
 
           <div className="mt-4">
