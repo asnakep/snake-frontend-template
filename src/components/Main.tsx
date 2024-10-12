@@ -31,19 +31,19 @@ const componentsConfig: ComponentConfig[] = [
   {
     id: "poolstats",
     component: PoolStats,
-    position: { top: "140px", left: "30px", position: "fixed" },
+    position: { top: "180px", left: "30px", position: "fixed" },
     style: {}, // Add styles here if needed
   },
   {
     id: "topheader",
     component: TopHeaders,
-    position: { top: "20px", left: "30px", position: "fixed" },
+    position: { top: "10px", left: "30px", position: "fixed" },
     style: {}, // Add styles here if needed
   },
   {
     id: "epochschedules",
     component: EpochSchedules,
-    position: { top: "140px", center: "80px", position: "fixed" },
+    position: { top: "200px", center: "80px", position: "fixed" },
     style: {}, // Add styles here if needed
   },
 ];
