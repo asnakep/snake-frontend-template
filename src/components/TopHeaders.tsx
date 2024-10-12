@@ -60,7 +60,7 @@ const TopHeaders: React.FC = () => {
       </div>
 
       {/* Progress Bar for Epoch Slot */}
-      <div className="relative w-64 bg-gray-800 rounded-full h-8 overflow-hidden ml-6"> {/* Added margin-left */}
+      <div className="relative w-64 bg-gray-800 rounded-full h-8 overflow-hidden ml-4"> {/* Added margin-left */}
         <div
           className="absolute top-0 left-0 bg-blue-600 h-full rounded-full"
           style={{ width: `${epochProgressPercent}%` }}
