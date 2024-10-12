@@ -60,7 +60,7 @@ export const EpochStats = () => {
                 <span className="text-blue-600">{epochData?.current.epochSlotsIdeal}</span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
-                <span><i className="fas fa-trophy text-blue-600"></i> Assigned Luck</span>
+                <span><i className="fas fa-trophy text-blue-600"></i> Luck</span>
                 <span className="text-blue-600">{epochData?.current.maxPerformance}%</span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
@@ -90,7 +90,7 @@ export const EpochStats = () => {
                 <span className="text-blue-600">{epochData?.next.epochSlotsIdeal}</span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
-                <span><i className="fas fa-trophy text-blue-600"></i> Assigned Luck</span>
+                <span><i className="fas fa-trophy text-blue-600"></i> Luck</span>
                 <span className="text-blue-600">{epochData?.next.maxPerformance}%</span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
