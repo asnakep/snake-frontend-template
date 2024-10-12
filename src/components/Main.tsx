@@ -21,7 +21,7 @@ const componentsConfig = [
   {
     id: "topheader",
     component: TopHeaders,
-    position: { bottom: "100px", right: "60px", position: "fixed" },
+    position: { top: "20px", left: "30px", position: "fixed" },
   },
   {
     id: "epochschedules",
