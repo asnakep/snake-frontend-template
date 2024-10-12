@@ -18,7 +18,7 @@ const WalletConnect = () => {
             {"..."}
             {stakeAddress!.slice(stakeAddress!.length - 6)}
           </h1>
-          <h1>{new Intl.NumberFormat().format(Math.floor(parseFloat(accountBalance)))} ₳</h1>
+          <h1>{new Intl.NumberFormat().format(Math.floor(parseFloat(accountBalance.toString())))} ₳</h1>
           {/* <button className="btn btn-secondary">Button</button> */}
           <button
             className="btn btn-square btn-outline"
