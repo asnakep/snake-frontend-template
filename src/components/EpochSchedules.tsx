@@ -41,16 +41,14 @@ export const EpochStats = () => {
   return (
     <div className="flex flex-col items-center">
       <div className="max-w-4xl w-full bg-black-800 bg-opacity-80 rounded-lg shadow-md p-6 mb-4 transition-transform duration-300 transform hover:-translate-y-1 hover:shadow-xl">
-        <h2 className="text-2xl font-bold text-white mb-4">Epoch Stats</h2>
         
         {/* Vertical layout with both sections in one column */}
         <div className="grid grid-cols-1 gap-8">
           {/* Current Epoch Section */}
           <div>
-            <h3 className="text-lg font-semibold text-white mb-2">Current Epoch</h3>
             <ul className="text-gray-300 space-y-2">
-              <li className="flex justify-between text-xs gap-x-4"> {/* Adjusted gap-x */}
-                <span><i className="fas fa-calendar-day text-blue-600"></i> Epoch</span>
+              <li className="flex justify-between text-lg gap-x-4"> {/* Adjusted gap-x */}
+                <span><i className="fas fa-calendar-day text-blue-600"></i>Current Epoch</span>
                 <span className="text-blue-600">{epochData?.current.epoch}</span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
@@ -78,10 +76,9 @@ export const EpochStats = () => {
           
           {/* Next Epoch Section */}
           <div>
-            <h3 className="text-lg font-semibold text-white mb-2">Next Epoch</h3>
             <ul className="text-gray-300 space-y-2">
-              <li className="flex justify-between text-xs gap-x-4">
-                <span><i className="fas fa-calendar-day text-blue-600"></i> Epoch</span>
+              <li className="flex justify-between text-lg gap-x-4">
+                <span><i className="fas fa-calendar-day text-blue-600"></i>Next Epoch</span>
                 <span className="text-blue-600">{epochData?.next.epoch}</span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
