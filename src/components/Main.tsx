@@ -16,17 +16,17 @@ const componentsConfig = [
   {
     id: "poolstats",
     component: PoolStats,
-    position: { top: "100px", left: "60px", position: "fixed" },
+    position: { top: "120px", left: "60px", position: "fixed" },
   },
   {
     id: "topheader",
     component: TopHeaders,
-    position: { top: "150px", right: "60px", position: "fixed" },
+    position: { bottom: "100px", right: "60px", position: "fixed" },
   },
   {
     id: "epochschedules",
     component: EpochSchedules,
-    position: { top: "120px", left: "60px", position: "fixed" },
+    position: { top: "120px", center: "80px", position: "fixed" },
   },
 ];
 
