@@ -1,22 +1,22 @@
 "use client";
 
-import Image from "next/image";
 import { useCardano } from "@cardano-foundation/cardano-connect-with-wallet";
 import { NetworkType } from "@cardano-foundation/cardano-connect-with-wallet-core";
 import { Emulator, Lucid } from "@lucid-evolution/lucid";
 import { useState } from "react";
 
-const Delegate = () => {
+const Delegate: React.FC = () => {
   const network = NetworkType.MAINNET;
   const { isConnected, usedAddresses, enabledWallet } = useCardano({
     limitNetwork: network,
   });
 
-  const [hovered, setHovered] = useState(false);
+  const [clicked, setClicked] = useState<boolean>(false); // Declare the 'clicked' state as a boolean
 
   const handleAPI = async () => {
     if (isConnected && enabledWallet) {
       try {
+        setClicked(true); // Trigger animation on click
         const lucid = await Lucid(new Emulator([]), "Mainnet");
         const api = await window.cardano[enabledWallet].enable();
         lucid.selectWallet.fromAPI(api);
@@ -33,6 +33,8 @@ const Delegate = () => {
         console.log(txh);
       } catch (error) {
         console.log(error);
+      } finally {
+        setTimeout(() => setClicked(false), 150); // Reset the animation after a short delay
       }
     }
   };
@@ -40,25 +42,15 @@ const Delegate = () => {
   return (
     <>
       {isConnected ? (
-        <div className="relative flex flex-col items-center gap-3 sm:gap-6 lg:gap-8 mt-[-54px] mr-[-30px]">
+        <div className="flex items-center gap-3 sm:gap-6 lg:gap-8 mt-[-53px] mr-[-30px]">
           <button
+            className={`btn btn-outline px-4 py-2 text-[12px] font-bold transition-transform duration-150 ease-in-out ${
+              clicked ? "scale-110" : "scale-100"
+            }`} // Animation class toggling
             onClick={handleAPI}
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
-            style={{ background: 'none', border: 'none', padding: 0, position: 'relative' }}
-            className={`transition-transform duration-300 ease-in-out ${hovered ? 'scale-110 shadow-lg' : 'scale-100'}`}
           >
-            <Image
-              src="logo.svg"
-              alt="Delegate"
-              width={60}
-              height={60}
-              priority
-            />
+            DELEGATE
           </button>
-          <div className={`absolute bottom-[-2rem] left-1/2 transform -translate-x-1/2 bg-black text-white text-sm px-3 py-1 rounded transition-opacity duration-300 whitespace-nowrap ${hovered ? 'opacity-100' : 'opacity-0'}`}>
-            Delegate Stake
-          </div>
         </div>
       ) : null}
     </>
