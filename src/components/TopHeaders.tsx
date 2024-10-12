@@ -48,7 +48,7 @@ const TopHeaders: React.FC = () => {
   return (
     <div className="flex flex-col p-4 bg-black-800 rounded-lg shadow-md">
       {/* Epoch and Block Information */}
-      <div className="flex items-center mb-6"> {/* Removed justify-between to align logo and text */}
+      <div className="flex items-center mb-8"> {/* Removed justify-between to align logo and text */}
         <img src="logo.svg" alt="SN₳KE Logo" className="mr-6 h-14 w-auto" /> {/* Logo on the left with margin-right */}
         <div className="text-white font-semibold text-2xl"> {/* Adjust text size */}
           Cardano Stakepool SN₳KE
