@@ -1,5 +1,4 @@
 "use client";
-import { loadManifestWithRetries } from "next/dist/server/load-components";
 import dynamic from "next/dynamic";
 
 const Stake = dynamic(() => import("./Delegate"), { ssr: false });
