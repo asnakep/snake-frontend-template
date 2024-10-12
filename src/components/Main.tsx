@@ -15,7 +15,7 @@ const componentsConfig = [
   {
     id: "poolstats",
     component: PoolStats,
-    position: { top: "120px", left: "60px", position: "fixed" },
+    position: { top: "90px", left: "30px", position: "fixed" },
   },
   {
     id: "topheader",

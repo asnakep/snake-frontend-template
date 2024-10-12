@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getTip } from './queries/topHeaders';
+import { getTip } from './queries/queryTip';
 
 interface TipData {
   currEpoch: number;
