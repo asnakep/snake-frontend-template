@@ -45,28 +45,25 @@ const TopHeaders: React.FC = () => {
   };
 
   return (
-    <div className="flex items-center justify-between p-4 bg-black-800 rounded-lg shadow-md">
+    <div className="flex flex-col p-4 bg-black-800 rounded-lg shadow-md">
       {/* Epoch and Block Information */}
-      <div className="flex items-center space-x-4">
+      <div className="flex items-center justify-between mb-2"> {/* Added margin-bottom for spacing */}
         <div className="text-white font-semibold text-xl">
           Cardano Stakepool SN₳KE
-        </div>
-        <div className="text-white font-semibold text-xl mr-8"> {/* Added more margin-right */}
-          Block {formatNumber(tipData.blockNum)}
         </div>
       </div>
 
       {/* Progress Bar for Epoch Slot */}
-      <div className="relative w-64 bg-gray-800 rounded-full h-8 overflow-hidden ml-4"> {/* Added margin-left */}
+      <div className="relative w-64 bg-black-800 h-8 overflow-hidden rounded-sm"> 
         <div
-          className="absolute top-0 left-0 bg-blue-600 h-full rounded-full"
+          className="absolute top-0 left-0 bg-blue-600 h-full rounded-sm"
           style={{ width: `${epochProgressPercent}%` }}
         ></div>
         <div
           className="absolute inset-0 flex justify-center items-center text-white-900 font-semibold text-lg"
           style={{ zIndex: 1 }}
         >
-          <span>Epoch {formatNumber(tipData.currEpoch)} ({epochProgressPercent}%)</span>
+          <span>Mainnet Epoch {formatNumber(tipData.currEpoch)} ({epochProgressPercent}%)</span>
         </div>
       </div>
     </div>
