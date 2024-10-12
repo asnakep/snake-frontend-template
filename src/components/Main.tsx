@@ -1,4 +1,5 @@
 "use client";
+import { loadManifestWithRetries } from "next/dist/server/load-components";
 import dynamic from "next/dynamic";
 
 const Stake = dynamic(() => import("./Delegate"), { ssr: false });
@@ -25,7 +26,7 @@ const componentsConfig = [
   {
     id: "epochschedules",
     component: EpochSchedules,
-    position: { top: "120px", center: "30px", position: "fixed" },
+    position: { top: "120px", left: "60px", position: "fixed" },
   },
 ];
 

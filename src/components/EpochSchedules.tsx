@@ -40,20 +40,15 @@ export const EpochStats = () => {
         <div>
           <h3 className="font-semibold">Current Epoch</h3>
           <p>Epoch: {epochData?.current.epoch}</p>
-          <p>Epoch Slots: {epochData?.current.epochSlots}</p>
-          <p>Epoch Slots Ideal: {epochData?.current.epochSlotsIdeal}</p>
-          <p>Max Performance: {epochData?.current.maxPerformance}%</p>
-          <p>Active Stake: {epochData?.current.activeStake.toLocaleString()} ADA</p>
+          <p>Assigned Blocks: {epochData?.current.epochSlots}</p>
+          <p>Blocks Ideal: {epochData?.current.epochSlotsIdeal}</p>
+          <p>Assigned Luck: {epochData?.current.maxPerformance}%</p>
+          <p>Pool Active Stake: {epochData?.current.activeStake.toLocaleString()} ADA</p>
           <p>Total Active Stake: {epochData?.current.totalActiveStake.toLocaleString()} ADA</p>
-        </div>
-        <div>
-          <h3 className="font-semibold">Next Epoch</h3>
-          <p>Epoch: {epochData?.next.epoch}</p>
-          <p>Epoch Slots: {epochData?.next.epochSlots}</p>
-          <p>Epoch Slots Ideal: {epochData?.next.epochSlotsIdeal}</p>
-          <p>Max Performance: {epochData?.next.maxPerformance}%</p>
-          <p>Active Stake: {epochData?.next.activeStake.toLocaleString()} ADA</p>
-          <p>Total Active Stake: {epochData?.next.totalActiveStake.toLocaleString()} ADA</p>
+          <p>Next Epoch: {epochData?.next.epoch}</p>
+          <p>Next Assigned Blocks: {epochData?.next.epochSlots}</p>
+          <p>Next Blocks Ideal: {epochData?.next.epochSlotsIdeal}</p>
+          <p>Assigned Luck: {epochData?.next.maxPerformance}%</p>
         </div>
       </div>
     </div>
