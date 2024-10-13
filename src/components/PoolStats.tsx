@@ -1,38 +1,26 @@
 import { useState, useEffect } from "react";
 import { getPoolStats } from './queries/poolStats';
-import { getBlocksCount } from './queries/blocksCount'; // Import blocks count query
-import { getTip } from './queries/queryTip'; // Import to get the current epoch number
 
 const poolId = "pool1xs34q2z06a46nk7hl48d27dj5gzc6hh9trugw2ehs9ajsevqffx";
 
 const PoolStats = () => {
   const [poolStats, setPoolStats] = useState<any>(null);
-  const [blockCount, setBlockCount] = useState<number | null>(null); // State to hold block count
-  const [currentEpoch, setCurrentEpoch] = useState<number | null>(null); // State to hold current epoch
   const [error, setError] = useState<string | null>(null);
 
   const fetchPoolStats = async () => {
     try {
       const stats = await getPoolStats(poolId);
       setPoolStats(stats);
-
-      const tip = await getTip(); // Get the current epoch from the tip
-      setCurrentEpoch(tip.currEpoch);
-
-      const count = await getBlocksCount(poolId, tip.currEpoch);
-      setBlockCount(count); // Fetch and set the block count for the current epoch
     } catch (err) {
       setError((err as Error).message);
     }
   };
 
   useEffect(() => {
-    fetchPoolStats(); // Fetch data initially
+    fetchPoolStats(); 
 
-    // Set up interval to refresh data every minute
     const intervalId = setInterval(fetchPoolStats, 60000);
 
-    // Clear interval on component unmount
     return () => clearInterval(intervalId);
   }, []);
 
@@ -41,59 +29,45 @@ const PoolStats = () => {
       {error ? (
         <p className="text-red-500">Error: {error}</p>
       ) : (
-        <>
-          {/* Move this panel upward on hover */}
-          <div className="max-w-4xl w-full bg-black-800 bg-opacity-80 rounded-lg shadow-md p-6 mb-4 transition-transform duration-300 transform hover:-translate-y-2 hover:shadow-xl">
-            <p className="text-gray-400 mb-2">Ticker: <span className="text-white">{"SNAKE"}</span></p>
-            <p className="text-gray-400 mb-4">ID: <span className="text-white">{poolStats?.poolIDBech}</span></p>
-            
-            {/* New entry for confirmed blocks in current epoch */}
-            <p className="text-gray-400 mb-4">
-              Epoch {currentEpoch} - Minted Blocks: <span className="text-white">{blockCount ?? 'Loading...'}</span>
-            </p>
+        <div className="max-w-4xl w-full bg-black-800 bg-opacity-80 rounded-lg shadow-md p-6 mb-4">
+          <div className="mt-2"> {/* Reduced top margin for the statistics section */}
+            <h3 className="text-lg font-semibold text-white mb-2">Statistics</h3>
+            <ul className="text-gray-300 space-y-2">
+              <li className="flex justify-between text-xs">
+                <span><i className="fas fa-hand-holding-usd text-blue-600"></i> LIVE STAKE</span>
+                <span className="text-blue-600 text-sm">{poolStats?.liveStake}</span>
+              </li>
+              <li className="flex justify-between text-xs">
+                <span><i className="fas fa-hand-holding-usd text-blue-600"></i> ACTIVE STAKE</span>
+                <span className="text-blue-600 text-sm">{poolStats?.activeStake}</span>
+              </li>
+              <li className="flex justify-between text-xs">
+                <span><i className="fas fa-hand-holding-usd text-blue-600"></i> PLEDGE</span>
+                <span className="text-blue-600 text-sm">{poolStats?.pledge}</span>
+              </li>
+              <li className="flex justify-between text-xs">
+                <span><i className="fas fa-chart-line text-blue-600"></i> SATURATION</span>
+                <span className="text-blue-600 text-sm">{poolStats?.liveSaturation}%</span>
+              </li>
+              <li className="flex justify-between text-xs">
+                <span><i className="fas fa-users text-blue-600"></i> DELEGATORS</span>
+                <span className="text-blue-600 text-sm">{poolStats?.liveDelegators}</span>
+              </li>
+              <li className="flex justify-between text-xs">
+                <span><i className="fas fa-coins text-blue-600"></i> EPOCH COST</span>
+                <span className="text-blue-600 text-sm">{poolStats?.fixedCost}</span>
+              </li>
+              <li className="flex justify-between text-xs">
+                <span><i className="fas fa-percentage text-blue-600"></i> MARGIN</span>
+                <span className="text-blue-600 text-sm">{poolStats?.margin}%</span>
+              </li>
+              <li className="flex justify-between text-xs">
+                <span><i className="fas fa-tasks text-blue-600"></i> LIFETIME BLOCKS</span>
+                <span className="text-blue-600 text-sm">{poolStats?.blockCount}</span>
+              </li>
+            </ul>
           </div>
-
-          {/* Existing Pool Stats Panel */}
-          <div className="max-w-4xl w-full bg-black-800 bg-opacity-80 rounded-lg shadow-md p-6 mb-4">
-            <div className="mt-4">
-              <h3 className="text-lg font-semibold text-white mb-2">Statistics</h3>
-              <ul className="text-gray-300 space-y-2">
-                <li className="flex justify-between text-xs">
-                  <span><i className="fas fa-hand-holding-usd text-blue-600"></i> LIVE STAKE</span>
-                  <span className="text-blue-600 text-sm">{poolStats?.liveStake}</span>
-                </li>
-                <li className="flex justify-between text-xs">
-                  <span><i className="fas fa-hand-holding-usd text-blue-600"></i> ACTIVE STAKE</span>
-                  <span className="text-blue-600 text-sm">{poolStats?.activeStake}</span>
-                </li>
-                <li className="flex justify-between text-xs">
-                  <span><i className="fas fa-hand-holding-usd text-blue-600"></i> PLEDGE</span>
-                  <span className="text-blue-600 text-sm">{poolStats?.pledge}</span>
-                </li>
-                <li className="flex justify-between text-xs">
-                  <span><i className="fas fa-chart-line text-blue-600"></i> SATURATION</span>
-                  <span className="text-blue-600 text-sm">{poolStats?.liveSaturation}%</span>
-                </li>
-                <li className="flex justify-between text-xs">
-                  <span><i className="fas fa-users text-blue-600"></i> DELEGATORS</span>
-                  <span className="text-blue-600 text-sm">{poolStats?.liveDelegators}</span>
-                </li>
-                <li className="flex justify-between text-xs">
-                  <span><i className="fas fa-coins text-blue-600"></i> EPOCH COST</span>
-                  <span className="text-blue-600 text-sm">{poolStats?.fixedCost}</span>
-                </li>
-                <li className="flex justify-between text-xs">
-                  <span><i className="fas fa-percentage text-blue-600"></i> MARGIN</span>
-                  <span className="text-blue-600 text-sm">{poolStats?.margin}%</span>
-                </li>
-                <li className="flex justify-between text-xs">
-                  <span><i className="fas fa-tasks text-blue-600"></i> LIFETIME BLOCKS</span>
-                  <span className="text-blue-600 text-sm">{poolStats?.blockCount}</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </>
+        </div>
       )}
     </div>
   );
