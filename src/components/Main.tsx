@@ -7,7 +7,8 @@ interface ComponentConfig {
   id: string;
   component: React.ComponentType<any>; // Adjusted to accept any props
   position: {
-    top: string;
+    top?: string;
+    bottom?: string;
     left?: string;
     right?: string;
     center?: string;
@@ -38,19 +39,19 @@ const componentsConfig: ComponentConfig[] = [
   {
     id: "pooldescription",
     component: PoolDescription,
-    position: { top: "10px", left: "30px", position: "fixed" },
+    position: { top: "100px", left: "30px", position: "fixed" },
     style: {},
   },  
   {
     id: "poolstats",
     component: PoolStats,
-    position: { top: "140px", left: "30px", position: "fixed" },
+    position: { bottom: "60px", left: "30px", position: "fixed" },
     style: {},
   },
   {
     id: "epochschedules",
     component: EpochSchedules,
-    position: { top: "260px", center: "80px", position: "fixed" },
+    position: { bottom: "60px", center: "80px", position: "fixed" },
     style: {},
   },
 ];

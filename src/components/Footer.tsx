@@ -12,8 +12,8 @@ export default function Footer() {
               className="dark:drop-shadow-[0_0_0.3rem_#ffffff70]"
               src="logo-govtool.svg"
               alt="Govtool Logo"
-              width={18}
-              height={18}
+              width={16}
+              height={16}
               priority
             />
           </Link>
@@ -22,8 +22,8 @@ export default function Footer() {
               className="dark:drop-shadow-[0_0_0.3rem_#ffffff70]"
               src="logo-telegram.svg"
               alt="Telegram Logo"
-              width={18}
-              height={18}
+              width={16}
+              height={16}
               priority
             />
           </Link>
@@ -32,8 +32,8 @@ export default function Footer() {
               className="dark:drop-shadow-[0_0_0.3rem_#ffffff70]"
               src="logo-x.svg"
               alt="Twitter Logo"
-              width={18}
-              height={18}
+              width={16}
+              height={16}
               priority
             />
           </Link>
@@ -42,8 +42,8 @@ export default function Footer() {
               className="dark:drop-shadow-[0_0_0.3rem_#ffffff70]"
               src="logo-linkedin.svg"
               alt="LinkedIn Logo"
-              width={18}
-              height={18}
+              width={16}
+              height={16}
               priority
             />
           </Link>
@@ -52,8 +52,8 @@ export default function Footer() {
               className="dark:drop-shadow-[0_0_0.3rem_#ffffff70]"
               src="logo-github.svg"
               alt="Github Logo"
-              width={18}
-              height={18}
+              width={16}
+              height={16}
               priority
             />
           </Link>
@@ -62,8 +62,8 @@ export default function Footer() {
               className="dark:drop-shadow-[0_0_0.3rem_#ffffff70]"
               src="logo-adastat.svg"
               alt="Adastat Logo"
-              width={18}
-              height={18}
+              width={16}
+              height={16}
               priority
             />
           </Link>
@@ -72,8 +72,8 @@ export default function Footer() {
               className="dark:drop-shadow-[0_0_0.3rem_#ffffff70]"
               src="logo-pooltool.svg"
               alt="Pooltool Logo"
-              width={18}
-              height={18}
+              width={16}
+              height={16}
               priority
             />
           </Link>
@@ -82,8 +82,8 @@ export default function Footer() {
               className="dark:drop-shadow-[0_0_0.3rem_#ffffff70]"
               src="logo-poolpm.svg"
               alt="Poolpm Logo"
-              width={18}
-              height={18}
+              width={16}
+              height={16}
               priority
             />
           </Link>

@@ -39,17 +39,16 @@ const PoolDescription = () => {
       {error ? (
         <p className="text-red-500">Error: {error}</p>
       ) : (
-        <>
-          <p className="text-gray-400 mb-2">Ticker: <span className="text-white">{"SNAKE"}</span></p>
-          
+        <>          
           {/* Pool Description in white, single line, reduced margin */}
-          <p className="text-white mb-1">🐍 SN₳KE is your 24/7/365 Reliable Pioneer Stake Pool ✅ Enjoy a 0% pool margin and a fixed cost of 170₳ forever ∞</p>
-
-          <p className="text-gray-400 mb-4">ID: <span className="text-white">{poolStats?.poolIDBech}</span></p>
-          
-          {/* New entry for confirmed blocks in current epoch */}
+          <p className="text-white mb-4">
+            SN₳KE is your 24/7/365 Reliable Pioneer Stake Pool - Enjoy a 0% pool margin and a fixed cost of 170₳ forever.
+          </p>
           <p className="text-gray-400 mb-4">
-            Epoch {currentEpoch} - Minted Blocks: <span className="text-white">{blockCount ?? 'Loading...'}</span>
+            Ticker: <span className="text-white">{"SNAKE"}</span> &nbsp; ID: <span className="text-white">{poolStats?.poolIDBech}</span>
+          </p>
+          <p className="text-gray-400 mb-4">
+            Epoch: <span className="text-white">{currentEpoch}</span> &nbsp; Minted Blocks: <span className="text-white">{blockCount ?? 'Loading...'}</span>
           </p>
         </>
       )}
