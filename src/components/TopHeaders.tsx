@@ -48,24 +48,24 @@ const TopHeaders: React.FC = () => {
   return (
     <div className="flex flex-col p-4 bg-black-800 rounded-lg shadow-md">
       {/* Epoch and Block Information */}
-      <div className="flex items-center mb-8"> {/* Removed justify-between to align logo and text */}
-        <img src="logo.svg" alt="SN₳KE Logo" className="mr-6 h-14 w-auto" /> {/* Logo on the left with margin-right */}
-        <div className="text-white font-semibold text-2xl"> {/* Adjust text size */}
+      <div className="flex items-center space-x-4"> {/* Add space between logo, text, and progress bar */}
+        <img src="logo.svg" alt="SN₳KE Logo" className="h-14 w-auto" /> {/* Logo on the left */}
+        <div className="text-white font-semibold text-2xl"> {/* Pool name next to the logo */}
           Cardano Stakepool SN₳KE
         </div>
-      </div>
 
-      {/* Progress Bar for Epoch Slot */}
-      <div className="relative w-64 bg-black-800 h-8 overflow-hidden rounded-sm"> 
-        <div
-          className="absolute top-0 left-0 bg-blue-900 h-full rounded-sm"
-          style={{ width: `${epochProgressPercent}%` }}
-        ></div>
-        <div
-          className="absolute inset-0 flex justify-center items-center text-white-900 font-semibold text-lg"
-          style={{ zIndex: 1 }}
-        >
-          <span>Mainnet Epoch {formatNumber(tipData.currEpoch)} ({epochProgressPercent}%)</span>
+        {/* Progress Bar for Epoch Slot placed next to the text */}
+        <div className="relative w-64 bg-black-800 h-8 overflow-hidden rounded-sm ml-4"> 
+          <div
+            className="absolute top-0 left-0 bg-blue-900 h-full rounded-sm"
+            style={{ width: `${epochProgressPercent}%` }}
+          ></div>
+          <div
+            className="absolute inset-0 flex justify-center items-center text-white font-semibold text-lg"
+            style={{ zIndex: 1 }}
+          >
+            <span>Mainnet Epoch {formatNumber(tipData.currEpoch)} ({epochProgressPercent}%)</span>
+          </div>
         </div>
       </div>
     </div>
