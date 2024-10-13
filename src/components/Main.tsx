@@ -43,7 +43,7 @@ const componentsConfig: ComponentConfig[] = [
   {
     id: "epochschedules",
     component: EpochSchedules,
-    position: { bottom: "40px", center: "80px", position: "fixed" },
+    position: { top: "260px", center: "80px", position: "fixed" },
     style: {}, // Add styles here if needed
   },
 ];
