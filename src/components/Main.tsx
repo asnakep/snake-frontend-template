@@ -45,7 +45,7 @@ const componentsConfig: ComponentConfig[] = [
   {
     id: "poolstats",
     component: PoolStats,
-    position: { bottom: "120px", left: "30px", position: "fixed" },
+    position: { bottom: "100px", left: "30px", position: "fixed" },
     style: {},
   },
   {
