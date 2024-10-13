@@ -54,17 +54,22 @@ const TopHeaders: React.FC = () => {
           Cardano Stakepool SN₳KE
         </div>
 
-        {/* Progress Bar for Epoch Slot placed next to the text */}
-        <div className="relative w-64 bg-black-800 h-8 overflow-hidden rounded-sm ml-4"> 
-          <div
-            className="absolute top-0 left-0 bg-blue-900 h-full rounded-sm"
-            style={{ width: `${epochProgressPercent}%` }}
-          ></div>
-          <div
-            className="absolute inset-0 flex justify-center items-center text-white font-semibold text-lg"
-            style={{ zIndex: 1 }}
-          >
-            <span>Mainnet Epoch {formatNumber(tipData.currEpoch)} ({epochProgressPercent}%)</span>
+        {/* Progress Bar Section */}
+        <div className="flex items-center"> {/* Wrapper to contain the Cardano logo and the progress bar */}
+          <img src="logo-cardano.svg" alt="Cardano Logo" className="h-12 w-12 ml-10" /> {/* Cardano logo next to the progress bar */}
+          
+          {/* Progress Bar for Epoch Slot */}
+          <div className="relative w-64 bg-black-800 h-8 overflow-hidden rounded-sm ml-4"> 
+            <div
+              className="absolute top-0 left-0 bg-blue-900 h-full rounded-sm"
+              style={{ width: `${epochProgressPercent}%` }}
+            ></div>
+            <div
+              className="absolute inset-0 flex justify-center items-center text-white font-semibold text-lg"
+              style={{ zIndex: 1 }}
+            >
+              <span>Mainnet Epoch {formatNumber(tipData.currEpoch)} - {epochProgressPercent}%</span>
+            </div>
           </div>
         </div>
       </div>

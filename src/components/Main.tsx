@@ -31,7 +31,7 @@ const componentsConfig: ComponentConfig[] = [
   {
     id: "poolstats",
     component: PoolStats,
-    position: { top: "180px", left: "30px", position: "fixed" },
+    position: { top: "140px", left: "30px", position: "fixed" },
     style: {}, // Add styles here if needed
   },
   {
@@ -43,7 +43,7 @@ const componentsConfig: ComponentConfig[] = [
   {
     id: "epochschedules",
     component: EpochSchedules,
-    position: { top: "200px", center: "80px", position: "fixed" },
+    position: { bottom: "40px", center: "80px", position: "fixed" },
     style: {}, // Add styles here if needed
   },
 ];
