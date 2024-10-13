@@ -2,12 +2,14 @@ import { useState, useEffect } from "react";
 import { getPoolStats } from './queries/poolStats';
 import { getBlocksCount } from './queries/blocksCount'; 
 import { getTip } from './queries/queryTip';
+import { fetchEpochSchedules } from './queries/epochSchedules'; // Import the function to fetch scheduled blocks
 
 const poolId = "pool1xs34q2z06a46nk7hl48d27dj5gzc6hh9trugw2ehs9ajsevqffx";
 
 const PoolDescription = () => {
   const [poolStats, setPoolStats] = useState<any>(null);
-  const [blockCount, setBlockCount] = useState<number | null>(null);
+  const [blockCount, setBlockCount] = useState<number | null>(null); // Minted blocks
+  const [scheduledBlocks, setScheduledBlocks] = useState<number | null>(null); // Scheduled blocks
   const [currentEpoch, setCurrentEpoch] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -19,8 +21,11 @@ const PoolDescription = () => {
       const tip = await getTip(); 
       setCurrentEpoch(tip.currEpoch);
 
-      const count = await getBlocksCount(poolId, tip.currEpoch);
+      const count = await getBlocksCount(poolId, tip.currEpoch); // Minted blocks
       setBlockCount(count);
+
+      const epochData = await fetchEpochSchedules(); // Fetch current epoch scheduled blocks
+      setScheduledBlocks(epochData.current.epochSlots); // Set the scheduled blocks
     } catch (err) {
       setError((err as Error).message);
     }
@@ -29,7 +34,7 @@ const PoolDescription = () => {
   useEffect(() => {
     fetchPoolStats(); 
 
-    const intervalId = setInterval(fetchPoolStats, 60000);
+    const intervalId = setInterval(fetchPoolStats, 60000); // Refresh every minute
 
     return () => clearInterval(intervalId);
   }, []);
@@ -40,7 +45,7 @@ const PoolDescription = () => {
         <p className="text-red-500">Error: {error}</p>
       ) : (
         <>          
-          {/* Pool Description in white, single line, reduced margin */}
+          {/* Pool Description */}
           <p className="text-white mb-4">
             SN₳KE is your 24/7/365 Reliable Pioneer Stake Pool - Enjoy a 0% pool margin and a fixed cost of 170₳ forever.
           </p>
@@ -48,7 +53,8 @@ const PoolDescription = () => {
             Ticker: <span className="text-white">{"SNAKE"}</span> &nbsp; ID: <span className="text-white">{poolStats?.poolIDBech}</span>
           </p>
           <p className="text-gray-400 mb-4">
-            Epoch: <span className="text-white">{currentEpoch}</span> &nbsp; Minted Blocks: <span className="text-white">{blockCount ?? 'Loading...'}</span>
+            Epoch: <span className="text-white">{currentEpoch}</span> &nbsp; 
+            Minted Blocks: <span className="text-white">{blockCount ?? 'Loading...'}</span> / <span className="text-white">{scheduledBlocks ?? 'Loading...'}</span>
           </p>
         </>
       )}
