@@ -1,16 +1,21 @@
 import { useState, useEffect } from "react";
 import { getPoolStats } from './queries/poolStats';
+import { getLifetimeRewards } from './queries/lifetimeRewards';
 
 const poolId = "pool1xs34q2z06a46nk7hl48d27dj5gzc6hh9trugw2ehs9ajsevqffx";
 
 const PoolStats = () => {
   const [poolStats, setPoolStats] = useState<any>(null);
+  const [lifetimeRewards, setLifetimeRewards] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const fetchPoolStats = async () => {
     try {
       const stats = await getPoolStats(poolId);
       setPoolStats(stats);
+
+      const rewards = await getLifetimeRewards(poolId);
+      setLifetimeRewards(rewards);
     } catch (err) {
       setError((err as Error).message);
     }
@@ -30,9 +35,10 @@ const PoolStats = () => {
         <p className="text-red-500">Error: {error}</p>
       ) : (
         <div className="max-w-4xl w-full bg-black-800 bg-opacity-80 rounded-lg shadow-md p-6 mb-4">
-          <div className="mt-2"> {/* Reduced top margin for the statistics section */}
+          <div className="mt-2">
             <h3 className="text-sm font-semibold text-white mb-4">STAKEPOOL STATS</h3>
             <ul className="text-gray-300 space-y-2">
+              {/* Other stats */}
               <li className="flex justify-between text-xs">
                 <span className="mr-40"><i className="fas fa-hand-holding-usd text-blue-600"></i> <strong>LIVE STAKE</strong></span>
                 <span className="text-blue-600 text-sm">{poolStats?.liveStake}</span>
@@ -42,28 +48,14 @@ const PoolStats = () => {
                 <span className="text-blue-600 text-sm">{poolStats?.activeStake}</span>
               </li>
               <li className="flex justify-between text-xs">
-                <span className="mr-40"><i className="fas fa-hand-holding-usd text-blue-600"></i> <strong>PLEDGE</strong></span>
-                <span className="text-blue-600 text-sm">{poolStats?.pledge}</span>
-              </li>
-              <li className="flex justify-between text-xs">
-                <span className="mr-40"><i className="fas fa-chart-line text-blue-600"></i> <strong>SATURATION</strong></span>
-                <span className="text-blue-600 text-sm">{poolStats?.liveSaturation}%</span>
-              </li>
-              <li className="flex justify-between text-xs">
-                <span className="mr-40"><i className="fas fa-users text-blue-600"></i> <strong>DELEGATORS</strong></span>
-                <span className="text-blue-600 text-sm">{poolStats?.liveDelegators}</span>
-              </li>
-              <li className="flex justify-between text-xs">
-                <span className="mr-40"><i className="fas fa-coins text-blue-600"></i> <strong>EPOCH COST</strong></span>
-                <span className="text-blue-600 text-sm">{poolStats?.fixedCost}</span>
-              </li>
-              <li className="flex justify-between text-xs">
-                <span className="mr-40"><i className="fas fa-percentage text-blue-600"></i> <strong>MARGIN</strong></span>
-                <span className="text-blue-600 text-sm">{poolStats?.margin}%</span>
-              </li>
-              <li className="flex justify-between text-xs">
                 <span className="mr-40"><i className="fas fa-tasks text-blue-600"></i> <strong>LIFETIME BLOCKS</strong></span>
                 <span className="text-blue-600 text-sm">{poolStats?.blockCount}</span>
+              </li>
+
+              {/* New Lifetime Rewards */}
+              <li className="flex justify-between text-xs">
+                <span className="mr-40"><i className="fas fa-coins text-blue-600"></i> <strong>LIFETIME REWARDS</strong></span>
+                <span className="text-blue-600 text-sm">{lifetimeRewards ? `₳${(lifetimeRewards / 1e6).toLocaleString()}` : 'Loading...'}</span>
               </li>
             </ul>
           </div>
