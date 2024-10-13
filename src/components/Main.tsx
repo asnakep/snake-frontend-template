@@ -45,13 +45,13 @@ const componentsConfig: ComponentConfig[] = [
   {
     id: "poolstats",
     component: PoolStats,
-    position: { bottom: "60px", left: "30px", position: "fixed" },
+    position: { top: "240px", left: "30px", position: "fixed" },
     style: {},
   },
   {
     id: "epochschedules",
     component: EpochSchedules,
-    position: { bottom: "60px", center: "80px", position: "fixed" },
+    position: { bottom: "60px", right: "80px", position: "fixed" },
     style: {},
   },
 ];
