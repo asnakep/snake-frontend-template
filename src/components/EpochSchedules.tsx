@@ -49,27 +49,27 @@ export const EpochStats = () => {
           <div>
             <ul className="text-gray-300 space-y-2">
               <li className="flex justify-between text-xs gap-x-4"> {/* Adjusted gap-x */}
-                <span><i className="fas fa-calendar-day text-blue-600"></i><strong>EPOCH</strong></span>
+              <span className="mr-40"><i className="fas fa-calendar-day text-blue-600"></i><strong>EPOCH</strong></span>
                 <span className="text-blue-600 text-sm">{epochData?.current.epoch}</span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
-                <span><i className="fas fa-cubes text-blue-600"></i><strong>SCHEDULED BLOCKS</strong></span>
+                <span className="mr-40"><i className="fas fa-cubes text-blue-600"></i><strong>SCHEDULED BLOCKS</strong></span>
                 <span className="text-blue-600 text-sm">{epochData?.current.epochSlots}</span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
-                <span><i className="fas fa-chart-bar text-blue-600"></i><strong>BLOCKS IDEAL</strong></span>
+                <span className="mr-40"><i className="fas fa-chart-bar text-blue-600"></i><strong>BLOCKS IDEAL</strong></span>
                 <span className="text-blue-600 text-sm">{epochData?.current.epochSlotsIdeal}</span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
-                <span><i className="fas fa-trophy text-blue-600"></i><strong>LUCK</strong></span>
+                <span className="mr-40"><i className="fas fa-trophy text-blue-600"></i><strong>LUCK</strong></span>
                 <span className="text-blue-600 text-sm">{epochData?.current.maxPerformance}%</span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
-                <span><i className="fas fa-hand-holding-usd text-blue-600"></i><strong>POOL ACTIVE STAKE</strong></span>
+                <span className="mr-40"><i className="fas fa-hand-holding-usd text-blue-600"></i><strong>POOL ACTIVE STAKE</strong></span>
                 <span className="text-blue-600 text-sm">{formatAda(epochData?.current.activeStake ?? 0)}</span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
-                <span><i className="fas fa-wallet text-blue-600"></i><strong>NETWORK ACTIVE STAKE</strong></span>
+                <span className="mr-40"><i className="fas fa-wallet text-blue-600"></i><strong>NETWORK ACTIVE STAKE</strong></span>
                 <span className="text-blue-600 text-sm">{formatAda(epochData?.current.totalActiveStake ?? 0)}</span>
               </li>
             </ul>
