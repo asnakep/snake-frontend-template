@@ -44,7 +44,7 @@ export const EpochStats = () => {
     getData();
   }, []);
 
-  if (loading) return <div className="text-white">Loading...</div>;
+  if (loading) return <div className="text-white"></div>;
   if (error) return <div className="text-red-500">{error}</div>;
 
   return (
@@ -90,7 +90,7 @@ export const EpochStats = () => {
                 <span className="text-blue-600 text-sm">{rewardsData?.epoch}</span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
-                <span className="mr-20"><i className="fas fa-coins text-blue-600"></i><strong>REWARDS</strong></span>
+                <span className="mr-20"><i className="fas fa-coins text-blue-600"></i><strong>TOTAL</strong></span>
                 <span className="text-blue-600 text-sm">{rewardsData?.rewards}</span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
