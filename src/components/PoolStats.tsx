@@ -49,40 +49,40 @@ const PoolStats = () => {
             <h3 className="text-sm font-semibold text-white mb-4">STAKEPOOL STATS</h3>
             <ul className="text-gray-300 space-y-2">
               <li className="flex justify-between text-xs">
-                <span className="mr-40"><i className="fas fa-hand-holding-usd text-blue-600"></i> <strong>LIVE STAKE</strong></span>
-                <span className="text-blue-600 text-sm">{poolStats?.liveStake}</span>
+                <span className="mr-40"><i className="fas fa-hand-holding-usd text-blue-400"></i> <strong>LIVE STAKE</strong></span>
+                <span className="text-blue-400 text-sm">{poolStats?.liveStake}</span>
               </li>
               <li className="flex justify-between text-xs">
-                <span className="mr-40"><i className="fas fa-hand-holding-usd text-blue-600"></i> <strong>ACTIVE STAKE</strong></span>
-                <span className="text-blue-600 text-sm">{poolStats?.activeStake}</span>
+                <span className="mr-40"><i className="fas fa-hand-holding-usd text-blue-400"></i> <strong>ACTIVE STAKE</strong></span>
+                <span className="text-blue-400 text-sm">{poolStats?.activeStake}</span>
               </li>
               <li className="flex justify-between text-xs">
-                <span className="mr-40"><i className="fas fa-hand-holding-usd text-blue-600"></i> <strong>PLEDGE</strong></span>
-                <span className="text-blue-600 text-sm">{poolStats?.pledge}</span>
+                <span className="mr-40"><i className="fas fa-hand-holding-usd text-blue-400"></i> <strong>PLEDGE</strong></span>
+                <span className="text-blue-400 text-sm">{poolStats?.pledge}</span>
               </li>
               <li className="flex justify-between text-xs">
-                <span className="mr-40"><i className="fas fa-chart-line text-blue-600"></i> <strong>SATURATION</strong></span>
-                <span className="text-blue-600 text-sm">{poolStats?.liveSaturation}%</span>
+                <span className="mr-40"><i className="fas fa-chart-line text-blue-400"></i> <strong>SATURATION</strong></span>
+                <span className="text-blue-400 text-sm">{poolStats?.liveSaturation}%</span>
               </li>
               <li className="flex justify-between text-xs">
-                <span className="mr-40"><i className="fas fa-users text-blue-600"></i> <strong>DELEGATORS</strong></span>
-                <span className="text-blue-600 text-sm">{poolStats?.liveDelegators}</span>
+                <span className="mr-40"><i className="fas fa-users text-blue-400"></i> <strong>DELEGATORS</strong></span>
+                <span className="text-blue-400 text-sm">{poolStats?.liveDelegators}</span>
               </li>
               <li className="flex justify-between text-xs">
-                <span className="mr-40"><i className="fas fa-coins text-blue-600"></i> <strong>EPOCH COST</strong></span>
-                <span className="text-blue-600 text-sm">{poolStats?.fixedCost}</span>
+                <span className="mr-40"><i className="fas fa-coins text-blue-400"></i> <strong>EPOCH COST</strong></span>
+                <span className="text-blue-400 text-sm">{poolStats?.fixedCost}</span>
               </li>
               <li className="flex justify-between text-xs">
-                <span className="mr-40"><i className="fas fa-percentage text-blue-600"></i> <strong>MARGIN</strong></span>
-                <span className="text-blue-600 text-sm">{poolStats?.margin}%</span>
+                <span className="mr-40"><i className="fas fa-percentage text-blue-400"></i> <strong>MARGIN</strong></span>
+                <span className="text-blue-400 text-sm">{poolStats?.margin}%</span>
               </li>
               <li className="flex justify-between text-xs">
-                <span className="mr-40"><i className="fas fa-tasks text-blue-600"></i> <strong>LIFETIME BLOCKS</strong></span>
-                <span className="text-blue-600 text-sm">{poolStats?.blockCount}</span>
+                <span className="mr-40"><i className="fas fa-tasks text-blue-400"></i> <strong>LIFETIME BLOCKS</strong></span>
+                <span className="text-blue-400 text-sm">{poolStats?.blockCount}</span>
               </li>
               <li className="flex justify-between text-xs">
-                <span className="mr-40"><i className="fas fa-gift text-blue-600"></i> <strong>LIFETIME REWARDS</strong></span>
-                <span className="text-blue-600 text-sm">{lifetimeRewards !== null ? lifetimeRewards : 'Loading...'}</span>
+                <span className="mr-40"><i className="fas fa-gift text-blue-400"></i> <strong>LIFETIME REWARDS</strong></span>
+                <span className="text-blue-400 text-sm">{lifetimeRewards !== null ? lifetimeRewards : 'Loading...'}</span>
               </li>
             </ul>
           </div>

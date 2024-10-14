@@ -57,28 +57,28 @@ export const EpochStats = () => {
           <div>
             <ul className="text-gray-300 space-y-2">
               <li className="flex justify-between text-xs gap-x-4"> {/* Adjusted gap-x */}
-                <span className="mr-20"><i className="fas fa-calendar-day text-blue-600"></i><strong>EPOCH</strong></span>
-                <span className="text-blue-600 text-sm">{epochData?.current.epoch}</span>
+                <span className="mr-20"><i className="fas fa-calendar-day text-blue-400"></i><strong>EPOCH</strong></span>
+                <span className="text-blue-400 text-sm">{epochData?.current.epoch}</span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
-                <span className="mr-20"><i className="fas fa-cubes text-blue-600"></i><strong>SCHEDULED BLOCKS</strong></span>
-                <span className="text-blue-600 text-sm">{epochData?.current.epochSlots}</span>
+                <span className="mr-20"><i className="fas fa-cubes text-blue-400"></i><strong>SCHEDULED BLOCKS</strong></span>
+                <span className="text-blue-400 text-sm">{epochData?.current.epochSlots}</span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
-                <span className="mr-20"><i className="fas fa-chart-bar text-blue-600"></i><strong>BLOCKS IDEAL</strong></span>
-                <span className="text-blue-600 text-sm">{epochData?.current.epochSlotsIdeal}</span>
+                <span className="mr-20"><i className="fas fa-chart-bar text-blue-400"></i><strong>BLOCKS IDEAL</strong></span>
+                <span className="text-blue-400 text-sm">{epochData?.current.epochSlotsIdeal}</span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
-                <span className="mr-20"><i className="fas fa-trophy text-blue-600"></i><strong>LUCK</strong></span>
-                <span className="text-blue-600 text-sm">{epochData?.current.maxPerformance}%</span>
+                <span className="mr-20"><i className="fas fa-trophy text-blue-400"></i><strong>LUCK</strong></span>
+                <span className="text-blue-400 text-sm">{epochData?.current.maxPerformance}%</span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
-                <span className="mr-20"><i className="fas fa-hand-holding-usd text-blue-600"></i><strong>POOL ACTIVE STAKE</strong></span>
-                <span className="text-blue-600 text-sm">{formatAda(epochData?.current.activeStake ?? 0)}</span>
+                <span className="mr-20"><i className="fas fa-hand-holding-usd text-blue-400"></i><strong>POOL ACTIVE STAKE</strong></span>
+                <span className="text-blue-400 text-sm">{formatAda(epochData?.current.activeStake ?? 0)}</span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
-                <span className="mr-20"><i className="fas fa-wallet text-blue-600"></i><strong>NETWORK ACTIVE STAKE</strong></span>
-                <span className="text-blue-600 text-sm">{formatAda(epochData?.current.totalActiveStake ?? 0)}</span>
+                <span className="mr-20"><i className="fas fa-wallet text-blue-400"></i><strong>NETWORK ACTIVE STAKE</strong></span>
+                <span className="text-blue-400 text-sm">{formatAda(epochData?.current.totalActiveStake ?? 0)}</span>
               </li>
             </ul>
           </div>
@@ -86,16 +86,16 @@ export const EpochStats = () => {
           <div>
             <ul className="text-gray-300 space-y-2">
               <li className="flex justify-between text-xs gap-x-4">
-                <span className="mr-20"><i className="fas fa-calendar-day text-blue-600"></i><strong>REWARDS EPOCH</strong></span>
-                <span className="text-blue-600 text-sm">{rewardsData?.epoch}</span>
+                <span className="mr-20"><i className="fas fa-calendar-day text-blue-400"></i><strong>REWARDS EPOCH</strong></span>
+                <span className="text-blue-400 text-sm">{rewardsData?.epoch}</span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
-                <span className="mr-20"><i className="fas fa-coins text-blue-600"></i><strong>TOTAL</strong></span>
-                <span className="text-blue-600 text-sm">{rewardsData?.rewards}</span>
+                <span className="mr-20"><i className="fas fa-coins text-blue-400"></i><strong>TOTAL</strong></span>
+                <span className="text-blue-400 text-sm">{rewardsData?.rewards}</span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
-                <span className="mr-20"><i className="fas fa-percentage text-blue-600"></i><strong>ROS</strong></span>
-                <span className="text-blue-600 text-sm">{rewardsData?.ros}%</span>
+                <span className="mr-20"><i className="fas fa-percentage text-blue-400"></i><strong>ROS</strong></span>
+                <span className="text-blue-400 text-sm">{rewardsData?.ros}%</span>
               </li>
             </ul>
           </div>
