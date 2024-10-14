@@ -54,7 +54,7 @@ const PoolDescription = () => {
           </p>
           <p className="text-gray-400 mb-4">
             Epoch: <span className="text-white">{currentEpoch}</span> &nbsp; 
-            Minted Blocks: <span className="text-white">{blockCount ?? 'Loading...'}</span> / <span className="text-white">{scheduledBlocks ?? 'Loading...'}</span>
+            Minted Blocks: <span className="text-white">{blockCount ?? 'Loading...'}</span>/<span className="text-white">{scheduledBlocks ?? 'Loading...'}</span>
           </p>
         </>
       )}
