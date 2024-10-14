@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
 import { fetchEpochSchedules } from './queries/epochSchedules'; // Correct import
+import { getLastRewards } from './queries/lastRewards'; // Import the function
+
+const poolId = "pool1xs34q2z06a46nk7hl48d27dj5gzc6hh9trugw2ehs9ajsevqffx";
 
 interface EpochData {
   epoch: number;
@@ -12,6 +15,7 @@ interface EpochData {
 
 export const EpochStats = () => {
   const [epochData, setEpochData] = useState<{ current: EpochData; next: EpochData } | null>(null);
+  const [rewardsData, setRewardsData] = useState<{ epoch: number; rewards: string; ros: string } | null>(null); // Added rewards data
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -23,10 +27,15 @@ export const EpochStats = () => {
   useEffect(() => {
     const getData = async () => {
       try {
+        // Fetch epoch schedules
         const data = await fetchEpochSchedules();
         setEpochData(data);
+
+        // Fetch the last rewards and ROS (rate of stake)
+        const rewards = await getLastRewards(poolId); // Replace with actual pool ID
+        setRewardsData(rewards);
       } catch (error) {
-        setError('Failed to fetch epoch data.');
+        setError('Failed to fetch epoch and rewards data.');
       } finally {
         setLoading(false);
       }
@@ -41,7 +50,6 @@ export const EpochStats = () => {
   return (
     <div className="flex flex-col items-center">
       <div className="max-w-4xl w-full bg-black-800 bg-opacity-80 rounded-lg shadow-md p-6 mb-4">
-        
         {/* Vertical layout with both sections in one column */}
         <div className="grid grid-cols-1 gap-4">
           {/* Current Epoch Section */}
@@ -49,7 +57,7 @@ export const EpochStats = () => {
           <div>
             <ul className="text-gray-300 space-y-2">
               <li className="flex justify-between text-xs gap-x-4"> {/* Adjusted gap-x */}
-              <span className="mr-40"><i className="fas fa-calendar-day text-blue-600"></i><strong>EPOCH</strong></span>
+                <span className="mr-40"><i className="fas fa-calendar-day text-blue-600"></i><strong>EPOCH</strong></span>
                 <span className="text-blue-600 text-sm">{epochData?.current.epoch}</span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
@@ -73,7 +81,26 @@ export const EpochStats = () => {
                 <span className="text-blue-600 text-sm">{formatAda(epochData?.current.totalActiveStake ?? 0)}</span>
               </li>
             </ul>
-          </div>          
+          </div>
+
+          {/* Rewards Section */}
+          <h3 className="text-sm font-semibold text-white">REWARDS</h3>
+          <div>
+            <ul className="text-gray-300 space-y-2">
+              <li className="flex justify-between text-xs gap-x-4">
+                <span className="mr-40"><i className="fas fa-calendar-day text-blue-600"></i><strong>REWARDS EPOCH</strong></span>
+                <span className="text-blue-600 text-sm">{rewardsData?.epoch}</span>
+              </li>
+              <li className="flex justify-between text-xs gap-x-4">
+                <span className="mr-40"><i className="fas fa-coins text-blue-600"></i><strong>REWARDS</strong></span>
+                <span className="text-blue-600 text-sm">{rewardsData?.rewards}</span>
+              </li>
+              <li className="flex justify-between text-xs gap-x-4">
+                <span className="mr-40"><i className="fas fa-percentage text-blue-600"></i><strong>ROS</strong></span>
+                <span className="text-blue-600 text-sm">{rewardsData?.ros}%</span>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

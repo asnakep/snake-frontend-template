@@ -1,6 +1,6 @@
 import { getTip } from './queryTip'; // Adjust the path if needed
 
-export const getRecentRewards = async (poolID: string): Promise<{ epoch: number; rewards: string; ros: string }> => {
+export const getLastRewards = async (poolID: string): Promise<{ epoch: number; rewards: string; ros: string }> => {
     const formatAda = (value: string | number) => {
         return `₳${(Number(value) / 1e6).toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
     };
