@@ -83,8 +83,6 @@ export const EpochStats = () => {
             </ul>
           </div>
 
-          {/* Rewards Section */}
-          <h3 className="text-sm font-semibold text-white">REWARDS</h3>
           <div>
             <ul className="text-gray-300 space-y-2">
               <li className="flex justify-between text-xs gap-x-4">
@@ -92,7 +90,7 @@ export const EpochStats = () => {
                 <span className="text-blue-600 text-sm">{rewardsData?.epoch}</span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
-                <span className="mr-40"><i className="fas fa-coins text-blue-600"></i><strong>REWARDS</strong></span>
+                <span className="mr-40"><i className="fas fa-coins text-blue-600"></i><strong>TOTAL</strong></span>
                 <span className="text-blue-600 text-sm">{rewardsData?.rewards}</span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
