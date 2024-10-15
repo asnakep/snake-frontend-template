@@ -18,10 +18,17 @@ const formatDate = (posixTime: number | string) => {
 
 export const getCardanoStats = async () => {
   try {
-    const tipData = await getTip(); // Use the current epoch from the tip
+    // Fetch tip data to get the current epoch
+    const tipData = await getTip();
+    const epoch = tipData?.currEpoch;
+
+    // Ensure the epoch value is valid before proceeding
+    if (!epoch) {
+      throw new Error("Epoch data is unavailable.");
+    }
 
     // Fetch epoch data using the actual epoch number
-    const response = await fetch(`/api/epoch_info?_epoch_no=${tipData?.currEpoch}`, {
+    const response = await fetch(`/api/epoch_info?_epoch_no=${epoch}`, {
       method: 'GET',
       headers: {
         "Content-Type": "application/json",

@@ -35,39 +35,39 @@ const CardanoStats = () => {
             <ul className="text-gray-300 space-y-2">
               <li className="flex justify-between text-xs">
                 <span className="mr-40"><i className="fas fa-clock text-blue-400"></i> <strong>EPOCH NUMBER</strong></span>
-                <span className="text-blue-400 text-sm">{cardanoStats?.epochNo || 'N/A'}</span>
+                <span className="text-blue-400 text-sm">{cardanoStats?.epochNo}</span>
               </li>
               <li className="flex justify-between text-xs">
                 <span className="mr-40"><i className="fas fa-exchange-alt text-blue-400"></i> <strong>TOTAL OUTPUT</strong></span>
-                <span className="text-blue-400 text-sm">{cardanoStats?.outSum || 'N/A'}</span>
+                <span className="text-blue-400 text-sm">{cardanoStats?.outSum}</span>
               </li>
               <li className="flex justify-between text-xs">
                 <span className="mr-40"><i className="fas fa-coins text-blue-400"></i> <strong>TOTAL FEES</strong></span>
-                <span className="text-blue-400 text-sm">{cardanoStats?.fees || 'N/A'}</span>
+                <span className="text-blue-400 text-sm">{cardanoStats?.fees}</span>
               </li>
               <li className="flex justify-between text-xs">
                 <span className="mr-40"><i className="fas fa-list text-blue-400"></i> <strong>TRANSACTION COUNT</strong></span>
-                <span className="text-blue-400 text-sm">{cardanoStats?.txCount || 'N/A'}</span>
+                <span className="text-blue-400 text-sm">{cardanoStats?.txCount}</span>
               </li>
               <li className="flex justify-between text-xs">
                 <span className="mr-40"><i className="fas fa-cube text-blue-400"></i> <strong>BLOCK COUNT</strong></span>
-                <span className="text-blue-400 text-sm">{cardanoStats?.blkCount || 'N/A'}</span>
+                <span className="text-blue-400 text-sm">{cardanoStats?.blkCount}</span>
               </li>
               <li className="flex justify-between text-xs">
                 <span className="mr-40"><i className="fas fa-clock text-blue-400"></i> <strong>START TIME</strong></span>
-                <span className="text-blue-400 text-sm">{cardanoStats?.startTime || 'N/A'}</span>
+                <span className="text-blue-400 text-sm">{cardanoStats?.startTime}</span>
               </li>
               <li className="flex justify-between text-xs">
                 <span className="mr-40"><i className="fas fa-clock text-blue-400"></i> <strong>END TIME</strong></span>
-                <span className="text-blue-400 text-sm">{cardanoStats?.endTime || 'N/A'}</span>
+                <span className="text-blue-400 text-sm">{cardanoStats?.endTime}</span>
               </li>
               <li className="flex justify-between text-xs">
                 <span className="mr-40"><i className="fas fa-hand-holding-usd text-blue-400"></i> <strong>ACTIVE STAKE</strong></span>
-                <span className="text-blue-400 text-sm">{cardanoStats?.activeStake || 'N/A'}</span>
+                <span className="text-blue-400 text-sm">{cardanoStats?.activeStake}</span>
               </li>
               <li className="flex justify-between text-xs">
                 <span className="mr-40"><i className="fas fa-gift text-blue-400"></i> <strong>AVERAGE BLOCK REWARD</strong></span>
-                <span className="text-blue-400 text-sm">{cardanoStats?.avgBlkReward || 'N/A'}</span>
+                <span className="text-blue-400 text-sm">{cardanoStats?.avgBlkReward}</span>
               </li>
             </ul>
           </div>
