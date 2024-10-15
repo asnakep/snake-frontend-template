@@ -1,1 +1,0 @@
-import { getTip } from './queryTip';

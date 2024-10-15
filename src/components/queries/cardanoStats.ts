@@ -4,7 +4,7 @@ export const getCardanoStats = async () => {
   try {
     const tipData = await getTip(); // Use the current epoch from the tip
 
-    const response = await fetch(`/api/cardanoStats?epoch_no=${tipData?.currEpoch}`, {
+    const response = await fetch(`/api/epoch_info?epoch_no=${tipData?.currEpoch}`, {
       method: 'GET',
       headers: {
         "Content-Type": "application/json",
