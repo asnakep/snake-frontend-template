@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { getCardanoStats } from './queries/cardanoStats';
-import { getTokenomicStats } from './queries/tokenomicStats';
 
 const CardanoStats = () => {
   const [cardanoStats, setCardanoStats] = useState<{
@@ -25,47 +24,26 @@ const CardanoStats = () => {
     avgBlkReward: '',
   });
 
-  const [tokenomicStats, setTokenomicStats] = useState<{
-    epochNo: string;
-    circulation: number;
-    treasury: number;
-    reward: number;
-    supply: number;
-    reserves: number;
-  }>({
-    epochNo: '',
-    circulation: 0,
-    treasury: 0,
-    reward: 0,
-    supply: 0,
-    reserves: 0,
-  });
-
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const [cardanoData, tokenomicData] = await Promise.all([
-          getCardanoStats(),
-          getTokenomicStats(),
-        ]);
+        const cardanoData = await getCardanoStats();
 
-        // Check if the data has the expected properties
-        if (cardanoData && tokenomicData) {
+        if (cardanoData) {
           setCardanoStats({
             epochNo: cardanoData.epochNo || 'N/A',
-            outSum: cardanoData.outSum.toString() || 'N/A',  // Convert to string
-            fees: cardanoData.fees.toString() || 'N/A',      // Convert to string
+            outSum: cardanoData.outSum.toString() || 'N/A',
+            fees: cardanoData.fees.toString() || 'N/A',
             txCount: cardanoData.txCount || 'N/A',
             blkCount: cardanoData.blkCount || 'N/A',
             startTime: cardanoData.startTime || 'N/A',
             endTime: cardanoData.endTime || 'N/A',
-            activeStake: cardanoData.activeStake.toString() || 'N/A', // Convert to string
-            avgBlkReward: cardanoData.avgBlkReward.toString() || 'N/A', // Convert to string
+            activeStake: cardanoData.activeStake.toString() || 'N/A',
+            avgBlkReward: cardanoData.avgBlkReward.toString() || 'N/A',
           });
-          setTokenomicStats(tokenomicData);
         } else {
           throw new Error('Invalid data structure');
         }
@@ -90,9 +68,8 @@ const CardanoStats = () => {
 
   return (
     <div className="cardano-stats panel">
-      <h2 className="text-xl font-bold mb-4">Cardano Mainnet & Tokenomics Stats</h2>
+      <h2 className="text-xl font-bold mb-4">Cardano Mainnet Stats</h2>
       <div className="stats-grid">
-        {/* Cardano Stats */}
         <div className="stat">
           <span className="label">Epoch Number</span>
           <span className="value">{cardanoStats.epochNo || 'N/A'}</span>
@@ -128,33 +105,6 @@ const CardanoStats = () => {
         <div className="stat">
           <span className="label">Average Block Reward</span>
           <span className="value">{cardanoStats.avgBlkReward || 'N/A'}</span>
-        </div>
-
-        {/* Tokenomic Stats */}
-        <h3 className="text-lg font-bold mt-6">Tokenomic Stats</h3>
-        <div className="stat">
-          <span className="label">Epoch Number</span>
-          <span className="value">{tokenomicStats.epochNo || 'N/A'}</span>
-        </div>
-        <div className="stat">
-          <span className="label">Circulating Supply (ADA)</span>
-          <span className="value">{tokenomicStats.circulation.toLocaleString() || 'N/A'}</span>
-        </div>
-        <div className="stat">
-          <span className="label">Treasury (ADA)</span>
-          <span className="value">{tokenomicStats.treasury.toLocaleString() || 'N/A'}</span>
-        </div>
-        <div className="stat">
-          <span className="label">Rewards (ADA)</span>
-          <span className="value">{tokenomicStats.reward.toLocaleString() || 'N/A'}</span>
-        </div>
-        <div className="stat">
-          <span className="label">Total Supply (ADA)</span>
-          <span className="value">{tokenomicStats.supply.toLocaleString() || 'N/A'}</span>
-        </div>
-        <div className="stat">
-          <span className="label">Reserves (ADA)</span>
-          <span className="value">{tokenomicStats.reserves.toLocaleString() || 'N/A'}</span>
         </div>
       </div>
     </div>
