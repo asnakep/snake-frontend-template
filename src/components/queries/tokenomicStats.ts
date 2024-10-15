@@ -1,5 +1,10 @@
 import { getTip } from './queryTip';
 
+// Utility function to convert lovelaces to ADA, format to 0 decimals, and add thousands separators
+const formatAda = (value: string | number) => {
+  return `₳${(Number(value) / 1e6).toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
+};
+
 export const getTokenomicStats = async () => {
   try {
     const tipData = await getTip(); // Use the current epoch from the tip
@@ -19,11 +24,11 @@ export const getTokenomicStats = async () => {
 
       return {
         epochNo: tokenomicData.epoch_no,
-        circulation: parseFloat(tokenomicData.circulation) / 1e6, // Convert to ADA format
-        treasury: parseFloat(tokenomicData.treasury) / 1e6, // Convert to ADA format
-        reward: parseFloat(tokenomicData.reward) / 1e6, // Convert to ADA format
-        supply: parseFloat(tokenomicData.supply) / 1e6, // Convert to ADA format
-        reserves: parseFloat(tokenomicData.reserves) / 1e6 // Convert to ADA format
+        circulation: formatAda(tokenomicData.circulation), // Convert to ADA format
+        treasury: formatAda(tokenomicData.treasury), // Convert to ADA format
+        reward: formatAda(tokenomicData.reward), // Convert to ADA format
+        supply: formatAda(tokenomicData.supply), // Convert to ADA format
+        reserves: formatAda(tokenomicData.reserves) // Convert to ADA format
       };
     } else {
       console.error('Response status:', response.status); // Log the response status for debugging
