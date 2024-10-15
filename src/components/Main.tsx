@@ -22,6 +22,7 @@ const PoolStats = dynamic(() => import("./PoolStats"), { ssr: false });
 const PoolDescription = dynamic(() => import("./PoolDescription"), { ssr: false });
 const TopHeaders = dynamic(() => import("./TopHeaders"), { ssr: false });
 const EpochSchedules = dynamic(() => import("./EpochSchedules"), { ssr: false });
+const CardanoStats = dynamic(() => import("./CardanoStats"), { ssr: false });
 
 const componentsConfig: ComponentConfig[] = [
   {
@@ -52,6 +53,12 @@ const componentsConfig: ComponentConfig[] = [
     id: "epochschedules",
     component: EpochSchedules,
     position: { bottom: "93px", left: "480px", position: "fixed" },
+    style: {},
+  },
+  {
+    id: "cardanostats",
+    component: CardanoStats,
+    position: { bottom: "100px", right: "200px", position: "fixed" },
     style: {},
   },
 ];
