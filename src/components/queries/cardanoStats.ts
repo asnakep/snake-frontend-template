@@ -1,5 +1,20 @@
 import { getTip } from './queryTip';
 
+// Utility function to convert lovelaces to ADA, format to 0 decimals, and add thousands separators
+const formatAda = (value: string | number) => {
+  return `₳${(Number(value) / 1e6).toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
+};
+
+// Utility function to add thousands separators to a number
+const formatNumber = (value: string | number) => {
+  return Number(value).toLocaleString();
+};
+
+// Utility function to format POSIX time into a readable UTC string
+const formatDate = (posixTime: number) => {
+  return new Date(posixTime * 1000).toUTCString();
+};
+
 export const getCardanoStats = async () => {
   try {
     const tipData = await getTip(); // Use the current epoch from the tip
@@ -17,14 +32,14 @@ export const getCardanoStats = async () => {
       const data = await response.json();
       return {
         epochNo: data.epoch_no,
-        outSum: parseFloat(data.out_sum) / 1e6, // Convert to ADA format
-        fees: parseFloat(data.fees) / 1e6, // Convert to ADA format
-        txCount: data.tx_count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','), // Add thousands separator
-        blkCount: data.blk_count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','), // Add thousands separator
-        startTime: new Date(data.start_time * 1000).toUTCString(), // Convert POSIX to UTC format
-        endTime: new Date(data.end_time * 1000).toUTCString(), // Convert POSIX to UTC format
-        activeStake: parseFloat(data.active_stake) / 1e6, // Convert to ADA format
-        avgBlkReward: parseFloat(data.avg_blk_reward) / 1e6 // Convert to ADA format
+        outSum: formatAda(data.out_sum), // Convert to ADA format with separators
+        fees: formatAda(data.fees), // Convert to ADA format with separators
+        txCount: formatNumber(data.tx_count), // Add thousands separator
+        blkCount: formatNumber(data.blk_count), // Add thousands separator
+        startTime: formatDate(data.start_time), // Convert POSIX to UTC format
+        endTime: formatDate(data.end_time), // Convert POSIX to UTC format
+        activeStake: formatAda(data.active_stake), // Convert to ADA format with separators
+        avgBlkReward: formatAda(data.avg_blk_reward) // Convert to ADA format with separators
       };
     } else {
       console.error('Response status:', response.status); // Log the response status for debugging
