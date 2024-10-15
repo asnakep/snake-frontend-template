@@ -47,7 +47,7 @@ const CardanoStats = () => {
 
     fetchData(); // Initial fetch
 
-    const intervalId = setInterval(fetchData, 60000); // Refresh data every minute
+    const intervalId = setInterval(fetchData, 20000); // Refresh data every minute
 
     return () => clearInterval(intervalId); // Cleanup on unmount
   }, []);
@@ -74,11 +74,6 @@ const CardanoStats = () => {
                 <span className="mr-40"><i className="fas fa-cube text-blue-400"></i> <strong>BLOCK NUMBER</strong></span>
                 <span className="text-blue-400 text-sm">{tipData?.blockNum}</span>
               </li>
-              <li className="flex justify-between text-xs">
-                <span className="mr-40"><i className="fas fa-clock text-blue-400"></i> <strong>BLOCK TIME</strong></span>
-                <span className="text-blue-400 text-sm">{tipData?.blockTime}</span>
-              </li>
-
               {/* Existing cardanoStats values */}
               <li className="flex justify-between text-xs">
                 <span className="mr-40"><i className="fas fa-list text-blue-400"></i> <strong>TRANSACTION COUNT</strong></span>
