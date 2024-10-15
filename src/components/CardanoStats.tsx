@@ -2,111 +2,77 @@ import { useState, useEffect } from 'react';
 import { getCardanoStats } from './queries/cardanoStats';
 
 const CardanoStats = () => {
-  const [cardanoStats, setCardanoStats] = useState<{
-    epochNo: string;
-    outSum: string;
-    fees: string;
-    txCount: string;
-    blkCount: string;
-    startTime: string;
-    endTime: string;
-    activeStake: string;
-    avgBlkReward: string;
-  }>({
-    epochNo: '',
-    outSum: '',
-    fees: '',
-    txCount: '',
-    blkCount: '',
-    startTime: '',
-    endTime: '',
-    activeStake: '',
-    avgBlkReward: '',
-  });
-
-  const [loading, setLoading] = useState(true);
+  const [cardanoStats, setCardanoStats] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
 
+  const fetchCardanoStats = async () => {
+    try {
+      const stats = await getCardanoStats();
+      setCardanoStats(stats);
+    } catch (err) {
+      setError((err as Error).message);
+    }
+  };
+
   useEffect(() => {
-    const fetchStats = async () => {
-      try {
-        const cardanoData = await getCardanoStats();
+    fetchCardanoStats();
 
-        if (cardanoData) {
-          setCardanoStats({
-            epochNo: cardanoData.epochNo || 'N/A',
-            outSum: cardanoData.outSum.toString() || 'N/A',
-            fees: cardanoData.fees.toString() || 'N/A',
-            txCount: cardanoData.txCount || 'N/A',
-            blkCount: cardanoData.blkCount || 'N/A',
-            startTime: cardanoData.startTime || 'N/A',
-            endTime: cardanoData.endTime || 'N/A',
-            activeStake: cardanoData.activeStake.toString() || 'N/A',
-            avgBlkReward: cardanoData.avgBlkReward.toString() || 'N/A',
-          });
-        } else {
-          throw new Error('Invalid data structure');
-        }
+    const intervalId = setInterval(() => {
+      fetchCardanoStats(); // Refresh stats every minute
+    }, 60000);
 
-        setLoading(false);
-      } catch (err) {
-        setError('Error fetching stats');
-        setLoading(false);
-      }
-    };
-
-    fetchStats();
+    return () => clearInterval(intervalId);
   }, []);
 
-  if (loading) {
-    return <div>Loading stats...</div>;
-  }
-
-  if (error) {
-    return <div>{error}</div>;
-  }
-
   return (
-    <div className="cardano-stats panel">
-      <h2 className="text-xl font-bold mb-4">Cardano Mainnet Stats</h2>
-      <div className="stats-grid">
-        <div className="stat">
-          <span className="label">Epoch Number</span>
-          <span className="value">{cardanoStats.epochNo || 'N/A'}</span>
+    <div className="flex flex-col items-center">
+      {error ? (
+        <p className="text-red-500">Error: {error}</p>
+      ) : (
+        <div className="max-w-4xl w-full bg-black-800 bg-opacity-80 rounded-lg shadow-md p-6 mb-4">
+          <div className="mt-2">
+            <h3 className="text-sm font-semibold text-white mb-4">CARDANO MAINNET STATS</h3>
+            <ul className="text-gray-300 space-y-2">
+              <li className="flex justify-between text-xs">
+                <span className="mr-40"><i className="fas fa-clock text-blue-400"></i> <strong>EPOCH NUMBER</strong></span>
+                <span className="text-blue-400 text-sm">{cardanoStats?.epochNo || 'N/A'}</span>
+              </li>
+              <li className="flex justify-between text-xs">
+                <span className="mr-40"><i className="fas fa-exchange-alt text-blue-400"></i> <strong>TOTAL OUTPUT</strong></span>
+                <span className="text-blue-400 text-sm">{cardanoStats?.outSum || 'N/A'}</span>
+              </li>
+              <li className="flex justify-between text-xs">
+                <span className="mr-40"><i className="fas fa-coins text-blue-400"></i> <strong>TOTAL FEES</strong></span>
+                <span className="text-blue-400 text-sm">{cardanoStats?.fees || 'N/A'}</span>
+              </li>
+              <li className="flex justify-between text-xs">
+                <span className="mr-40"><i className="fas fa-list text-blue-400"></i> <strong>TRANSACTION COUNT</strong></span>
+                <span className="text-blue-400 text-sm">{cardanoStats?.txCount || 'N/A'}</span>
+              </li>
+              <li className="flex justify-between text-xs">
+                <span className="mr-40"><i className="fas fa-cube text-blue-400"></i> <strong>BLOCK COUNT</strong></span>
+                <span className="text-blue-400 text-sm">{cardanoStats?.blkCount || 'N/A'}</span>
+              </li>
+              <li className="flex justify-between text-xs">
+                <span className="mr-40"><i className="fas fa-clock text-blue-400"></i> <strong>START TIME</strong></span>
+                <span className="text-blue-400 text-sm">{cardanoStats?.startTime || 'N/A'}</span>
+              </li>
+              <li className="flex justify-between text-xs">
+                <span className="mr-40"><i className="fas fa-clock text-blue-400"></i> <strong>END TIME</strong></span>
+                <span className="text-blue-400 text-sm">{cardanoStats?.endTime || 'N/A'}</span>
+              </li>
+              <li className="flex justify-between text-xs">
+                <span className="mr-40"><i className="fas fa-hand-holding-usd text-blue-400"></i> <strong>ACTIVE STAKE</strong></span>
+                <span className="text-blue-400 text-sm">{cardanoStats?.activeStake || 'N/A'}</span>
+              </li>
+              <li className="flex justify-between text-xs">
+                <span className="mr-40"><i className="fas fa-gift text-blue-400"></i> <strong>AVERAGE BLOCK REWARD</strong></span>
+                <span className="text-blue-400 text-sm">{cardanoStats?.avgBlkReward || 'N/A'}</span>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div className="stat">
-          <span className="label">Total Output</span>
-          <span className="value">{cardanoStats.outSum || 'N/A'}</span>
-        </div>
-        <div className="stat">
-          <span className="label">Total Fees</span>
-          <span className="value">{cardanoStats.fees || 'N/A'}</span>
-        </div>
-        <div className="stat">
-          <span className="label">Transaction Count</span>
-          <span className="value">{cardanoStats.txCount || 'N/A'}</span>
-        </div>
-        <div className="stat">
-          <span className="label">Block Count</span>
-          <span className="value">{cardanoStats.blkCount || 'N/A'}</span>
-        </div>
-        <div className="stat">
-          <span className="label">Start Time</span>
-          <span className="value">{cardanoStats.startTime || 'N/A'}</span>
-        </div>
-        <div className="stat">
-          <span className="label">End Time</span>
-          <span className="value">{cardanoStats.endTime || 'N/A'}</span>
-        </div>
-        <div className="stat">
-          <span className="label">Active Stake</span>
-          <span className="value">{cardanoStats.activeStake || 'N/A'}</span>
-        </div>
-        <div className="stat">
-          <span className="label">Average Block Reward</span>
-          <span className="value">{cardanoStats.avgBlkReward || 'N/A'}</span>
-        </div>
-      </div>
+      )}
     </div>
   );
 };
