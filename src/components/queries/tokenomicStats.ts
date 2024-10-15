@@ -15,7 +15,16 @@ export const getTokenomicStats = async () => {
 
     if (response.ok) {
       const data = await response.json();
-      // Process and return the data as before
+      const tokenomicData = data[0]; // Assuming the data returned is an array with a single object
+
+      return {
+        epochNo: tokenomicData.epoch_no,
+        circulation: parseFloat(tokenomicData.circulation) / 1e6, // Convert to ADA format
+        treasury: parseFloat(tokenomicData.treasury) / 1e6, // Convert to ADA format
+        reward: parseFloat(tokenomicData.reward) / 1e6, // Convert to ADA format
+        supply: parseFloat(tokenomicData.supply) / 1e6, // Convert to ADA format
+        reserves: parseFloat(tokenomicData.reserves) / 1e6 // Convert to ADA format
+      };
     } else {
       console.error('Response status:', response.status); // Log the response status for debugging
       throw new Error("Error fetching tokenomic stats");

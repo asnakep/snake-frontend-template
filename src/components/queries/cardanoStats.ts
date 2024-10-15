@@ -15,7 +15,17 @@ export const getCardanoStats = async () => {
 
     if (response.ok) {
       const data = await response.json();
-      // Process and return the data as before
+      return {
+        epochNo: data.epoch_no,
+        outSum: parseFloat(data.out_sum) / 1e6, // Convert to ADA format
+        fees: parseFloat(data.fees) / 1e6, // Convert to ADA format
+        txCount: data.tx_count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','), // Add thousands separator
+        blkCount: data.blk_count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','), // Add thousands separator
+        startTime: new Date(data.start_time * 1000).toUTCString(), // Convert POSIX to UTC format
+        endTime: new Date(data.end_time * 1000).toUTCString(), // Convert POSIX to UTC format
+        activeStake: parseFloat(data.active_stake) / 1e6, // Convert to ADA format
+        avgBlkReward: parseFloat(data.avg_blk_reward) / 1e6 // Convert to ADA format
+      };
     } else {
       console.error('Response status:', response.status); // Log the response status for debugging
       throw new Error("Error fetching Cardano stats");

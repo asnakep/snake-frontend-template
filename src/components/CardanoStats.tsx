@@ -2,32 +2,18 @@ import { useState, useEffect } from 'react';
 import { getCardanoStats } from './queries/cardanoStats';
 import { getTokenomicStats } from './queries/tokenomicStats';
 
-// Define the CardanoStats interface
-interface CardanoStats {
-  epochNo: string;
-  outSum: string;
-  fees: string;
-  txCount: string;
-  blkCount: string;
-  startTime: string;
-  endTime: string;
-  activeStake: string;
-  avgBlkReward: string;
-}
-
-// Define the TokenomicStats interface
-interface TokenomicStats {
-  epochNo: string;
-  circulation: string;
-  treasury: string;
-  reward: string;
-  supply: string;
-  reserves: string;
-}
-
 const CardanoStats = () => {
-  // Initialize states using the interfaces
-  const [cardanoStats, setCardanoStats] = useState<CardanoStats>({
+  const [cardanoStats, setCardanoStats] = useState<{
+    epochNo: string;
+    outSum: string;
+    fees: string;
+    txCount: string;
+    blkCount: string;
+    startTime: string;
+    endTime: string;
+    activeStake: string;
+    avgBlkReward: string;
+  }>({
     epochNo: '',
     outSum: '',
     fees: '',
@@ -39,13 +25,20 @@ const CardanoStats = () => {
     avgBlkReward: '',
   });
 
-  const [tokenomicStats, setTokenomicStats] = useState<TokenomicStats>({
+  const [tokenomicStats, setTokenomicStats] = useState<{
+    epochNo: string;
+    circulation: number;
+    treasury: number;
+    reward: number;
+    supply: number;
+    reserves: number;
+  }>({
     epochNo: '',
-    circulation: '',
-    treasury: '',
-    reward: '',
-    supply: '',
-    reserves: '',
+    circulation: 0,
+    treasury: 0,
+    reward: 0,
+    supply: 0,
+    reserves: 0,
   });
 
   const [loading, setLoading] = useState(true);
@@ -58,8 +51,25 @@ const CardanoStats = () => {
           getCardanoStats(),
           getTokenomicStats(),
         ]);
-        setCardanoStats(cardanoData);
-        setTokenomicStats(tokenomicData);
+
+        // Check if the data has the expected properties
+        if (cardanoData && tokenomicData) {
+          setCardanoStats({
+            epochNo: cardanoData.epochNo || 'N/A',
+            outSum: cardanoData.outSum.toString() || 'N/A',  // Convert to string
+            fees: cardanoData.fees.toString() || 'N/A',      // Convert to string
+            txCount: cardanoData.txCount || 'N/A',
+            blkCount: cardanoData.blkCount || 'N/A',
+            startTime: cardanoData.startTime || 'N/A',
+            endTime: cardanoData.endTime || 'N/A',
+            activeStake: cardanoData.activeStake.toString() || 'N/A', // Convert to string
+            avgBlkReward: cardanoData.avgBlkReward.toString() || 'N/A', // Convert to string
+          });
+          setTokenomicStats(tokenomicData);
+        } else {
+          throw new Error('Invalid data structure');
+        }
+
         setLoading(false);
       } catch (err) {
         setError('Error fetching stats');
@@ -85,66 +95,66 @@ const CardanoStats = () => {
         {/* Cardano Stats */}
         <div className="stat">
           <span className="label">Epoch Number</span>
-          <span className="value">{cardanoStats.epochNo}</span>
+          <span className="value">{cardanoStats.epochNo || 'N/A'}</span>
         </div>
         <div className="stat">
           <span className="label">Total Output</span>
-          <span className="value">{cardanoStats.outSum}</span>
+          <span className="value">{cardanoStats.outSum || 'N/A'}</span>
         </div>
         <div className="stat">
           <span className="label">Total Fees</span>
-          <span className="value">{cardanoStats.fees}</span>
+          <span className="value">{cardanoStats.fees || 'N/A'}</span>
         </div>
         <div className="stat">
           <span className="label">Transaction Count</span>
-          <span className="value">{cardanoStats.txCount}</span>
+          <span className="value">{cardanoStats.txCount || 'N/A'}</span>
         </div>
         <div className="stat">
           <span className="label">Block Count</span>
-          <span className="value">{cardanoStats.blkCount}</span>
+          <span className="value">{cardanoStats.blkCount || 'N/A'}</span>
         </div>
         <div className="stat">
           <span className="label">Start Time</span>
-          <span className="value">{cardanoStats.startTime}</span>
+          <span className="value">{cardanoStats.startTime || 'N/A'}</span>
         </div>
         <div className="stat">
           <span className="label">End Time</span>
-          <span className="value">{cardanoStats.endTime}</span>
+          <span className="value">{cardanoStats.endTime || 'N/A'}</span>
         </div>
         <div className="stat">
           <span className="label">Active Stake</span>
-          <span className="value">{cardanoStats.activeStake}</span>
+          <span className="value">{cardanoStats.activeStake || 'N/A'}</span>
         </div>
         <div className="stat">
           <span className="label">Average Block Reward</span>
-          <span className="value">{cardanoStats.avgBlkReward}</span>
+          <span className="value">{cardanoStats.avgBlkReward || 'N/A'}</span>
         </div>
 
         {/* Tokenomic Stats */}
         <h3 className="text-lg font-bold mt-6">Tokenomic Stats</h3>
         <div className="stat">
           <span className="label">Epoch Number</span>
-          <span className="value">{tokenomicStats.epochNo}</span>
+          <span className="value">{tokenomicStats.epochNo || 'N/A'}</span>
         </div>
         <div className="stat">
-          <span className="label">Circulating Supply</span>
-          <span className="value">{tokenomicStats.circulation}</span>
+          <span className="label">Circulating Supply (ADA)</span>
+          <span className="value">{tokenomicStats.circulation.toLocaleString() || 'N/A'}</span>
         </div>
         <div className="stat">
-          <span className="label">Treasury</span>
-          <span className="value">{tokenomicStats.treasury}</span>
+          <span className="label">Treasury (ADA)</span>
+          <span className="value">{tokenomicStats.treasury.toLocaleString() || 'N/A'}</span>
         </div>
         <div className="stat">
-          <span className="label">Rewards</span>
-          <span className="value">{tokenomicStats.reward}</span>
+          <span className="label">Rewards (ADA)</span>
+          <span className="value">{tokenomicStats.reward.toLocaleString() || 'N/A'}</span>
         </div>
         <div className="stat">
-          <span className="label">Total Supply</span>
-          <span className="value">{tokenomicStats.supply}</span>
+          <span className="label">Total Supply (ADA)</span>
+          <span className="value">{tokenomicStats.supply.toLocaleString() || 'N/A'}</span>
         </div>
         <div className="stat">
-          <span className="label">Reserves</span>
-          <span className="value">{tokenomicStats.reserves}</span>
+          <span className="label">Reserves (ADA)</span>
+          <span className="value">{tokenomicStats.reserves.toLocaleString() || 'N/A'}</span>
         </div>
       </div>
     </div>
