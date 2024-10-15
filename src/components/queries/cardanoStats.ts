@@ -27,16 +27,18 @@ export const getCardanoStats = async () => {
     }
 
     // Fetch epoch data using the actual epoch number
-    const response = await fetch(`/api/epoch_info?_epoch_no=${currEpoch}&_include_next_epoch=false`, {
+    const response = await fetch(`/api/epoch_info?_epoch_no=${currEpoch}`, {
       method: 'GET',
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGRyIjoic3Rha2UxdXlwdHFycHkyaG1semNrczJxOWhwdTgybTBsOWE5Z3N6OHB4cGV5ZGhqZnJwM2d2Zms1OG0iLCJleHAiOjE3MzIwMTkxNDcsInRpZXIiOjEsInByb2pJRCI6InNuYWtlcG9vbF9xdWVyaWVzIn0.080u6cvXuMxucyltftojjLNOEiPiul8_z2X3lmdYrzE`
       }
-    });
+    })
 
     if (response.ok) {
-      const data = await response.json();
+      const dataArray = await response.json(); // Expecting an array
+      const data = dataArray[0]; // Access the first element of the array
+      
       return {
         epochNo: data.epoch_no,
         outSum: formatAda(data.out_sum), // Convert to ADA format with separators
