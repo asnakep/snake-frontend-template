@@ -41,14 +41,9 @@ export const getCardanoStats = async () => {
       
       return {
         epochNo: data.epoch_no,
-        outSum: formatAda(data.out_sum), // Convert to ADA format with separators
-        fees: formatAda(data.fees), // Convert to ADA format with separators
         txCount: formatNumber(data.tx_count), // Add thousands separator
         blkCount: formatNumber(data.blk_count), // Add thousands separator
-        startTime: formatDate(data.start_time), // Convert POSIX to UTC format
-        endTime: formatDate(data.end_time), // Convert POSIX to UTC format
         activeStake: formatAda(data.active_stake), // Convert to ADA format with separators
-        avgBlkReward: formatAda(data.avg_blk_reward) // Convert to ADA format with separators
       };
     } else {
       console.error('Response status:', response.status); // Log the response status for debugging
