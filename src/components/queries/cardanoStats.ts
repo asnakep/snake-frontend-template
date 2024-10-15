@@ -11,8 +11,9 @@ const formatNumber = (value: string | number) => {
 };
 
 // Utility function to format POSIX time into a readable UTC string
-const formatDate = (posixTime: number) => {
-  return new Date(posixTime * 1000).toUTCString();
+const formatDate = (posixTime: number | string) => {
+  const timestamp = Number(posixTime); // Convert the value to a number
+  return isNaN(timestamp) ? "Invalid Date" : new Date(timestamp * 1000).toUTCString();
 };
 
 export const getCardanoStats = async () => {
