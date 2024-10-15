@@ -2,8 +2,32 @@ import { useState, useEffect } from 'react';
 import { getCardanoStats } from './queries/cardanoStats';
 import { getTokenomicStats } from './queries/tokenomicStats';
 
+// Define the CardanoStats interface
+interface CardanoStats {
+  epochNo: string;
+  outSum: string;
+  fees: string;
+  txCount: string;
+  blkCount: string;
+  startTime: string;
+  endTime: string;
+  activeStake: string;
+  avgBlkReward: string;
+}
+
+// Define the TokenomicStats interface
+interface TokenomicStats {
+  epochNo: string;
+  circulation: string;
+  treasury: string;
+  reward: string;
+  supply: string;
+  reserves: string;
+}
+
 const CardanoStats = () => {
-  const [cardanoStats, setCardanoStats] = useState({
+  // Initialize states using the interfaces
+  const [cardanoStats, setCardanoStats] = useState<CardanoStats>({
     epochNo: '',
     outSum: '',
     fees: '',
@@ -15,7 +39,7 @@ const CardanoStats = () => {
     avgBlkReward: '',
   });
 
-  const [tokenomicStats, setTokenomicStats] = useState({
+  const [tokenomicStats, setTokenomicStats] = useState<TokenomicStats>({
     epochNo: '',
     circulation: '',
     treasury: '',
@@ -30,7 +54,10 @@ const CardanoStats = () => {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const [cardanoData, tokenomicData] = await Promise.all([getCardanoStats(), getTokenomicStats()]);
+        const [cardanoData, tokenomicData] = await Promise.all([
+          getCardanoStats(),
+          getTokenomicStats(),
+        ]);
         setCardanoStats(cardanoData);
         setTokenomicStats(tokenomicData);
         setLoading(false);

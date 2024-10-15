@@ -5,27 +5,19 @@ export const getTokenomicStats = async () => {
     const tipData = await getTip(); // Use the current epoch from the tip
 
     // Fetch tokenomic data using the actual epoch number
-    const response = await fetch(`/api/totals?epoch_no=${tipData?.currEpoch}`, {
+    const response = await fetch(`/api/totals?_epoch_no=${tipData?.currEpoch}`, {
       method: 'GET',
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGRyIjoic3Rha2UxdXlwdHFycHkyaG1semNrczJxOWhwdTgybTBsOWE5Z3N6OHB4cGV5ZGhqZnJwM2d2Zms1OG0iLCJleHAiOjE3MzIwMTkxNDcsInRpZXIiOjEsInByb2pJRCI6InNuYWtlcG9vbF9xdWVyaWVzIn0.080u6cvXuMxucyltftojjLNOEiPiul8_z2X3lmdYrzE` // Add your token
+        "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGRyIjoic3Rha2UxdXlwdHFycHkyaG1semNrczJxOWhwdTgybTBsOWE5Z3N6OHB4cGV5ZGhqZnJwM2d2Zms1OG0iLCJleHAiOjE3MzIwMTkxNDcsInRpZXIiOjEsInByb2pJRCI6InNuYWtlcG9vbF9xdWVyaWVzIn0.080u6cvXuMxucyltftojjLNOEiPiul8_z2X3lmdYrzE`
       }
     });
 
     if (response.ok) {
       const data = await response.json();
-
-      // Format values for better readability
-      return {
-        epochNo: data[0]?.epoch_no,
-        circulation: `${(Number(data[0]?.circulation) / 1000000).toFixed(2)} ADA`,
-        treasury: `${(Number(data[0]?.treasury) / 1000000).toFixed(2)} ADA`,
-        reward: `${(Number(data[0]?.reward) / 1000000).toFixed(2)} ADA`,
-        supply: `${(Number(data[0]?.supply) / 1000000).toFixed(2)} ADA`,
-        reserves: `${(Number(data[0]?.reserves) / 1000000).toFixed(2)} ADA`,
-      };
+      // Process and return the data as before
     } else {
+      console.error('Response status:', response.status); // Log the response status for debugging
       throw new Error("Error fetching tokenomic stats");
     }
   } catch (error) {
