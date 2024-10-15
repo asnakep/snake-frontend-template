@@ -37,15 +37,19 @@ const CardanoStats = () => {
   };
 
   useEffect(() => {
-    fetchCardanoStats();
-    fetchTipData();
-    fetchTokenomicStats();
+    const fetchData = async () => {
+      await Promise.all([
+        fetchCardanoStats(),
+        fetchTipData(),
+        fetchTokenomicStats(),
+      ]);
+    };
 
-    const intervalId = setInterval(() => {
-      fetchCardanoStats(); // Refresh stats every minute
-    }, 10000);
+    fetchData(); // Initial fetch
 
-    return () => clearInterval(intervalId);
+    const intervalId = setInterval(fetchData, 60000); // Refresh data every minute
+
+    return () => clearInterval(intervalId); // Cleanup on unmount
   }, []);
 
   return (
@@ -69,6 +73,10 @@ const CardanoStats = () => {
               <li className="flex justify-between text-xs">
                 <span className="mr-40"><i className="fas fa-cube text-blue-400"></i> <strong>BLOCK NUMBER</strong></span>
                 <span className="text-blue-400 text-sm">{tipData?.blockNum}</span>
+              </li>
+              <li className="flex justify-between text-xs">
+                <span className="mr-40"><i className="fas fa-clock text-blue-400"></i> <strong>BLOCK TIME</strong></span>
+                <span className="text-blue-400 text-sm">{tipData?.blockTime}</span>
               </li>
 
               {/* Existing cardanoStats values */}
