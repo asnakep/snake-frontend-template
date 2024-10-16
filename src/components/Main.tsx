@@ -58,6 +58,12 @@ const componentsConfig: ComponentConfig[] = [
     style: {},
   },
   {
+    id: "poolrewards",
+    component: PoolRewards,
+    position: { bottom: "80px", left: "480px", position: "fixed" },
+    style: {},
+  },
+  {
     id: "cardanostats",
     component: CardanoStats,
     position: { top: "200px", right: "180px", position: "fixed" },

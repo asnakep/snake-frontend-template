@@ -1,64 +1,59 @@
 import { useState, useEffect } from 'react';
-import { getTokenomicStats } from './queries/tokenomicStats';
+import { getLastRewards } from './queries/lastRewards'; // Import the function
+
+const poolId = "pool1xs34q2z06a46nk7hl48d27dj5gzc6hh9trugw2ehs9ajsevqffx";
 
 const PoolRewards = () => {
-  const [tokenomicStats, setTokenomicStats] = useState<any>(null);
+  const [rewardsData, setRewardsData] = useState<{ epoch: number; rewards: string; ros: string } | null>(null);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchTokenomicStats = async () => {
-    try {
-      const stats = await getTokenomicStats();
-      setTokenomicStats(stats);
-    } catch (err) {
-      setError((err as Error).message);
-    }
-  };
-
   useEffect(() => {
-    const fetchData = async () => {
-      await fetchTokenomicStats();
+    const getData = async () => {
+      try {
+        const rewards = await getLastRewards(poolId); // Fetch the rewards data
+        setRewardsData(rewards);
+      } catch (error) {
+        setError('Failed to fetch rewards data.');
+      } finally {
+        setLoading(false);
+      }
     };
 
-    fetchData(); // Initial fetch
-
-    const intervalId = setInterval(fetchData, 20000); // Refresh data every 20 seconds
-
-    return () => clearInterval(intervalId); // Cleanup on unmount
+    getData();
   }, []);
+
+  if (loading) return <div className="text-white">Loading...</div>;
+  if (error) return <div className="text-red-500">{error}</div>;
 
   return (
     <div className="flex flex-col items-center">
-      {error ? (
-        <p className="text-red-500">Error: {error}</p>
-      ) : (
-        <div className="max-w-4xl w-full bg-black-800 bg-opacity-80 rounded-lg shadow-md p-6 mb-4">
-          <div className="mt-2">
-            <h3 className="text-sm font-semibold text-white mb-4">POOL REWARDS</h3>
-            <ul className="text-gray-300 space-y-2">
-              <li className="flex justify-between text-xs">
-                <span className="mr-40"><i className="fas fa-coins text-blue-400"></i> <strong>CIRCULATION</strong></span>
-                <span className="text-blue-400 text-sm">{tokenomicStats?.circulation}</span>
-              </li>
-              <li className="flex justify-between text-xs">
-                <span className="mr-40"><i className="fas fa-coins text-blue-400"></i> <strong>TREASURY</strong></span>
-                <span className="text-blue-400 text-sm">{tokenomicStats?.treasury}</span>
-              </li>
-              <li className="flex justify-between text-xs">
-                <span className="mr-40"><i className="fas fa-coins text-blue-400"></i> <strong>REWARD</strong></span>
-                <span className="text-blue-400 text-sm">{tokenomicStats?.reward}</span>
-              </li>
-              <li className="flex justify-between text-xs">
-                <span className="mr-40"><i className="fas fa-coins text-blue-400"></i> <strong>SUPPLY</strong></span>
-                <span className="text-blue-400 text-sm">{tokenomicStats?.supply}</span>
-              </li>
-              <li className="flex justify-between text-xs">
-                <span className="mr-40"><i className="fas fa-coins text-blue-400"></i> <strong>RESERVES</strong></span>
-                <span className="text-blue-400 text-sm">{tokenomicStats?.reserves}</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      )}
+      <div className="max-w-4xl w-full bg-black-800 bg-opacity-80 rounded-lg shadow-md p-6 mb-4">
+        <h3 className="text-sm font-semibold text-white">POOL REWARDS</h3>
+        <ul className="text-gray-300 space-y-2">
+          <li className="flex justify-between text-xs gap-x-4">
+            <span className="mr-20">
+              <i className="fas fa-calendar-day text-blue-400"></i>
+              <strong>REWARDS EPOCH</strong>
+            </span>
+            <span className="text-blue-400 text-sm">{rewardsData?.epoch}</span>
+          </li>
+          <li className="flex justify-between text-xs gap-x-4">
+            <span className="mr-20">
+              <i className="fas fa-coins text-blue-400"></i>
+              <strong>TOTAL</strong>
+            </span>
+            <span className="text-blue-400 text-sm">{rewardsData?.rewards}</span>
+          </li>
+          <li className="flex justify-between text-xs gap-x-4">
+            <span className="mr-20">
+              <i className="fas fa-percentage text-blue-400"></i>
+              <strong>ROS</strong>
+            </span>
+            <span className="text-blue-400 text-sm">{rewardsData?.ros}%</span>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 };

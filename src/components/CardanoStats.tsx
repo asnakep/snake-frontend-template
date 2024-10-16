@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { getCardanoStats } from './queries/cardanoStats';
 import { getTip } from './queries/queryTip';
+import { getTokenomicStats } from './queries/tokenomicStats';
 
 const CardanoStats = () => {
   const [cardanoStats, setCardanoStats] = useState<any>(null);
   const [tipData, setTipData] = useState<any>(null);
+  const [tokenomicStats, setTokenomicStats] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
 
   const fetchCardanoStats = async () => {
@@ -25,14 +27,27 @@ const CardanoStats = () => {
     }
   };
 
+  const fetchTokenomicStats = async () => {
+    try {
+      const stats = await getTokenomicStats();
+      setTokenomicStats(stats);
+    } catch (err) {
+      setError((err as Error).message);
+    }
+  };
+
   useEffect(() => {
     const fetchData = async () => {
-      await Promise.all([fetchCardanoStats(), fetchTipData()]);
+      await Promise.all([
+        fetchCardanoStats(),
+        fetchTipData(),
+        fetchTokenomicStats(),
+      ]);
     };
 
     fetchData(); // Initial fetch
 
-    const intervalId = setInterval(fetchData, 20000); // Refresh data every 20 seconds
+    const intervalId = setInterval(fetchData, 20000); // Refresh data every minute
 
     return () => clearInterval(intervalId); // Cleanup on unmount
   }, []);
@@ -71,6 +86,28 @@ const CardanoStats = () => {
               <li className="flex justify-between text-xs">
                 <span className="mr-40"><i className="fas fa-hand-holding-usd text-blue-400"></i> <strong>ACTIVE STAKE</strong></span>
                 <span className="text-blue-400 text-sm">{cardanoStats?.activeStake}</span>
+              </li>
+
+              {/* Bottom section from tokenomicStats */}
+              <li className="flex justify-between text-xs">
+                <span className="mr-40"><i className="fas fa-coins text-blue-400"></i> <strong>CIRCULATION</strong></span>
+                <span className="text-blue-400 text-sm">{tokenomicStats?.circulation}</span>
+              </li>
+              <li className="flex justify-between text-xs">
+                <span className="mr-40"><i className="fas fa-coins text-blue-400"></i> <strong>TREASURY</strong></span>
+                <span className="text-blue-400 text-sm">{tokenomicStats?.treasury}</span>
+              </li>
+              <li className="flex justify-between text-xs">
+                <span className="mr-40"><i className="fas fa-coins text-blue-400"></i> <strong>REWARD</strong></span>
+                <span className="text-blue-400 text-sm">{tokenomicStats?.reward}</span>
+              </li>
+              <li className="flex justify-between text-xs">
+                <span className="mr-40"><i className="fas fa-coins text-blue-400"></i> <strong>SUPPLY</strong></span>
+                <span className="text-blue-400 text-sm">{tokenomicStats?.supply}</span>
+              </li>
+              <li className="flex justify-between text-xs">
+                <span className="mr-40"><i className="fas fa-coins text-blue-400"></i> <strong>RESERVES</strong></span>
+                <span className="text-blue-400 text-sm">{tokenomicStats?.reserves}</span>
               </li>
             </ul>
           </div>
