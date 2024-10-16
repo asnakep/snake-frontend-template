@@ -44,8 +44,8 @@ export const EpochStats = () => {
           <div className="space-y-4">
             {[...Array(5)].map((_, index) => (
               <div key={index} className="flex justify-between text-xs gap-x-4">
-                <span className="skeleton w-1/3 h-5 bg-gray-700 rounded"></span>
-                <span className="skeleton w-1/4 h-5 bg-gray-700 rounded"></span>
+                <span className="text-blue-400 text-sm">Loading...</span>
+                <span className="text-blue-400 text-sm">Loading...</span>
               </div>
             ))}
           </div>

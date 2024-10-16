@@ -1,6 +1,4 @@
 import { useState, useEffect } from 'react';
-import Skeleton from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css';
 import { getCardanoStats } from './queries/cardanoStats';
 import { getTip } from './queries/queryTip';
 import { getTokenomicStats } from './queries/tokenomicStats';
@@ -9,12 +7,16 @@ const CardanoStats = () => {
   const [cardanoStats, setCardanoStats] = useState<any>(null);
   const [tipData, setTipData] = useState<any>(null);
   const [tokenomicStats, setTokenomicStats] = useState<any>(null);
+  const [previousCardanoStats, setPreviousCardanoStats] = useState<any>(null);
+  const [previousTipData, setPreviousTipData] = useState<any>(null);
+  const [previousTokenomicStats, setPreviousTokenomicStats] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
   const fetchCardanoStats = async () => {
     try {
       const stats = await getCardanoStats();
+      setPreviousCardanoStats(cardanoStats); // Store previous stats
       setCardanoStats(stats);
     } catch (err) {
       setError((err as Error).message);
@@ -24,6 +26,7 @@ const CardanoStats = () => {
   const fetchTipData = async () => {
     try {
       const data = await getTip();
+      setPreviousTipData(tipData); // Store previous tip data
       setTipData(data);
     } catch (err) {
       setError((err as Error).message);
@@ -33,6 +36,7 @@ const CardanoStats = () => {
   const fetchTokenomicStats = async () => {
     try {
       const stats = await getTokenomicStats();
+      setPreviousTokenomicStats(tokenomicStats); // Store previous tokenomic stats
       setTokenomicStats(stats);
     } catch (err) {
       setError((err as Error).message);
@@ -71,51 +75,67 @@ const CardanoStats = () => {
                 <span className="mr-40">
                   <i className="fas fa-calendar-alt text-blue-400"></i> <strong>EPOCH</strong>
                 </span>
-                {loading ? <Skeleton width={50} /> : <span className="text-blue-400 text-sm">{tipData?.currEpoch}</span>}
+                <span className="text-blue-400 text-sm">
+                  {tipData?.currEpoch || previousTipData?.currEpoch || 'Loading...'}
+                </span>
               </li>
               <li className="flex justify-between text-xs">
                 <span className="mr-40">
                   <i className="fas fa-clock text-blue-400"></i> <strong>SLOT</strong>
                 </span>
-                {loading ? <Skeleton width={50} /> : <span className="text-blue-400 text-sm">{tipData?.epochSlot}</span>}
+                <span className="text-blue-400 text-sm">
+                  {tipData?.epochSlot || previousTipData?.epochSlot || 'Loading...'}
+                </span>
               </li>
               <li className="flex justify-between text-xs">
                 <span className="mr-40">
                   <i className="fas fa-cube text-blue-400"></i> <strong>BLOCK</strong>
                 </span>
-                {loading ? <Skeleton width={50} /> : <span className="text-blue-400 text-sm">{tipData?.blockNum}</span>}
+                <span className="text-blue-400 text-sm">
+                  {tipData?.blockNum || previousTipData?.blockNum || 'Loading...'}
+                </span>
               </li>
               {/* Existing cardanoStats values */}
               <li className="flex justify-between text-xs">
                 <span className="mr-40">
                   <i className="fas fa-list text-blue-400"></i> <strong>TXS COUNT</strong>
                 </span>
-                {loading ? <Skeleton width={50} /> : <span className="text-blue-400 text-sm">{cardanoStats?.txCount}</span>}
+                <span className="text-blue-400 text-sm">
+                  {cardanoStats?.txCount || previousCardanoStats?.txCount || 'Loading...'}
+                </span>
               </li>
               <li className="flex justify-between text-xs">
                 <span className="mr-40">
                   <i className="fas fa-cube text-blue-400"></i> <strong>BLOCK COUNT</strong>
                 </span>
-                {loading ? <Skeleton width={50} /> : <span className="text-blue-400 text-sm">{cardanoStats?.blkCount}</span>}
+                <span className="text-blue-400 text-sm">
+                  {cardanoStats?.blkCount || previousCardanoStats?.blkCount || 'Loading...'}
+                </span>
               </li>
               <li className="flex justify-between text-xs">
                 <span className="mr-40">
                   <i className="fas fa-hand-holding-usd text-blue-400"></i> <strong>ACTIVE STAKE</strong>
                 </span>
-                {loading ? <Skeleton width={50} /> : <span className="text-blue-400 text-sm">{cardanoStats?.activeStake}</span>}
+                <span className="text-blue-400 text-sm">
+                  {cardanoStats?.activeStake || previousCardanoStats?.activeStake || 'Loading...'}
+                </span>
               </li>
               {/* Bottom section from tokenomicStats */}
               <li className="flex justify-between text-xs">
                 <span className="mr-40">
                   <i className="fas fa-coins text-blue-400"></i> <strong>CIRCULATION</strong>
                 </span>
-                {loading ? <Skeleton width={50} /> : <span className="text-blue-400 text-sm">{tokenomicStats?.circulation}</span>}
+                <span className="text-blue-400 text-sm">
+                  {tokenomicStats?.circulation || previousTokenomicStats?.circulation || 'Loading...'}
+                </span>
               </li>
               <li className="flex justify-between text-xs">
                 <span className="mr-40">
                   <i className="fas fa-coins text-blue-400"></i> <strong>TREASURY</strong>
                 </span>
-                {loading ? <Skeleton width={50} /> : <span className="text-blue-400 text-sm">{tokenomicStats?.treasury}</span>}
+                <span className="text-blue-400 text-sm">
+                  {tokenomicStats?.treasury || previousTokenomicStats?.treasury || 'Loading...'}
+                </span>
               </li>
             </ul>
           </div>
