@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { fetchEpochSchedules } from './queries/epochSchedules'; // Correct import
+import { fetchEpochSchedules } from './queries/epochSchedules';
 
 interface EpochData {
   epoch: number;
@@ -15,15 +15,13 @@ export const EpochStats = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Utility function to convert Lovelaces to ADA and format the value with thousands separators
-  const formatAda = (value: number) => {
-    return `₳${(value / 1e6).toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
+  const formatAda = (value: string | number) => {
+    return `₳${Math.floor(Number(value) / 1e6).toLocaleString()}`;
   };
 
   useEffect(() => {
     const getData = async () => {
       try {
-        // Fetch epoch schedules
         const data = await fetchEpochSchedules();
         setEpochData(data);
       } catch (error) {

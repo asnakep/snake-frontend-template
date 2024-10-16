@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { getPoolStats } from './queries/poolStats';
 import { getLifetimeRewards } from './queries/lifetimeRewards';
-
-const poolId = "pool1xs34q2z06a46nk7hl48d27dj5gzc6hh9trugw2ehs9ajsevqffx";
+import poolId from './variables/poolid';
 
 const PoolStats = () => {
   const [poolStats, setPoolStats] = useState<any>(null);

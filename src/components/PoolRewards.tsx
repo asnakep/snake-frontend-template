@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getLastRewards } from './queries/lastRewards'; // Import the function
-
-const poolId = "pool1xs34q2z06a46nk7hl48d27dj5gzc6hh9trugw2ehs9ajsevqffx";
+import poolId from './variables/poolid';
 
 const PoolRewards = () => {
   const [rewardsData, setRewardsData] = useState<{ epoch: number; rewards: string; ros: string } | null>(null);
