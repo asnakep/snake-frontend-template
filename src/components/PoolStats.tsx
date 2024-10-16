@@ -48,10 +48,10 @@ const PoolStats = () => {
       {error ? (
         <p className="text-red-500">Error: {error}</p>
       ) : (
-        <div className="max-w-4xl w-full bg-black-800 bg-opacity-80 rounded-lg shadow-md p-6 mb-4">
+        <div className="max-w-4xl w-full bg-gray-800 rounded-lg shadow-md p-6 mb-4"> {/* Changed bg-black-800 to bg-gray-800 */}
           <div className="mt-2">
             <h3 className="text-sm font-semibold text-white mb-4">STAKEPOOL STATS</h3>
-            <ul className="text-gray-300 space-y-4">
+            <ul className="text-gray-300 space-y-2">
               <li className="flex justify-between text-xs">
                 <span className="mr-40"><i className="fas fa-hand-holding-usd text-blue-400"></i> <strong>LIVE STAKE</strong></span>
                 <span className="text-blue-400 text-sm">{poolStats?.liveStake || previousPoolStats?.liveStake || 'Loading...'}</span>

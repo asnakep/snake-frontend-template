@@ -66,10 +66,10 @@ const CardanoStats = () => {
       {error ? (
         <p className="text-red-500">Error: {error}</p>
       ) : (
-        <div className="max-w-4xl w-full bg-black-800 bg-opacity-80 rounded-lg shadow-md p-6 mb-4">
+        <div className="max-w-4xl w-full bg-gray-800 rounded-lg shadow-md p-6 mb-4"> {/* Updated bg color */}
           <div className="mt-2">
-            <h3 className="text-sm font-semibold text-white mb-4">CARDANO MAINNET STATS</h3>
-            <ul className="text-gray-300 space-y-4">
+            <h3 className="text-sm font-semibold text-white mb-2">CARDANO MAINNET STATS</h3> {/* Reduced margin-bottom */}
+            <ul className="text-gray-300 space-y-2"> {/* Changed space-y-4 to space-y-2 */}
               {/* Top section from getTip */}
               <li className="flex justify-between text-xs">
                 <span className="mr-40">
