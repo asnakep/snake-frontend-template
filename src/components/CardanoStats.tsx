@@ -60,7 +60,7 @@ const CardanoStats = () => {
         <div className="max-w-4xl w-full bg-black-800 bg-opacity-80 rounded-lg shadow-md p-6 mb-4">
           <div className="mt-2">
             <h3 className="text-sm font-semibold text-white mb-4">CARDANO MAINNET STATS</h3>
-            <ul className="text-gray-300 space-y-2">
+            <ul className="text-gray-300 space-y-4">
               {/* Top section from getTip */}
               <li className="flex justify-between text-xs">
                 <span className="mr-40"><i className="fas fa-calendar-alt text-blue-400"></i> <strong>EPOCH</strong></span>
@@ -96,18 +96,6 @@ const CardanoStats = () => {
               <li className="flex justify-between text-xs">
                 <span className="mr-40"><i className="fas fa-coins text-blue-400"></i> <strong>TREASURY</strong></span>
                 <span className="text-blue-400 text-sm">{tokenomicStats?.treasury}</span>
-              </li>
-              <li className="flex justify-between text-xs">
-                <span className="mr-40"><i className="fas fa-coins text-blue-400"></i> <strong>REWARD</strong></span>
-                <span className="text-blue-400 text-sm">{tokenomicStats?.reward}</span>
-              </li>
-              <li className="flex justify-between text-xs">
-                <span className="mr-40"><i className="fas fa-coins text-blue-400"></i> <strong>SUPPLY</strong></span>
-                <span className="text-blue-400 text-sm">{tokenomicStats?.supply}</span>
-              </li>
-              <li className="flex justify-between text-xs">
-                <span className="mr-40"><i className="fas fa-coins text-blue-400"></i> <strong>RESERVES</strong></span>
-                <span className="text-blue-400 text-sm">{tokenomicStats?.reserves}</span>
               </li>
             </ul>
           </div>

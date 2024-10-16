@@ -48,25 +48,25 @@ const componentsConfig: ComponentConfig[] = [
   {
     id: "poolstats",
     component: PoolStats,
-    position: { bottom: "100px", left: "30px", position: "fixed" },
+    position: { bottom: "46px", left: "30px", position: "fixed" },
     style: {},
   },
   {
     id: "epochschedules",
     component: EpochSchedules,
-    position: { bottom: "210px", left: "510px", position: "fixed" },
+    position: { bottom: "190px", left: "510px", position: "fixed" },
     style: {},
   },
   {
     id: "poolrewards",
     component: PoolRewards,
-    position: { bottom: "100px", left: "510px", position: "fixed" },
+    position: { bottom: "70px", left: "510px", position: "fixed" },
     style: {},
   },
   {
     id: "cardanostats",
     component: CardanoStats,
-    position: { top: "200px", right: "180px", position: "fixed" },
+    position: { bottom: "80px", right: "180px", position: "fixed" },
     style: {},
   },
 ];

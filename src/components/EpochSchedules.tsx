@@ -47,7 +47,7 @@ export const EpochStats = () => {
           {/* Current Epoch Section */}
           <h3 className="text-sm font-semibold text-white">BLOCKS PRODUCTION</h3>
           <div>
-            <ul className="text-gray-300 space-y-2">
+            <ul className="text-gray-300 space-y-4">
               <li className="flex justify-between text-xs gap-x-4">
                 <span style={{ marginRight: '140px' }}>
                   <i className="fas fa-calendar-day text-blue-400"></i><strong>EPOCH</strong>

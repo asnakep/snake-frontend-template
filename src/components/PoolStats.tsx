@@ -47,7 +47,7 @@ const PoolStats = () => {
         <div className="max-w-4xl w-full bg-black-800 bg-opacity-80 rounded-lg shadow-md p-6 mb-4">
           <div className="mt-2"> {/* Reduced top margin for the statistics section */}
             <h3 className="text-sm font-semibold text-white mb-4">STAKEPOOL STATS</h3>
-            <ul className="text-gray-300 space-y-2">
+            <ul className="text-gray-300 space-y-4">
               <li className="flex justify-between text-xs">
                 <span className="mr-40"><i className="fas fa-hand-holding-usd text-blue-400"></i> <strong>LIVE STAKE</strong></span>
                 <span className="text-blue-400 text-sm">{poolStats?.liveStake}</span>

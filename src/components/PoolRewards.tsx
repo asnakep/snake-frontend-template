@@ -29,7 +29,7 @@ const PoolRewards = () => {
   return (
     <div className="flex flex-col items-center">
       <div className="max-w-4xl w-full bg-black-800 bg-opacity-80 rounded-lg shadow-md p-6 mb-4">
-        <ul className="text-gray-300 space-y-2">
+        <ul className="text-gray-300 space-y-4">
           <li className="flex justify-between text-xs gap-x-4">
             <span style={{ marginRight: '184px' }}>
               <i className="fas fa-calendar-day text-blue-400"></i>
