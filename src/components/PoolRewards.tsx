@@ -26,6 +26,7 @@ const PoolRewards = () => {
   if (loading) return (
     <div className="flex flex-col items-center">
       <div className="max-w-4xl w-full bg-black-800 bg-opacity-80 rounded-lg shadow-md p-6 mb-4">
+        <h3 className="text-sm font-semibold text-white">POOL REWARDS</h3>
         <ul className="text-gray-300 space-y-4">
           <li className="flex justify-between text-xs gap-x-4">
             <span style={{ marginRight: '204px' }}>
@@ -58,11 +59,12 @@ const PoolRewards = () => {
   return (
     <div className="flex flex-col items-center">
       <div className="max-w-4xl w-full bg-black-800 bg-opacity-80 rounded-lg shadow-md p-6 mb-4">
+        <h3 className="text-sm font-semibold text-white mb-4">LAST REWARDS</h3>
         <ul className="text-gray-300 space-y-4">
           <li className="flex justify-between text-xs gap-x-4">
             <span style={{ marginRight: '204px' }}>
               <i className="fas fa-calendar-day text-blue-400"></i>
-              <strong>REWARDS</strong>
+              <strong>EPOCH</strong>
             </span>
             <span className="text-blue-400 text-sm">{rewardsData?.epoch}</span>
           </li>
