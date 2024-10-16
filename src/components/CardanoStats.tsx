@@ -76,7 +76,7 @@ const CardanoStats = () => {
                   <i className="fas fa-calendar-alt text-blue-400"></i> <strong>EPOCH</strong>
                 </span>
                 <span className="text-blue-400 text-sm">
-                  {tipData?.currEpoch || previousTipData?.currEpoch || 'Loading...'}
+                  {tipData?.currEpoch || previousTipData?.currEpoch || 'loading'}
                 </span>
               </li>
               <li className="flex justify-between text-xs">
@@ -84,7 +84,7 @@ const CardanoStats = () => {
                   <i className="fas fa-clock text-blue-400"></i> <strong>SLOT</strong>
                 </span>
                 <span className="text-blue-400 text-sm">
-                  {tipData?.epochSlot || previousTipData?.epochSlot || 'Loading...'}
+                  {tipData?.epochSlot || previousTipData?.epochSlot || 'loading'}
                 </span>
               </li>
               <li className="flex justify-between text-xs">
@@ -92,7 +92,7 @@ const CardanoStats = () => {
                   <i className="fas fa-cube text-blue-400"></i> <strong>BLOCK</strong>
                 </span>
                 <span className="text-blue-400 text-sm">
-                  {tipData?.blockNum || previousTipData?.blockNum || 'Loading...'}
+                  {tipData?.blockNum || previousTipData?.blockNum || 'loading'}
                 </span>
               </li>
               {/* Existing cardanoStats values */}
@@ -101,7 +101,7 @@ const CardanoStats = () => {
                   <i className="fas fa-list text-blue-400"></i> <strong>TXS COUNT</strong>
                 </span>
                 <span className="text-blue-400 text-sm">
-                  {cardanoStats?.txCount || previousCardanoStats?.txCount || 'Loading...'}
+                  {cardanoStats?.txCount || previousCardanoStats?.txCount || 'loading'}
                 </span>
               </li>
               <li className="flex justify-between text-xs">
@@ -109,7 +109,7 @@ const CardanoStats = () => {
                   <i className="fas fa-cube text-blue-400"></i> <strong>BLOCK COUNT</strong>
                 </span>
                 <span className="text-blue-400 text-sm">
-                  {cardanoStats?.blkCount || previousCardanoStats?.blkCount || 'Loading...'}
+                  {cardanoStats?.blkCount || previousCardanoStats?.blkCount || 'loading'}
                 </span>
               </li>
               <li className="flex justify-between text-xs">
@@ -117,7 +117,7 @@ const CardanoStats = () => {
                   <i className="fas fa-hand-holding-usd text-blue-400"></i> <strong>ACTIVE STAKE</strong>
                 </span>
                 <span className="text-blue-400 text-sm">
-                  {cardanoStats?.activeStake || previousCardanoStats?.activeStake || 'Loading...'}
+                  {cardanoStats?.activeStake || previousCardanoStats?.activeStake || 'loading'}
                 </span>
               </li>
               {/* Bottom section from tokenomicStats */}
@@ -126,7 +126,7 @@ const CardanoStats = () => {
                   <i className="fas fa-coins text-blue-400"></i> <strong>CIRCULATION</strong>
                 </span>
                 <span className="text-blue-400 text-sm">
-                  {tokenomicStats?.circulation || previousTokenomicStats?.circulation || 'Loading...'}
+                  {tokenomicStats?.circulation || previousTokenomicStats?.circulation || 'loading'}
                 </span>
               </li>
               <li className="flex justify-between text-xs">
@@ -134,7 +134,7 @@ const CardanoStats = () => {
                   <i className="fas fa-coins text-blue-400"></i> <strong>TREASURY</strong>
                 </span>
                 <span className="text-blue-400 text-sm">
-                  {tokenomicStats?.treasury || previousTokenomicStats?.treasury || 'Loading...'}
+                  {tokenomicStats?.treasury || previousTokenomicStats?.treasury || 'loading'}
                 </span>
               </li>
             </ul>
