@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { fetchEpochSchedules } from './queries/epochSchedules';
+import formatAda from './variables/formatAda'
 
 interface EpochData {
   epoch: number;
@@ -14,10 +15,6 @@ export const EpochStats = () => {
   const [epochData, setEpochData] = useState<EpochData | null>(null); // Updated state to only handle current epoch data
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
-  const formatAda = (value: string | number) => {
-    return `₳${Math.floor(Number(value) / 1e6).toLocaleString()}`;
-  };
 
   useEffect(() => {
     const getData = async () => {

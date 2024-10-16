@@ -1,10 +1,7 @@
 import { getTip } from './queryTip';
+import formatAda from '../variables/formatAda';
 
 export const getLastRewards = async (poolID: string): Promise<{ epoch: number; rewards: string; ros: string }> => {
-    const formatAda = (value: string | number) => {
-        return `₳${Math.floor(Number(value) / 1e6).toLocaleString()}`;
-    };
-    
     const { currEpoch } = await getTip();
 
     const targetEpoch = currEpoch - 2;

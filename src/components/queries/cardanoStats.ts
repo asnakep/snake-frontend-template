@@ -1,8 +1,5 @@
 import { getTip } from './queryTip';
-
-const formatAda = (value: string | number) => {
-  return `₳${Math.floor(Number(value) / 1e6).toLocaleString()}`;
-};
+import formatAda from '../variables/formatAda'
 
 const formatNumber = (value: string | number) => {
   return Number(value).toLocaleString();

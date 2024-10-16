@@ -1,3 +1,5 @@
+import formatAda from '../variables/formatAda'
+
 export const getPoolStats = async (poolId: string) => {
   const response = await fetch('/api/pool_info', {
     method: 'POST',
@@ -13,10 +15,6 @@ export const getPoolStats = async (poolId: string) => {
   if (response.ok) {
     const data = await response.json();
     const poolData = data[0] || {};
-
-    const formatAda = (value: string | number) => {
-      return `₳${Math.floor(Number(value) / 1e6).toLocaleString()}`;
-    };
 
     return {
       poolIDBech: poolData.pool_id_bech32,

@@ -1,8 +1,6 @@
-export const getLifetimeRewards = async (poolID: string): Promise<string> => {
-    const formatAda = (value: string | number) => {
-        return `₳${Math.floor(Number(value) / 1e6).toLocaleString()}`;
-      };
+import formatAda from '../variables/formatAda'; 
 
+export const getLifetimeRewards = async (poolID: string): Promise<string> => {
     const response = await fetch(`/api/pool_history?_pool_bech32=${poolID}`, {
         method: 'GET',
         headers: {
@@ -21,7 +19,7 @@ export const getLifetimeRewards = async (poolID: string): Promise<string> => {
 
         // Sum the valid numeric rewards
         const totalRewards = rewards.reduce((acc: number, reward: number) => acc + reward, 0);
-        return formatAda(totalRewards);
+        return formatAda(totalRewards); // Use imported formatAda
     } else {
         throw new Error("Error fetching lifetime rewards");
     }
