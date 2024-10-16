@@ -49,31 +49,31 @@ export const EpochStats = () => {
           <div>
             <ul className="text-gray-300 space-y-4">
               <li className="flex justify-between text-xs gap-x-4">
-                <span style={{ marginRight: '140px' }}>
+                <span style={{ marginRight: '160px' }}>
                   <i className="fas fa-calendar-day text-blue-400"></i><strong>EPOCH</strong>
                 </span>
                 <span className="text-blue-400 text-sm">{epochData?.current.epoch}</span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
-                <span style={{ marginRight: '140px' }}>
+                <span style={{ marginRight: '160px' }}>
                   <i className="fas fa-cubes text-blue-400"></i><strong>SCHEDULED BLOCKS</strong>
                 </span>
                 <span className="text-blue-400 text-sm">{epochData?.current.epochSlots}</span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
-                <span style={{ marginRight: '140px' }}>
+                <span style={{ marginRight: '160px' }}>
                   <i className="fas fa-chart-bar text-blue-400"></i><strong>BLOCKS IDEAL</strong>
                 </span>
                 <span className="text-blue-400 text-sm">{epochData?.current.epochSlotsIdeal}</span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
-                <span style={{ marginRight: '140px' }}>
+                <span style={{ marginRight: '160px' }}>
                   <i className="fas fa-trophy text-blue-400"></i><strong>LUCK</strong>
                 </span>
                 <span className="text-blue-400 text-sm">{epochData?.current.maxPerformance}%</span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
-                <span style={{ marginRight: '140px' }}>
+                <span style={{ marginRight: '160px' }}>
                   <i className="fas fa-hand-holding-usd text-blue-400"></i><strong>POOL STAKE</strong>
                 </span>
                 <span className="text-blue-400 text-sm">{formatAda(epochData?.current.activeStake ?? 0)}</span>
