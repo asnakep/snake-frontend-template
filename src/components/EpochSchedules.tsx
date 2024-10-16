@@ -11,7 +11,7 @@ interface EpochData {
 }
 
 export const EpochStats = () => {
-  const [epochData, setEpochData] = useState<{ current: EpochData; next: EpochData } | null>(null);
+  const [epochData, setEpochData] = useState<EpochData | null>(null); // Updated state to only handle current epoch data
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -23,7 +23,7 @@ export const EpochStats = () => {
     const getData = async () => {
       try {
         const data = await fetchEpochSchedules();
-        setEpochData(data);
+        setEpochData(data.current); // Set only the current epoch data
       } catch (error) {
         setError('Failed to fetch epoch data.');
       } finally {
@@ -67,31 +67,31 @@ export const EpochStats = () => {
                 <span style={{ marginRight: '160px' }}>
                   <i className="fas fa-calendar-day text-blue-400"></i><strong>EPOCH</strong>
                 </span>
-                <span className="text-blue-400 text-sm">{epochData?.current.epoch}</span>
+                <span className="text-blue-400 text-sm">{epochData?.epoch}</span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
                 <span style={{ marginRight: '160px' }}>
                   <i className="fas fa-cubes text-blue-400"></i><strong>SCHEDULED BLOCKS</strong>
                 </span>
-                <span className="text-blue-400 text-sm">{epochData?.current.epochSlots}</span>
+                <span className="text-blue-400 text-sm">{epochData?.epochSlots}</span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
                 <span style={{ marginRight: '160px' }}>
                   <i className="fas fa-chart-bar text-blue-400"></i><strong>BLOCKS IDEAL</strong>
                 </span>
-                <span className="text-blue-400 text-sm">{epochData?.current.epochSlotsIdeal}</span>
+                <span className="text-blue-400 text-sm">{epochData?.epochSlotsIdeal}</span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
                 <span style={{ marginRight: '160px' }}>
                   <i className="fas fa-trophy text-blue-400"></i><strong>LUCK</strong>
                 </span>
-                <span className="text-blue-400 text-sm">{epochData?.current.maxPerformance}%</span>
+                <span className="text-blue-400 text-sm">{epochData?.maxPerformance}%</span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
                 <span style={{ marginRight: '160px' }}>
                   <i className="fas fa-hand-holding-usd text-blue-400"></i><strong>POOL STAKE</strong>
                 </span>
-                <span className="text-blue-400 text-sm">{formatAda(epochData?.current.activeStake ?? 0)}</span>
+                <span className="text-blue-400 text-sm">{formatAda(epochData?.activeStake ?? 0)}</span>
               </li>
             </ul>
           </div>
