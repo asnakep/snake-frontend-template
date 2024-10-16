@@ -1,8 +1,7 @@
 import { getTip } from './queryTip';
 
-// Utility function to convert lovelaces to ADA, format to 0 decimals, and add thousands separators
 const formatAda = (value: string | number) => {
-  return `₳${(Number(value) / 1e6).toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
+  return `₳${Math.floor(Number(value) / 1e6).toLocaleString()}`;
 };
 
 export const getTokenomicStats = async () => {

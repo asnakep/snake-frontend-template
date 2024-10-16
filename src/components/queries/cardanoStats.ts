@@ -1,7 +1,7 @@
 import { getTip } from './queryTip';
 
 const formatAda = (value: string | number) => {
-  return `₳${(Number(value) / 1e6).toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
+  return `₳${Math.floor(Number(value) / 1e6).toLocaleString()}`;
 };
 
 const formatNumber = (value: string | number) => {

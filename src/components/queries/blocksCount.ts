@@ -1,4 +1,3 @@
-// blocksCount.ts
 export const getBlocksCount = async (poolID: string, epochNo: number) => {
     const response = await fetch(`/api/pool_blocks?_pool_bech32=${poolID}&_epoch_no=${epochNo}`, {
       method: 'GET',
@@ -10,7 +9,6 @@ export const getBlocksCount = async (poolID: string, epochNo: number) => {
   
     if (response.ok) {
       const data = await response.json();
-      // The length of the array corresponds to the block count for the epoch
       return data.length;
     } else {
       throw new Error("Error fetching block count");

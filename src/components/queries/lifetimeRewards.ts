@@ -1,8 +1,7 @@
 export const getLifetimeRewards = async (poolID: string): Promise<string> => {
-    // Utility function to convert lovelaces to ADA, format to 0 decimals, and add thousands separators
     const formatAda = (value: string | number) => {
-        return `₳${(Number(value) / 1e6).toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
-    };
+        return `₳${Math.floor(Number(value) / 1e6).toLocaleString()}`;
+      };
 
     const response = await fetch(`/api/pool_history?_pool_bech32=${poolID}`, {
         method: 'GET',
@@ -22,7 +21,7 @@ export const getLifetimeRewards = async (poolID: string): Promise<string> => {
 
         // Sum the valid numeric rewards
         const totalRewards = rewards.reduce((acc: number, reward: number) => acc + reward, 0);
-        return formatAda(totalRewards); // Now returns a string
+        return formatAda(totalRewards);
     } else {
         throw new Error("Error fetching lifetime rewards");
     }

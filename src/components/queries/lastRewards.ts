@@ -1,14 +1,12 @@
-import { getTip } from './queryTip'; // Adjust the path if needed
+import { getTip } from './queryTip';
 
 export const getLastRewards = async (poolID: string): Promise<{ epoch: number; rewards: string; ros: string }> => {
     const formatAda = (value: string | number) => {
-        return `₳${(Number(value) / 1e6).toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
+        return `₳${Math.floor(Number(value) / 1e6).toLocaleString()}`;
     };
-
-    // Get the current epoch from the tip query
+    
     const { currEpoch } = await getTip();
 
-    // Calculate the target epoch (current - 2)
     const targetEpoch = currEpoch - 2;
 
     const response = await fetch(`/api/pool_history?_pool_bech32=${poolID}&_epoch_no=${targetEpoch}`, {
@@ -19,16 +17,17 @@ export const getLastRewards = async (poolID: string): Promise<{ epoch: number; r
         },
     });
 
-    if (response.ok) {
-        const data = await response.json();
-        const rewards = formatAda(data[0]?.deleg_rewards ?? 0);
-        const ros = data[0]?.epoch_ros?.toFixed(2) ?? '0.00';
-        return {
-            epoch: targetEpoch,
-            rewards,
-            ros,
-        };
-    } else {
+    if (!response.ok) {
         throw new Error("Error fetching recent rewards and ROS");
     }
+
+    const data = await response.json();
+    const rewards = formatAda(data[0]?.deleg_rewards ?? 0);
+    const ros = data[0]?.epoch_ros?.toFixed(2) ?? '0.00';
+    
+    return {
+        epoch: targetEpoch,
+        rewards,
+        ros,
+    };
 };
