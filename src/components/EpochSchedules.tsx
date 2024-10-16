@@ -36,7 +36,24 @@ export const EpochStats = () => {
     getData();
   }, []);
 
-  if (loading) return <div className="text-white"></div>;
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center">
+        <div className="max-w-4xl w-full bg-black-800 bg-opacity-80 rounded-lg shadow-md p-6 mb-4">
+          <h3 className="text-sm font-semibold text-white">BLOCKS PRODUCTION</h3>
+          <div className="space-y-4">
+            {[...Array(5)].map((_, index) => (
+              <div key={index} className="flex justify-between text-xs gap-x-4">
+                <span className="skeleton w-1/3 h-5 bg-gray-700 rounded"></span>
+                <span className="skeleton w-1/4 h-5 bg-gray-700 rounded"></span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   if (error) return <div className="text-red-500">{error}</div>;
 
   return (

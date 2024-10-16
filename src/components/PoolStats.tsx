@@ -8,6 +8,7 @@ const PoolStats = () => {
   const [poolStats, setPoolStats] = useState<any>(null);
   const [lifetimeRewards, setLifetimeRewards] = useState<string | null>(null); // Change to string | null
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(true); // Loading state
 
   const fetchPoolStats = async () => {
     try {
@@ -28,13 +29,15 @@ const PoolStats = () => {
   };
 
   useEffect(() => {
-    fetchPoolStats();
-    fetchLifetimeRewards(); // Fetch lifetime rewards on component mount
+    const fetchData = async () => {
+      setLoading(true); // Set loading to true before fetching
+      await Promise.all([fetchPoolStats(), fetchLifetimeRewards()]);
+      setLoading(false); // Set loading to false after fetching
+    };
 
-    const intervalId = setInterval(() => {
-      fetchPoolStats();
-      fetchLifetimeRewards(); // Refresh lifetime rewards every minute
-    }, 60000);
+    fetchData(); // Initial fetch
+
+    const intervalId = setInterval(fetchData, 60000); // Refresh every minute
 
     return () => clearInterval(intervalId);
   }, []);
@@ -43,7 +46,21 @@ const PoolStats = () => {
     <div className="flex flex-col items-center">
       {error ? (
         <p className="text-red-500">Error: {error}</p>
-      ) : (
+      ) : loading ? ( // Show loading skeleton while loading
+        <div className="max-w-4xl w-full bg-black-800 bg-opacity-80 rounded-lg shadow-md p-6 mb-4">
+          <div className="mt-2">
+            <h3 className="text-sm font-semibold text-white mb-4">STAKEPOOL STATS</h3>
+            <ul className="text-gray-300 space-y-4">
+              {Array.from({ length: 8 }).map((_, index) => (
+                <li key={index} className="flex justify-between text-xs animate-pulse">
+                  <span className="mr-40 bg-gray-700 rounded w-1/3 h-4"></span>
+                  <span className="bg-gray-700 rounded w-1/4 h-4"></span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ) : ( // Show actual data once loading is complete
         <div className="max-w-4xl w-full bg-black-800 bg-opacity-80 rounded-lg shadow-md p-6 mb-4">
           <div className="mt-2"> {/* Reduced top margin for the statistics section */}
             <h3 className="text-sm font-semibold text-white mb-4">STAKEPOOL STATS</h3>
