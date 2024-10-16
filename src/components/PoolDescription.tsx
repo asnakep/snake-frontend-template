@@ -1,9 +1,10 @@
+import poolId from './variables/poolid';
+
 import { useState, useEffect } from "react";
 import { getPoolStats } from './queries/poolStats';
 import { getBlocksCount } from './queries/blocksCount'; 
 import { getTip } from './queries/queryTip';
 import { fetchEpochSchedules } from './queries/epochSchedules';
-import poolId from './variables/poolid';
 
 const PoolDescription = () => {
   const [poolStats, setPoolStats] = useState<any>(null);

@@ -1,7 +1,8 @@
+import poolId from './variables/poolid';
+
 import { useState, useEffect } from "react";
 import { getPoolStats } from './queries/poolStats';
 import { getLifetimeRewards } from './queries/lifetimeRewards';
-import poolId from './variables/poolid';
 
 const PoolStats = () => {
   const [poolStats, setPoolStats] = useState<any>(null);
