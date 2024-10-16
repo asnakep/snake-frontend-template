@@ -1,11 +1,12 @@
-import formatAda from '../variables/formatAda'
+import formatAda from '../variables/formatAda';
+import koiosToken from '../variables/koiosToken';
 
 export const getPoolStats = async (poolId: string) => {
   const response = await fetch('/api/pool_info', {
     method: 'POST',
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGRyIjoic3Rha2UxdXlwdHFycHkyaG1semNrczJxOWhwdTgybTBsOWE5Z3N6OHB4cGV5ZGhqZnJwM2d2Zms1OG0iLCJleHAiOjE3MzIwMTkxNDcsInRpZXIiOjEsInByb2pJRCI6InNuYWtlcG9vbF9xdWVyaWVzIn0.080u6cvXuMxucyltftojjLNOEiPiul8_z2X3lmdYrzE`
+      "Authorization": `Bearer ${koiosToken}`
     },
     body: JSON.stringify({
       _pool_bech32_ids: [poolId],

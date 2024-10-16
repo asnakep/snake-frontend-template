@@ -1,5 +1,6 @@
-import { getTip } from './queryTip';
 import formatAda from '../variables/formatAda';
+import koiosToken from '../variables/koiosToken';
+import { getTip } from './queryTip';
 
 export const getLastRewards = async (poolID: string): Promise<{ epoch: number; rewards: string; ros: string }> => {
     const { currEpoch } = await getTip();
@@ -10,7 +11,7 @@ export const getLastRewards = async (poolID: string): Promise<{ epoch: number; r
         method: 'GET',
         headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGRyIjoic3Rha2UxdXlwdHFycHkyaG1semNrczJxOWhwdTgybTBsOWE5Z3N6OHB4cGV5ZGhqZnJwM2d2Zms1OG0iLCJleHAiOjE3MzIwMTkxNDcsInRpZXIiOjEsInByb2pJRCI6InNuYWtlcG9vbF9xdWVyaWVzIn0.080u6cvXuMxucyltftojjLNOEiPiul8_z2X3lmdYrzE`
+            "Authorization": `Bearer ${koiosToken}`
         },
     });
 
