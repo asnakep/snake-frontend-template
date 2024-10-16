@@ -31,21 +31,21 @@ const PoolRewards = () => {
       <div className="max-w-4xl w-full bg-black-800 bg-opacity-80 rounded-lg shadow-md p-6 mb-4">
         <ul className="text-gray-300 space-y-2">
           <li className="flex justify-between text-xs gap-x-4">
-            <span className="mr-40">
+            <span style={{ marginRight: '184px' }}>
               <i className="fas fa-calendar-day text-blue-400"></i>
               <strong>REWARDS</strong>
             </span>
             <span className="text-blue-400 text-sm">{rewardsData?.epoch}</span>
           </li>
           <li className="flex justify-between text-xs gap-x-4">
-            <span className="mr-40">
+            <span style={{ marginRight: '184px' }}>
               <i className="fas fa-coins text-blue-400"></i>
               <strong>TOTAL</strong>
             </span>
             <span className="text-blue-400 text-sm">{rewardsData?.rewards}</span>
           </li>
           <li className="flex justify-between text-xs gap-x-4">
-            <span className="mr-40">
+            <span style={{ marginRight: '184px' }}>
               <i className="fas fa-percentage text-blue-400"></i>
               <strong>EPOCH ROS</strong>
             </span>
