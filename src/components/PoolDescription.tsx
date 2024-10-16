@@ -2,9 +2,8 @@ import { useState, useEffect } from "react";
 import { getPoolStats } from './queries/poolStats';
 import { getBlocksCount } from './queries/blocksCount'; 
 import { getTip } from './queries/queryTip';
-import { fetchEpochSchedules } from './queries/epochSchedules'; // Import the function to fetch scheduled blocks
-
-const poolId = "pool1xs34q2z06a46nk7hl48d27dj5gzc6hh9trugw2ehs9ajsevqffx";
+import { poolId } from './variables/pool_id';
+import { fetchEpochSchedules } from './queries/epochSchedules';
 
 const PoolDescription = () => {
   const [poolStats, setPoolStats] = useState<any>(null);
