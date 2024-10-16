@@ -23,7 +23,7 @@ const PoolRewards = () => {
     getData();
   }, []);
 
-  if (loading) return <div className="text-white">Loading...</div>;
+  if (loading) return <div className="text-white"></div>;
   if (error) return <div className="text-red-500">{error}</div>;
 
   return (

@@ -66,7 +66,7 @@ const componentsConfig: ComponentConfig[] = [
   {
     id: "cardanostats",
     component: CardanoStats,
-    position: { bottom: "80px", right: "180px", position: "fixed" },
+    position: { bottom: "80px", right: "120px", position: "fixed" },
     style: {},
   },
 ];
