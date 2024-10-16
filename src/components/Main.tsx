@@ -23,6 +23,8 @@ const PoolDescription = dynamic(() => import("./PoolDescription"), { ssr: false 
 const TopHeaders = dynamic(() => import("./TopHeaders"), { ssr: false });
 const EpochSchedules = dynamic(() => import("./EpochSchedules"), { ssr: false });
 const CardanoStats = dynamic(() => import("./CardanoStats"), { ssr: false });
+const PoolRewards = dynamic(() => import("./PoolRewards"), { ssr: false });
+
 
 const componentsConfig: ComponentConfig[] = [
   {
