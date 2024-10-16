@@ -1,8 +1,5 @@
 import { useState, useEffect } from 'react';
 import { fetchEpochSchedules } from './queries/epochSchedules'; // Correct import
-import { getLastRewards } from './queries/lastRewards'; // Import the function
-
-const poolId = "pool1xs34q2z06a46nk7hl48d27dj5gzc6hh9trugw2ehs9ajsevqffx";
 
 interface EpochData {
   epoch: number;
@@ -15,7 +12,6 @@ interface EpochData {
 
 export const EpochStats = () => {
   const [epochData, setEpochData] = useState<{ current: EpochData; next: EpochData } | null>(null);
-  const [rewardsData, setRewardsData] = useState<{ epoch: number; rewards: string; ros: string } | null>(null); // Added rewards data
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -30,12 +26,8 @@ export const EpochStats = () => {
         // Fetch epoch schedules
         const data = await fetchEpochSchedules();
         setEpochData(data);
-
-        // Fetch the last rewards and ROS (rate of stake)
-        const rewards = await getLastRewards(poolId); // Replace with actual pool ID
-        setRewardsData(rewards);
       } catch (error) {
-        setError('Failed to fetch epoch and rewards data.');
+        setError('Failed to fetch epoch data.');
       } finally {
         setLoading(false);
       }
@@ -56,46 +48,35 @@ export const EpochStats = () => {
           <h3 className="text-sm font-semibold text-white">BLOCKS PRODUCTION</h3>
           <div>
             <ul className="text-gray-300 space-y-2">
-              <li className="flex justify-between text-xs gap-x-4"> {/* Adjusted gap-x */}
-                <span className="mr-20"><i className="fas fa-calendar-day text-blue-400"></i><strong>EPOCH</strong></span>
+              <li className="flex justify-between text-xs gap-x-4">
+                <span className="mr-20">
+                  <i className="fas fa-calendar-day text-blue-400"></i><strong>EPOCH</strong>
+                </span>
                 <span className="text-blue-400 text-sm">{epochData?.current.epoch}</span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
-                <span className="mr-20"><i className="fas fa-cubes text-blue-400"></i><strong>SCHEDULED BLOCKS</strong></span>
+                <span className="mr-20">
+                  <i className="fas fa-cubes text-blue-400"></i><strong>SCHEDULED BLOCKS</strong>
+                </span>
                 <span className="text-blue-400 text-sm">{epochData?.current.epochSlots}</span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
-                <span className="mr-20"><i className="fas fa-chart-bar text-blue-400"></i><strong>BLOCKS IDEAL</strong></span>
+                <span className="mr-20">
+                  <i className="fas fa-chart-bar text-blue-400"></i><strong>BLOCKS IDEAL</strong>
+                </span>
                 <span className="text-blue-400 text-sm">{epochData?.current.epochSlotsIdeal}</span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
-                <span className="mr-20"><i className="fas fa-trophy text-blue-400"></i><strong>LUCK</strong></span>
+                <span className="mr-20">
+                  <i className="fas fa-trophy text-blue-400"></i><strong>LUCK</strong>
+                </span>
                 <span className="text-blue-400 text-sm">{epochData?.current.maxPerformance}%</span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
-                <span className="mr-20"><i className="fas fa-hand-holding-usd text-blue-400"></i><strong>POOL ACTIVE STAKE</strong></span>
+                <span className="mr-20">
+                  <i className="fas fa-hand-holding-usd text-blue-400"></i><strong>POOL STAKE</strong>
+                </span>
                 <span className="text-blue-400 text-sm">{formatAda(epochData?.current.activeStake ?? 0)}</span>
-              </li>
-              <li className="flex justify-between text-xs gap-x-4">
-                <span className="mr-20"><i className="fas fa-wallet text-blue-400"></i><strong>NETWORK ACTIVE STAKE</strong></span>
-                <span className="text-blue-400 text-sm">{formatAda(epochData?.current.totalActiveStake ?? 0)}</span>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <ul className="text-gray-300 space-y-2">
-              <li className="flex justify-between text-xs gap-x-4">
-                <span className="mr-20"><i className="fas fa-calendar-day text-blue-400"></i><strong>REWARDS EPOCH</strong></span>
-                <span className="text-blue-400 text-sm">{rewardsData?.epoch}</span>
-              </li>
-              <li className="flex justify-between text-xs gap-x-4">
-                <span className="mr-20"><i className="fas fa-coins text-blue-400"></i><strong>TOTAL</strong></span>
-                <span className="text-blue-400 text-sm">{rewardsData?.rewards}</span>
-              </li>
-              <li className="flex justify-between text-xs gap-x-4">
-                <span className="mr-20"><i className="fas fa-percentage text-blue-400"></i><strong>ROS</strong></span>
-                <span className="text-blue-400 text-sm">{rewardsData?.ros}%</span>
               </li>
             </ul>
           </div>

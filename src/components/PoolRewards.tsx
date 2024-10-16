@@ -29,26 +29,25 @@ const PoolRewards = () => {
   return (
     <div className="flex flex-col items-center">
       <div className="max-w-4xl w-full bg-black-800 bg-opacity-80 rounded-lg shadow-md p-6 mb-4">
-        <h3 className="text-sm font-semibold text-white">POOL REWARDS</h3>
         <ul className="text-gray-300 space-y-2">
           <li className="flex justify-between text-xs gap-x-4">
-            <span className="mr-20">
+            <span className="mr-40">
               <i className="fas fa-calendar-day text-blue-400"></i>
-              <strong>REWARDS EPOCH</strong>
+              <strong>REWARDS</strong>
             </span>
             <span className="text-blue-400 text-sm">{rewardsData?.epoch}</span>
           </li>
           <li className="flex justify-between text-xs gap-x-4">
-            <span className="mr-20">
+            <span className="mr-40">
               <i className="fas fa-coins text-blue-400"></i>
               <strong>TOTAL</strong>
             </span>
             <span className="text-blue-400 text-sm">{rewardsData?.rewards}</span>
           </li>
           <li className="flex justify-between text-xs gap-x-4">
-            <span className="mr-20">
+            <span className="mr-40">
               <i className="fas fa-percentage text-blue-400"></i>
-              <strong>ROS</strong>
+              <strong>EPOCH ROS</strong>
             </span>
             <span className="text-blue-400 text-sm">{rewardsData?.ros}%</span>
           </li>
