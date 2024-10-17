@@ -34,7 +34,8 @@ const PoolDescription = () => {
             SN₳KE is your 24/7/365 Reliable Pioneer Stake Pool - Enjoy a 0% pool margin and a fixed cost of 170₳ forever.
           </p>
           <p className="text-gray-400 mb-4">
-            Ticker: <span className="text-white">{"SNAKE"}</span> &nbsp; ID: <span className="text-white">{poolStats?.poolIDBech}</span>
+            <strong>Ticker:</strong> <span className="text-white">{"SNAKE"}</span> &nbsp; 
+            <strong>ID:</strong> <span className="text-white">{poolStats?.poolIDBech}</span>
           </p>
         </>
       )}

@@ -2,21 +2,23 @@ import { useState, useEffect } from 'react';
 import { getCardanoStats } from './queries/cardanoStats';
 import { getTip } from './queries/queryTip';
 import { getTokenomicStats } from './queries/tokenomicStats';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 const CardanoStats = () => {
   const [cardanoStats, setCardanoStats] = useState<any>(null);
   const [tipData, setTipData] = useState<any>(null);
   const [tokenomicStats, setTokenomicStats] = useState<any>(null);
-  const [previousCardanoStats, setPreviousCardanoStats] = useState<any>(null);
-  const [previousTipData, setPreviousTipData] = useState<any>(null);
-  const [previousTokenomicStats, setPreviousTokenomicStats] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+
+  // State to retain previous values
+  const [previousEpoch, setPreviousEpoch] = useState<number | null>(null);
+  const [previousEpochSlot, setPreviousEpochSlot] = useState<number | null>(null);
 
   const fetchCardanoStats = async () => {
     try {
       const stats = await getCardanoStats();
-      setPreviousCardanoStats(cardanoStats);
       setCardanoStats(stats);
     } catch (err) {
       setError((err as Error).message);
@@ -26,7 +28,6 @@ const CardanoStats = () => {
   const fetchTipData = async () => {
     try {
       const data = await getTip();
-      setPreviousTipData(tipData);
       setTipData(data);
     } catch (err) {
       setError((err as Error).message);
@@ -36,7 +37,6 @@ const CardanoStats = () => {
   const fetchTokenomicStats = async () => {
     try {
       const stats = await getTokenomicStats();
-      setPreviousTokenomicStats(tokenomicStats);
       setTokenomicStats(stats);
     } catch (err) {
       setError((err as Error).message);
@@ -57,11 +57,21 @@ const CardanoStats = () => {
 
   // Calculate epoch progress as a percentage (hardcoded 432000 slots per epoch)
   const totalSlots = 432000;
-  const epochProgressPercent = ((tipData?.epochSlot / totalSlots) * 100).toFixed(1);
+  const epochSlot = loading ? previousEpochSlot : tipData?.epochSlot;
+  const epoch = loading ? previousEpoch : tipData?.currEpoch;
+  const epochProgressPercent = typeof epochSlot === 'number' ? ((epochSlot / totalSlots) * 100).toFixed(1) : "N/A";
+
+  // Update previous values when new data is fetched
+  useEffect(() => {
+    if (tipData) {
+      setPreviousEpoch(tipData.currEpoch);
+      setPreviousEpochSlot(tipData.epochSlot);
+    }
+  }, [tipData]);
 
   // Function to format numbers with thousand separators
-  const formatNumber = (num: number | undefined): string => {
-    return num !== undefined ? num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : '';
+  const formatNumber = (num: number | undefined | null): string => {
+    return num != null ? num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : '';
   };
 
   return (
@@ -76,10 +86,17 @@ const CardanoStats = () => {
             <div className="relative w-64 bg-black-800 h-8 overflow-hidden rounded-sm ml-2">
               <div
                 className="absolute top-0 left-0 bg-blue-800 h-full rounded-sm"
-                style={{ width: `${epochProgressPercent}%` }}
+                style={{ width: typeof epochProgressPercent === 'string' && epochProgressPercent !== "N/A" ? `${epochProgressPercent}%` : "0%" }}
               ></div>
               <div className="absolute inset-0 flex justify-center items-center text-white font-semibold text-lg">
-                <span>Mainnet Epoch {formatNumber(tipData?.currEpoch)} - {epochProgressPercent}%</span>
+                <span>
+                  Epoch {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : formatNumber(epoch || "N/A")}
+                </span>
+              </div>
+              <div className="absolute inset-0 flex justify-end items-center pr-2 text-white font-semibold text-lg">
+                <span className="m-2">
+                  {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : `${epochProgressPercent}%`}
+                </span>
               </div>
             </div>
           </div>
@@ -93,7 +110,7 @@ const CardanoStats = () => {
                   <i className="fas fa-calendar-alt text-blue-400"></i> <strong>EPOCH</strong>
                 </span>
                 <span className="text-blue-400 text-sm">
-                  {tipData?.currEpoch || previousTipData?.currEpoch || 'loading'}
+                  {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : formatNumber(epoch) || "N/A"}
                 </span>
               </li>
               <li className="flex justify-between text-xs">
@@ -101,7 +118,7 @@ const CardanoStats = () => {
                   <i className="fas fa-clock text-blue-400"></i> <strong>SLOT</strong>
                 </span>
                 <span className="text-blue-400 text-sm">
-                  {formatNumber(tipData?.epochSlot || previousTipData?.epochSlot || 0)}
+                  {formatNumber(epochSlot) || (loading ? <FontAwesomeIcon icon={faSpinner} spin /> : "N/A")}
                 </span>
               </li>
               <li className="flex justify-between text-xs">
@@ -109,7 +126,7 @@ const CardanoStats = () => {
                   <i className="fas fa-cube text-blue-400"></i> <strong>BLOCK</strong>
                 </span>
                 <span className="text-blue-400 text-sm">
-                  {formatNumber(tipData?.blockNum || previousTipData?.blockNum || 0)}
+                  {formatNumber(tipData?.blockNum) || (loading ? <FontAwesomeIcon icon={faSpinner} spin /> : "N/A")}
                 </span>
               </li>
               {/* Existing cardanoStats values */}
@@ -118,7 +135,7 @@ const CardanoStats = () => {
                   <i className="fas fa-list text-blue-400"></i> <strong>TXS COUNT</strong>
                 </span>
                 <span className="text-blue-400 text-sm">
-                  {cardanoStats?.txCount || previousCardanoStats?.txCount || 'loading'}
+                  {formatNumber(cardanoStats?.txCount) || (loading ? <FontAwesomeIcon icon={faSpinner} spin /> : "N/A")}
                 </span>
               </li>
               <li className="flex justify-between text-xs">
@@ -126,7 +143,7 @@ const CardanoStats = () => {
                   <i className="fas fa-cube text-blue-400"></i> <strong>BLOCK COUNT</strong>
                 </span>
                 <span className="text-blue-400 text-sm">
-                  {cardanoStats?.blkCount || previousCardanoStats?.blkCount || 'loading'}
+                  {formatNumber(cardanoStats?.blkCount) || (loading ? <FontAwesomeIcon icon={faSpinner} spin /> : "N/A")}
                 </span>
               </li>
               <li className="flex justify-between text-xs">
@@ -134,7 +151,7 @@ const CardanoStats = () => {
                   <i className="fas fa-hand-holding-usd text-blue-400"></i> <strong>ACTIVE STAKE</strong>
                 </span>
                 <span className="text-blue-400 text-sm">
-                  {cardanoStats?.activeStake || previousCardanoStats?.activeStake || 'loading'}
+                  {formatNumber(cardanoStats?.activeStake) || (loading ? <FontAwesomeIcon icon={faSpinner} spin /> : "N/A")}
                 </span>
               </li>
               {/* Bottom section from tokenomicStats */}
@@ -143,7 +160,7 @@ const CardanoStats = () => {
                   <i className="fas fa-coins text-blue-400"></i> <strong>CIRCULATION</strong>
                 </span>
                 <span className="text-blue-400 text-sm">
-                  {tokenomicStats?.circulation || previousTokenomicStats?.circulation || 'loading'}
+                  {formatNumber(tokenomicStats?.circulation) || (loading ? <FontAwesomeIcon icon={faSpinner} spin /> : "N/A")}
                 </span>
               </li>
               <li className="flex justify-between text-xs">
@@ -151,7 +168,7 @@ const CardanoStats = () => {
                   <i className="fas fa-piggy-bank text-blue-400"></i> <strong>TREASURY</strong>
                 </span>
                 <span className="text-blue-400 text-sm">
-                  {tokenomicStats?.treasury || previousTokenomicStats?.treasury || 'loading'}
+                  {formatNumber(tokenomicStats?.treasury) || (loading ? <FontAwesomeIcon icon={faSpinner} spin /> : "N/A")}
                 </span>
               </li>
               <li className="flex justify-between text-xs">
@@ -159,15 +176,15 @@ const CardanoStats = () => {
                   <i className="fas fa-coins text-blue-400"></i> <strong>SUPPLY</strong>
                 </span>
                 <span className="text-blue-400 text-sm">
-                  {tokenomicStats?.supply || previousTokenomicStats?.supply || 'loading'}
+                  {formatNumber(tokenomicStats?.supply) || (loading ? <FontAwesomeIcon icon={faSpinner} spin /> : "N/A")}
                 </span>
               </li>
               <li className="flex justify-between text-xs">
                 <span className="mr-40">
-                  <i className="fas fa-trophy text-blue-400"></i> <strong>RESERVES</strong>
+                  <i className="fas fa-balance-scale text-blue-400"></i> <strong>RESERVES</strong>
                 </span>
                 <span className="text-blue-400 text-sm">
-                  {tokenomicStats?.reserves || previousTokenomicStats?.reserves || 'loading'}
+                  {formatNumber(tokenomicStats?.reserves) || (loading ? <FontAwesomeIcon icon={faSpinner} spin /> : "N/A")}
                 </span>
               </li>
             </ul>
