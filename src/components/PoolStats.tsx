@@ -21,7 +21,7 @@ const PoolStats = () => {
       const stats = await getPoolStats(poolId);
       setPoolStats(stats);
 
-      const tip = await getTip(); 
+      const tip = await getTip();
       setCurrentEpoch(tip.currEpoch);
 
       const count = await getBlocksCount(poolId, tip.currEpoch);
@@ -61,7 +61,10 @@ const PoolStats = () => {
         <p className="text-red-500">Error: {error}</p>
       ) : (
         <div className="max-w-4xl w-full bg-gray-800 rounded-lg shadow-md p-6 mb-4">
-          <h3 className="text-sm font-semibold text-white mb-4">SN₳KE STATISTICS</h3>
+          <h3 className="text-sm font-semibold text-white mb-4 flex items-center">
+            <img src="/snake.png" alt="Snake Icon" className="w-9 h-9 mr-3" />
+            SN₳KE STATISTICS
+          </h3>
           <ul className="text-gray-300 space-y-2">
             <li className="flex justify-between text-xs">
               <span className="mr-40">
