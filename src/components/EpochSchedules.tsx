@@ -84,12 +84,6 @@ export const EpochStats = () => {
                 </span>
                 <span className="text-blue-400 text-sm">{epochData?.maxPerformance}%</span>
               </li>
-              <li className="flex justify-between text-xs gap-x-4">
-                <span style={{ marginRight: '160px' }}>
-                  <i className="fas fa-hand-holding-usd text-blue-400"></i><strong>POOL STAKE</strong>
-                </span>
-                <span className="text-blue-400 text-sm">{formatAda(epochData?.activeStake ?? 0)}</span>
-              </li>
             </ul>
           </div>
         </div>

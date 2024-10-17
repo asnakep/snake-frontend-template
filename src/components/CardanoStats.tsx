@@ -16,7 +16,7 @@ const CardanoStats = () => {
   const fetchCardanoStats = async () => {
     try {
       const stats = await getCardanoStats();
-      setPreviousCardanoStats(cardanoStats); // Store previous stats
+      setPreviousCardanoStats(cardanoStats);
       setCardanoStats(stats);
     } catch (err) {
       setError((err as Error).message);
@@ -26,7 +26,7 @@ const CardanoStats = () => {
   const fetchTipData = async () => {
     try {
       const data = await getTip();
-      setPreviousTipData(tipData); // Store previous tip data
+      setPreviousTipData(tipData);
       setTipData(data);
     } catch (err) {
       setError((err as Error).message);
@@ -36,7 +36,7 @@ const CardanoStats = () => {
   const fetchTokenomicStats = async () => {
     try {
       const stats = await getTokenomicStats();
-      setPreviousTokenomicStats(tokenomicStats); // Store previous tokenomic stats
+      setPreviousTokenomicStats(tokenomicStats);
       setTokenomicStats(stats);
     } catch (err) {
       setError((err as Error).message);
@@ -45,31 +45,48 @@ const CardanoStats = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      setLoading(true); // Set loading to true when fetching data
-      await Promise.all([
-        fetchCardanoStats(),
-        fetchTipData(),
-        fetchTokenomicStats(),
-      ]);
-      setLoading(false); // Set loading to false after data is fetched
+      setLoading(true);
+      await Promise.all([fetchCardanoStats(), fetchTipData(), fetchTokenomicStats()]);
+      setLoading(false);
     };
 
-    fetchData(); // Initial fetch
-
-    const intervalId = setInterval(fetchData, 20000); // Refresh data every 20 seconds
-
-    return () => clearInterval(intervalId); // Cleanup on unmount
+    fetchData();
+    const intervalId = setInterval(fetchData, 20000); // Refresh every 20 seconds
+    return () => clearInterval(intervalId);
   }, []);
+
+  // Calculate epoch progress as a percentage (hardcoded 432000 slots per epoch)
+  const totalSlots = 432000;
+  const epochProgressPercent = ((tipData?.epochSlot / totalSlots) * 100).toFixed(1);
+
+  // Function to format numbers with thousand separators
+  const formatNumber = (num: number): string => {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
 
   return (
     <div className="flex flex-col items-center">
       {error ? (
         <p className="text-red-500">Error: {error}</p>
       ) : (
-        <div className="max-w-4xl w-full bg-gray-800 rounded-lg shadow-md p-6 mb-4"> {/* Updated bg color */}
+        <div className="max-w-4xl w-full bg-gray-800 rounded-lg shadow-md p-6 mb-4">
+          {/* Epoch Progress Bar at the top */}
+          <div className="flex items-center justify-between mb-4">
+            <img src="logo-cardano.svg" alt="Cardano Logo" className="h-12 w-12" />
+            <div className="relative w-64 bg-black-800 h-8 overflow-hidden rounded-sm ml-4">
+              <div
+                className="absolute top-0 left-0 bg-blue-800 h-full rounded-sm"
+                style={{ width: `${epochProgressPercent}%` }}
+              ></div>
+              <div className="absolute inset-0 flex justify-center items-center text-white font-semibold text-lg">
+                <span>Mainnet Epoch {formatNumber(tipData?.currEpoch)} - {epochProgressPercent}%</span>
+              </div>
+            </div>
+          </div>
+
           <div className="mt-2">
-            <h3 className="text-sm font-semibold text-white mb-2">CARDANO MAINNET STATS</h3> {/* Reduced margin-bottom */}
-            <ul className="text-gray-300 space-y-2"> {/* Changed space-y-4 to space-y-2 */}
+            <h3 className="text-sm font-semibold text-white mb-2">CARDANO</h3>
+            <ul className="text-gray-300 space-y-2">
               {/* Top section from getTip */}
               <li className="flex justify-between text-xs">
                 <span className="mr-40">
@@ -131,10 +148,26 @@ const CardanoStats = () => {
               </li>
               <li className="flex justify-between text-xs">
                 <span className="mr-40">
-                  <i className="fas fa-coins text-blue-400"></i> <strong>TREASURY</strong>
+                  <i className="fas fa-piggy-bank text-blue-400"></i> <strong>TREASURY</strong>
                 </span>
                 <span className="text-blue-400 text-sm">
                   {tokenomicStats?.treasury || previousTokenomicStats?.treasury || 'loading'}
+                </span>
+              </li>
+              <li className="flex justify-between text-xs">
+                <span className="mr-40">
+                  <i className="fas fa-coins text-blue-400"></i> <strong>SUPPLY</strong>
+                </span>
+                <span className="text-blue-400 text-sm">
+                  {tokenomicStats?.supply || previousTokenomicStats?.supply || 'loading'}
+                </span>
+              </li>
+              <li className="flex justify-between text-xs">
+                <span className="mr-40">
+                  <i className="fas fa-trophy text-blue-400"></i> <strong>RESERVES</strong>
+                </span>
+                <span className="text-blue-400 text-sm">
+                  {tokenomicStats?.reserves || previousTokenomicStats?.reserves || 'loading'}
                 </span>
               </li>
             </ul>
