@@ -42,7 +42,7 @@ const componentsConfig: ComponentConfig[] = [
   {
     id: "pooldescription",
     component: PoolDescription,
-    position: { top: "100px", left: "30px", position: "fixed" },
+    position: { top: "80px", left: "30px", position: "fixed" },
     style: {},
   },  
   {

@@ -101,7 +101,7 @@ const CardanoStats = () => {
                   <i className="fas fa-clock text-blue-400"></i> <strong>SLOT</strong>
                 </span>
                 <span className="text-blue-400 text-sm">
-                  {tipData?.epochSlot || previousTipData?.epochSlot || 'loading'}
+                  {formatNumber(tipData?.epochSlot || previousTipData?.epochSlot || 0)}
                 </span>
               </li>
               <li className="flex justify-between text-xs">
@@ -109,7 +109,7 @@ const CardanoStats = () => {
                   <i className="fas fa-cube text-blue-400"></i> <strong>BLOCK</strong>
                 </span>
                 <span className="text-blue-400 text-sm">
-                  {tipData?.blockNum || previousTipData?.blockNum || 'loading'}
+                  {formatNumber(tipData?.blockNum || previousTipData?.blockNum || 0)}
                 </span>
               </li>
               {/* Existing cardanoStats values */}
