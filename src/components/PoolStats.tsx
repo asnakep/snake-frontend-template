@@ -66,7 +66,7 @@ const PoolStats = () => {
                 <strong>EPOCH</strong>
               </span>
               <span className="text-blue-400 text-sm">
-                {currentEpoch || 'Loading...'}
+                {currentEpoch || '0'}
               </span>
             </li>
             <li className="flex justify-between text-xs">
@@ -74,7 +74,7 @@ const PoolStats = () => {
                 <strong>MINTED BLOCKS</strong>
               </span>
               <span className="text-blue-400 text-sm">
-                {`${blockCount || 'Loading...'} / ${scheduledBlocks || 'Loading...'}`}
+                {`${blockCount || '0'} / ${scheduledBlocks || '0'}`}
               </span>
             </li>
             <li className="flex justify-between text-xs">
