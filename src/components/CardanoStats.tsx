@@ -60,8 +60,8 @@ const CardanoStats = () => {
   const epochProgressPercent = ((tipData?.epochSlot / totalSlots) * 100).toFixed(1);
 
   // Function to format numbers with thousand separators
-  const formatNumber = (num: number): string => {
-    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  const formatNumber = (num: number | undefined): string => {
+    return num !== undefined ? num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : '';
   };
 
   return (
@@ -71,9 +71,9 @@ const CardanoStats = () => {
       ) : (
         <div className="max-w-4xl w-full bg-gray-800 rounded-lg shadow-md p-6 mb-4">
           {/* Epoch Progress Bar at the top */}
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center justify-between mb-6">
             <img src="logo-cardano.svg" alt="Cardano Logo" className="h-12 w-12" />
-            <div className="relative w-64 bg-black-800 h-8 overflow-hidden rounded-sm ml-4">
+            <div className="relative w-64 bg-black-800 h-8 overflow-hidden rounded-sm ml-2">
               <div
                 className="absolute top-0 left-0 bg-blue-800 h-full rounded-sm"
                 style={{ width: `${epochProgressPercent}%` }}
@@ -85,7 +85,7 @@ const CardanoStats = () => {
           </div>
 
           <div className="mt-2">
-            <h3 className="text-sm font-semibold text-white mb-2">CARDANO</h3>
+            <h3 className="text-sm font-semibold text-white mb-4">CARDANO</h3>
             <ul className="text-gray-300 space-y-2">
               {/* Top section from getTip */}
               <li className="flex justify-between text-xs">
