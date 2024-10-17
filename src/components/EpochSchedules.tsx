@@ -57,7 +57,10 @@ export const EpochStats = () => {
         {/* Vertical layout with both sections in one column */}
         <div className="grid grid-cols-1 gap-4">
           {/* Current Epoch Section */}
-          <h3 className="text-sm font-semibold text-white">BLOCKS PRODUCTION</h3>
+          <h3 className="text-sm font-semibold text-white flex items-center">
+            <img src="/blockchain.png" alt="Blocks Icon" className="w-8 h-8 mr-2" /> {/* Adjust size and margin as needed */}
+            BLOCKS PRODUCTION
+          </h3>
           <div>
             <ul className="text-gray-300 space-y-2"> {/* Reduced spacing from 4 to 2 */}
               <li className="flex justify-between text-xs gap-x-4">
