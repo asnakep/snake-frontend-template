@@ -1,5 +1,7 @@
 import poolId from './variables/poolid';
 import { useState, useEffect } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Import FontAwesomeIcon
+import { faSpinner } from '@fortawesome/free-solid-svg-icons'; // Import the spinner icon
 import { getPoolStats } from './queries/poolStats';
 import { getLifetimeRewards } from './queries/lifetimeRewards';
 import { getTip } from './queries/queryTip';
@@ -66,7 +68,7 @@ const PoolStats = () => {
                 <strong>EPOCH</strong>
               </span>
               <span className="text-blue-400 text-sm">
-                {currentEpoch || '0'}
+                {currentEpoch !== null ? currentEpoch : <FontAwesomeIcon icon={faSpinner} spin />}
               </span>
             </li>
             <li className="flex justify-between text-xs">
@@ -74,7 +76,7 @@ const PoolStats = () => {
                 <strong>MINTED BLOCKS</strong>
               </span>
               <span className="text-blue-400 text-sm">
-                {`${blockCount || '0'} / ${scheduledBlocks || '0'}`}
+                {blockCount !== null && scheduledBlocks !== null ? `${blockCount} / ${scheduledBlocks}` : <FontAwesomeIcon icon={faSpinner} spin />}
               </span>
             </li>
             <li className="flex justify-between text-xs">
@@ -82,7 +84,7 @@ const PoolStats = () => {
                 <strong>LIVE STAKE</strong>
               </span>
               <span className="text-blue-400 text-sm">
-                {poolStats?.liveStake || 'Loading...'}
+                {poolStats?.liveStake !== undefined ? poolStats.liveStake : <FontAwesomeIcon icon={faSpinner} spin />}
               </span>
             </li>
             <li className="flex justify-between text-xs">
@@ -90,7 +92,7 @@ const PoolStats = () => {
                 <strong>ACTIVE STAKE</strong>
               </span>
               <span className="text-blue-400 text-sm">
-                {poolStats?.activeStake || 'Loading...'}
+                {poolStats?.activeStake !== undefined ? poolStats.activeStake : <FontAwesomeIcon icon={faSpinner} spin />}
               </span>
             </li>
             <li className="flex justify-between text-xs">
@@ -98,7 +100,7 @@ const PoolStats = () => {
                 <strong>PLEDGE</strong>
               </span>
               <span className="text-blue-400 text-sm">
-                {poolStats?.pledge || 'Loading...'}
+                {poolStats?.pledge !== undefined ? poolStats.pledge : <FontAwesomeIcon icon={faSpinner} spin />}
               </span>
             </li>
             <li className="flex justify-between text-xs">
@@ -106,7 +108,7 @@ const PoolStats = () => {
                 <strong>SATURATION</strong>
               </span>
               <span className="text-blue-400 text-sm">
-                {poolStats?.liveSaturation !== undefined ? `${poolStats.liveSaturation}%` : 'Loading...'}
+                {poolStats?.liveSaturation !== undefined ? `${poolStats.liveSaturation}%` : <FontAwesomeIcon icon={faSpinner} spin />}
               </span>
             </li>
             <li className="flex justify-between text-xs">
@@ -114,7 +116,7 @@ const PoolStats = () => {
                 <strong>DELEGATORS</strong>
               </span>
               <span className="text-blue-400 text-sm">
-                {poolStats?.liveDelegators || 'Loading...'}
+                {poolStats?.liveDelegators !== undefined ? poolStats.liveDelegators : <FontAwesomeIcon icon={faSpinner} spin />}
               </span>
             </li>
             <li className="flex justify-between text-xs">
@@ -122,7 +124,7 @@ const PoolStats = () => {
                 <strong>EPOCH COST</strong>
               </span>
               <span className="text-blue-400 text-sm">
-                {poolStats?.fixedCost || 'Loading...'}
+                {poolStats?.fixedCost !== undefined ? poolStats.fixedCost : <FontAwesomeIcon icon={faSpinner} spin />}
               </span>
             </li>
             <li className="flex justify-between text-xs">
@@ -130,7 +132,7 @@ const PoolStats = () => {
                 <strong>MARGIN</strong>
               </span>
               <span className="text-blue-400 text-sm">
-                {poolStats?.margin !== undefined ? `${poolStats.margin}%` : 'Loading...'}
+                {poolStats?.margin !== undefined ? `${poolStats.margin}%` : <FontAwesomeIcon icon={faSpinner} spin />}
               </span>
             </li>
             <li className="flex justify-between text-xs">
@@ -138,7 +140,7 @@ const PoolStats = () => {
                 <strong>LIFETIME BLOCKS</strong>
               </span>
               <span className="text-blue-400 text-sm">
-                {poolStats?.blockCount || 'Loading...'}
+                {poolStats?.blockCount !== undefined ? poolStats.blockCount : <FontAwesomeIcon icon={faSpinner} spin />}
               </span>
             </li>
             <li className="flex justify-between text-xs">
@@ -146,7 +148,7 @@ const PoolStats = () => {
                 <strong>LIFETIME REWARDS</strong>
               </span>
               <span className="text-blue-400 text-sm">
-                {lifetimeRewards !== null ? lifetimeRewards : 'Loading...'}
+                {lifetimeRewards !== null ? lifetimeRewards : <FontAwesomeIcon icon={faSpinner} spin />}
               </span>
             </li>
           </ul>
