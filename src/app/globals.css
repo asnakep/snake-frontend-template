@@ -1,3 +1,10 @@
     @tailwind base;
     @tailwind components;
     @tailwind utilities;
+
+    .custom-font {
+        font-family: 'ValuesFont', 'Courier New', Courier, monospace;
+        font-size: 0.885rem;
+        color: #60a5fa;
+        font-weight: bold;
+      }
