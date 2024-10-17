@@ -54,7 +54,7 @@ const componentsConfig: ComponentConfig[] = [
   {
     id: "epochschedules",
     component: EpochSchedules,
-    position: { bottom: "260px", left: "540px", position: "fixed" },
+    position: { bottom: "266px", left: "540px", position: "fixed" },
     style: {},
   },
   {
@@ -66,7 +66,7 @@ const componentsConfig: ComponentConfig[] = [
   {
     id: "cardanostats",
     component: CardanoStats,
-    position: { bottom: "70px", right: "80px", position: "fixed" },
+    position: { bottom: "70px", right: "60px", position: "fixed" },
     style: {},
   },
 ];
