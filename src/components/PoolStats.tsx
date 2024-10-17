@@ -70,7 +70,7 @@ const PoolStats = () => {
               <span className="mr-40">
                 <strong>EPOCH</strong>
               </span>
-              <span className="text-blue-400 text-sm">
+              <span className="text-blue-400 text-sm custom-font">
                 {currentEpoch !== null ? currentEpoch : <FontAwesomeIcon icon={faSpinner} spin />}
               </span>
             </li>
@@ -78,7 +78,7 @@ const PoolStats = () => {
               <span className="mr-40">
                 <strong>MINTED BLOCKS</strong>
               </span>
-              <span className="text-blue-400 text-sm">
+              <span className="text-blue-400 text-sm custom-font">
                 {blockCount !== null && scheduledBlocks !== null ? `${blockCount} / ${scheduledBlocks}` : <FontAwesomeIcon icon={faSpinner} spin />}
               </span>
             </li>
@@ -86,7 +86,7 @@ const PoolStats = () => {
               <span className="mr-40">
                 <strong>LIVE STAKE</strong>
               </span>
-              <span className="text-blue-400 text-sm">
+              <span className="text-blue-400 text-sm custom-font">
                 {poolStats?.liveStake !== undefined ? poolStats.liveStake : <FontAwesomeIcon icon={faSpinner} spin />}
               </span>
             </li>
@@ -94,7 +94,7 @@ const PoolStats = () => {
               <span className="mr-40">
                 <strong>ACTIVE STAKE</strong>
               </span>
-              <span className="text-blue-400 text-sm">
+              <span className="text-blue-400 text-sm custom-font">
                 {poolStats?.activeStake !== undefined ? poolStats.activeStake : <FontAwesomeIcon icon={faSpinner} spin />}
               </span>
             </li>
@@ -102,7 +102,7 @@ const PoolStats = () => {
               <span className="mr-40">
                 <strong>PLEDGE</strong>
               </span>
-              <span className="text-blue-400 text-sm">
+              <span className="text-blue-400 text-sm custom-font">
                 {poolStats?.pledge !== undefined ? poolStats.pledge : <FontAwesomeIcon icon={faSpinner} spin />}
               </span>
             </li>
@@ -110,7 +110,7 @@ const PoolStats = () => {
               <span className="mr-40">
                 <strong>SATURATION</strong>
               </span>
-              <span className="text-blue-400 text-sm">
+              <span className="text-blue-400 text-sm custom-font">
                 {poolStats?.liveSaturation !== undefined ? `${poolStats.liveSaturation}%` : <FontAwesomeIcon icon={faSpinner} spin />}
               </span>
             </li>
@@ -118,7 +118,7 @@ const PoolStats = () => {
               <span className="mr-40">
                 <strong>DELEGATORS</strong>
               </span>
-              <span className="text-blue-400 text-sm">
+              <span className="text-blue-400 text-sm custom-font">
                 {poolStats?.liveDelegators !== undefined ? poolStats.liveDelegators : <FontAwesomeIcon icon={faSpinner} spin />}
               </span>
             </li>
@@ -126,7 +126,7 @@ const PoolStats = () => {
               <span className="mr-40">
                 <strong>EPOCH COST</strong>
               </span>
-              <span className="text-blue-400 text-sm">
+              <span className="text-blue-400 text-sm custom-font">
                 {poolStats?.fixedCost !== undefined ? poolStats.fixedCost : <FontAwesomeIcon icon={faSpinner} spin />}
               </span>
             </li>
@@ -134,7 +134,7 @@ const PoolStats = () => {
               <span className="mr-40">
                 <strong>MARGIN</strong>
               </span>
-              <span className="text-blue-400 text-sm">
+              <span className="text-blue-400 text-sm custom-font">
                 {poolStats?.margin !== undefined ? `${poolStats.margin}%` : <FontAwesomeIcon icon={faSpinner} spin />}
               </span>
             </li>
@@ -142,7 +142,7 @@ const PoolStats = () => {
               <span className="mr-40">
                 <strong>LIFETIME BLOCKS</strong>
               </span>
-              <span className="text-blue-400 text-sm">
+              <span className="text-blue-400 text-sm custom-font">
                 {poolStats?.blockCount !== undefined ? poolStats.blockCount : <FontAwesomeIcon icon={faSpinner} spin />}
               </span>
             </li>
@@ -150,7 +150,7 @@ const PoolStats = () => {
               <span className="mr-40">
                 <strong>LIFETIME REWARDS</strong>
               </span>
-              <span className="text-blue-400 text-sm">
+              <span className="text-blue-400 text-sm custom-font">
                 {lifetimeRewards !== null ? lifetimeRewards : <FontAwesomeIcon icon={faSpinner} spin />}
               </span>
             </li>

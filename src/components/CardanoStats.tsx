@@ -106,7 +106,7 @@ const CardanoStats = () => {
                 <span className="mr-60">
                   <i className="fas fa-calendar-alt text-blue-400"></i> <strong>EPOCH</strong>
                 </span>
-                <span className="text-blue-400 text-sm">
+                <span className="text-blue-400 text-sm custom-font">
                   {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : formatNumber(epoch) || "N/A"}
                 </span>
               </li>
@@ -114,7 +114,7 @@ const CardanoStats = () => {
                 <span className="mr-60">
                   <i className="fas fa-clock text-blue-400"></i> <strong>SLOT</strong>
                 </span>
-                <span className="text-blue-400 text-sm">
+                <span className="text-blue-400 text-sm custom-font">
                   {formatNumber(tipData?.epochSlot) || (loading ? <FontAwesomeIcon icon={faSpinner} spin /> : "N/A")}
                 </span>
               </li>
@@ -122,7 +122,7 @@ const CardanoStats = () => {
                 <span className="mr-60">
                   <i className="fas fa-cube text-blue-400"></i> <strong>BLOCK</strong>
                 </span>
-                <span className="text-blue-400 text-sm">
+                <span className="text-blue-400 text-sm custom-font">
                   {formatNumber(tipData?.blockNum) || (loading ? <FontAwesomeIcon icon={faSpinner} spin /> : "N/A")}
                 </span>
               </li>
@@ -131,7 +131,7 @@ const CardanoStats = () => {
                 <span className="mr-60">
                   <i className="fas fa-list text-blue-400"></i> <strong>TXS COUNT</strong>
                 </span>
-                <span className="text-blue-400 text-sm">
+                <span className="text-blue-400 text-sm custom-font">
                   {formatNumber(cardanoStats?.txCount) || (loading ? <FontAwesomeIcon icon={faSpinner} spin /> : "N/A")}
                 </span>
               </li>
@@ -139,7 +139,7 @@ const CardanoStats = () => {
                 <span className="mr-60 mb-4">
                   <i className="fas fa-cube text-blue-400"></i> <strong>BLOCK COUNT</strong>
                 </span>
-                <span className="text-blue-400 text-sm">
+                <span className="text-blue-400 text-sm custom-font">
                   {formatNumber(cardanoStats?.blkCount) || (loading ? <FontAwesomeIcon icon={faSpinner} spin /> : "N/A")}
                 </span>
               </li>
@@ -152,40 +152,40 @@ const CardanoStats = () => {
                 <span className="mr-60 mt-2">
                   <i className="fas fa-coins text-blue-400"></i> <strong>CIRCULATION</strong>
                 </span>
-                <span className="text-blue-400 text-sm mt-2">
+                <span className="text-blue-400 text-sm mt-2 custom-font">
                   {formatNumber(tokenomicStats?.circulation) || (loading ? <FontAwesomeIcon icon={faSpinner} spin /> : "N/A")}
                 </span>
               </li>
               <li className="flex justify-between text-xs">
-                <span className="mr-60">
-                  <i className="fas fa-piggy-bank text-blue-400"></i> <strong>TREASURY</strong>
-                </span>
-                <span className="text-blue-400 text-sm">
-                  {formatNumber(tokenomicStats?.treasury) || (loading ? <FontAwesomeIcon icon={faSpinner} spin /> : "N/A")}
-                </span>
-              </li>
-              <li className="flex justify-between text-xs">
-                <span className="mr-60">
+                <span className="mr-60 mt-2">
                   <i className="fas fa-boxes text-blue-400"></i> <strong>SUPPLY</strong>
                 </span>
-                <span className="text-blue-400 text-sm">
+                <span className="text-blue-400 text-sm custom-font">
                   {formatNumber(tokenomicStats?.supply) || (loading ? <FontAwesomeIcon icon={faSpinner} spin /> : "N/A")}
                 </span>
               </li>
               <li className="flex justify-between text-xs">
-                <span className="mr-60">
-                  <i className="fas fa-receipt text-blue-400"></i> <strong>REWARD</strong>
+                <span className="mr-60 mt-2">
+                  <i className="fas fa-receipt text-blue-400"></i> <strong>RESERVES</strong>
                 </span>
-                <span className="text-blue-400 text-sm">
-                  {formatNumber(tokenomicStats?.reward) || (loading ? <FontAwesomeIcon icon={faSpinner} spin /> : "N/A")}
+                <span className="text-blue-400 text-sm custom-font">
+                  {formatNumber(tokenomicStats?.reserves) || (loading ? <FontAwesomeIcon icon={faSpinner} spin /> : "N/A")}
+                </span>
+              </li>              
+              <li className="flex justify-between text-xs">
+                <span className="mr-60 mt-2">
+                  <i className="fas fa-piggy-bank text-blue-400"></i> <strong>TREASURY</strong>
+                </span>
+                <span className="text-blue-400 text-sm custom-font">
+                  {formatNumber(tokenomicStats?.treasury) || (loading ? <FontAwesomeIcon icon={faSpinner} spin /> : "N/A")}
                 </span>
               </li>
               <li className="flex justify-between text-xs">
-                <span className="mr-60">
-                  <i className="fas fa-shield-alt text-blue-400"></i> <strong>RESERVES</strong>
+                <span className="mr-60 mt-2">
+                  <i className="fas fa-receipt text-blue-400"></i> <strong>REWARD</strong>
                 </span>
-                <span className="text-blue-400 text-sm">
-                  {formatNumber(tokenomicStats?.reserves) || (loading ? <FontAwesomeIcon icon={faSpinner} spin /> : "N/A")}
+                <span className="text-blue-400 text-sm custom-font">
+                  {formatNumber(tokenomicStats?.reward) || (loading ? <FontAwesomeIcon icon={faSpinner} spin /> : "N/A")}
                 </span>
               </li>
             </ul>
