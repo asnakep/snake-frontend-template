@@ -12,7 +12,6 @@ const CardanoStats = () => {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
-  // State to retain previous values
   const [previousEpoch, setPreviousEpoch] = useState<number | null>(null);
   const [previousEpochSlot, setPreviousEpochSlot] = useState<number | null>(null);
 
@@ -51,26 +50,21 @@ const CardanoStats = () => {
     };
 
     fetchData();
-    const intervalId = setInterval(fetchTipData, 20000); // Only refresh tipData every 20 seconds
+    const intervalId = setInterval(fetchTipData, 20000);
     return () => clearInterval(intervalId);
   }, []);
 
-  // Calculate epoch progress as a percentage (hardcoded 432000 slots per epoch)
   const totalSlots = 432000;
   const epochSlot = loading ? previousEpochSlot : tipData?.epochSlot;
   const epoch = loading ? previousEpoch : tipData?.currEpoch;
   const epochProgressPercent = typeof epochSlot === 'number' ? ((epochSlot / totalSlots) * 100).toFixed(1) : "N/A";
 
-  // Update previous values when new data is fetched
   useEffect(() => {
     if (tipData) {
       setPreviousEpoch(epoch);
-      setPreviousEpochSlot(tipData.epochSlot);
-      setPreviousEpochSlot(tipData.blockNum);
     }
   }, [tipData]);
 
-  // Function to format numbers with thousand separators
   const formatNumber = (num: number | undefined | null): string => {
     return num != null ? num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : '';
   };
@@ -83,19 +77,22 @@ const CardanoStats = () => {
         <div className="max-w-4xl w-full bg-gray-800 rounded-lg shadow-md p-6 mb-4">
           {/* Epoch Progress Bar at the top */}
           <div className="flex items-center justify-between mb-6">
-            <img src="logo-cardano.svg" alt="Cardano Logo" className="h-12 w-12" />
-            <div className="relative w-64 bg-black-800 h-8 overflow-hidden rounded-sm ml-2">
+            <div className="flex items-center">
+              <img src="logo-cardano.svg" alt="Cardano Logo" className="h-12 w-12" />
+              <h3 className="text-white text-lg font-bold ml-4">CARDANO</h3>
+            </div>
+            <div className="relative w-60 bg-black-800 h-7 overflow-hidden rounded-sm ml-2">
               <div
-                className="absolute top-0 left-0 bg-blue-800 h-full rounded-sm"
+                className="absolute top-0 left-0 bg-blue-800 h-full rounded-sm ml-16"
                 style={{ width: typeof epochProgressPercent === 'string' && epochProgressPercent !== "N/A" ? `${epochProgressPercent}%` : "0%" }}
               ></div>
-              <div className="absolute inset-0 flex justify-center items-center text-white font-semibold text-lg">
-                <span className="mr-20">
+              <div className="absolute inset-0 flex justify-center items-center text-white font-semibold text-sm">
+                <span className="px-6">
                   Epoch {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : formatNumber(epoch || "N/A")}
                 </span>
               </div>
-              <div className="absolute inset-0 flex justify-end items-center pr-2 text-white font-semibold text-lg">
-                <span className="mr-14">
+              <div className="absolute inset-0 flex justify-end items-center pr-2 text-white font-semibold text-sm">
+                <span className="px-8">
                   {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : `${epochProgressPercent}%`}
                 </span>
               </div>
@@ -103,7 +100,6 @@ const CardanoStats = () => {
           </div>
 
           <div className="mt-2">
-            <h3 className="text-sm font-semibold text-white mb-4">CARDANO</h3>
             <ul className="text-gray-300 space-y-2">
               {/* Top section from getTip */}
               <li className="flex justify-between text-xs">
@@ -186,7 +182,7 @@ const CardanoStats = () => {
               </li>
               <li className="flex justify-between text-xs">
                 <span className="mr-60">
-                  <i className="fas fa-user-shield text-blue-400"></i> <strong>RESERVES</strong>
+                  <i className="fas fa-shield-alt text-blue-400"></i> <strong>RESERVES</strong>
                 </span>
                 <span className="text-blue-400 text-sm">
                   {formatNumber(tokenomicStats?.reserves) || (loading ? <FontAwesomeIcon icon={faSpinner} spin /> : "N/A")}
