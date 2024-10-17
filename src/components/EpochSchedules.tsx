@@ -61,25 +61,25 @@ export const EpochStats = () => {
           <div>
             <ul className="text-gray-300 space-y-2"> {/* Reduced spacing from 4 to 2 */}
               <li className="flex justify-between text-xs gap-x-4">
-                <span style={{ marginRight: '160px' }}>
+                <span style={{ marginRight: '200px' }}>
                   <i className="fas fa-calendar-day text-blue-400"></i><strong>EPOCH</strong>
                 </span>
                 <span className="text-blue-400 text-sm">{epochData?.epoch}</span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
-                <span style={{ marginRight: '160px' }}>
-                  <i className="fas fa-cubes text-blue-400"></i><strong>SCHEDULED BLOCKS</strong>
+                <span style={{ marginRight: '200px' }}>
+                  <i className="fas fa-cubes text-blue-400"></i><strong>ASSIGNED</strong>
                 </span>
                 <span className="text-blue-400 text-sm">{epochData?.epochSlots}</span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
-                <span style={{ marginRight: '160px' }}>
-                  <i className="fas fa-chart-bar text-blue-400"></i><strong>BLOCKS IDEAL</strong>
+                <span style={{ marginRight: '200px' }}>
+                  <i className="fas fa-chart-bar text-blue-400"></i><strong>EXPECTED</strong>
                 </span>
-                <span className="text-blue-400 text-sm">{epochData?.epochSlotsIdeal}</span>
+                <span className="text-blue-400 text-sm">{epochData?.epochSlotsIdeal !== undefined ? Math.round(epochData.epochSlotsIdeal) : null}</span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
-                <span style={{ marginRight: '160px' }}>
+                <span style={{ marginRight: '200px' }}>
                   <i className="fas fa-trophy text-blue-400"></i><strong>LUCK</strong>
                 </span>
                 <span className="text-blue-400 text-sm">{epochData?.maxPerformance}%</span>

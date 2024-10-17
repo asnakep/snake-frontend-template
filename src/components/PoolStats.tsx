@@ -1,12 +1,12 @@
 import poolId from './variables/poolid';
 import { useState, useEffect } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Import FontAwesomeIcon
-import { faSpinner } from '@fortawesome/free-solid-svg-icons'; // Import the spinner icon
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { getPoolStats } from './queries/poolStats';
 import { getLifetimeRewards } from './queries/lifetimeRewards';
 import { getTip } from './queries/queryTip';
-import { getBlocksCount } from './queries/blocksCount'; 
-import { fetchEpochSchedules } from './queries/epochSchedules';
+import { getBlocksCount } from './queries/blocksCount';
+import { fetchEpochSchedules } from './queries/epochSchedules'; // Importing fetchEpochSchedules
 
 const PoolStats = () => {
   const [poolStats, setPoolStats] = useState<any>(null);
@@ -22,13 +22,13 @@ const PoolStats = () => {
       setPoolStats(stats);
 
       const tip = await getTip(); 
-      setCurrentEpoch(tip.currEpoch); // Fetch current epoch
+      setCurrentEpoch(tip.currEpoch);
 
-      const count = await getBlocksCount(poolId, tip.currEpoch); // Fetch minted blocks
+      const count = await getBlocksCount(poolId, tip.currEpoch);
       setBlockCount(count);
 
-      const epochData = await fetchEpochSchedules(); // Fetch current epoch scheduled blocks
-      setScheduledBlocks(epochData.current.epochSlots); // Set the scheduled blocks
+      const epochData = await fetchEpochSchedules(); // Preloading the epoch schedule
+      setScheduledBlocks(epochData.current.epochSlots);
     } catch (err) {
       setError((err as Error).message);
     }
@@ -50,7 +50,7 @@ const PoolStats = () => {
     const intervalId = setInterval(() => {
       fetchPoolStats();
       fetchLifetimeRewards();
-    }, 60000);
+    }, 60000); // Refreshes the data every 60 seconds
 
     return () => clearInterval(intervalId);
   }, []);
