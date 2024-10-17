@@ -89,12 +89,12 @@ const CardanoStats = () => {
                 style={{ width: typeof epochProgressPercent === 'string' && epochProgressPercent !== "N/A" ? `${epochProgressPercent}%` : "0%" }}
               ></div>
               <div className="absolute inset-0 flex justify-center items-center text-white font-semibold text-lg">
-                <span>
+                <span className="mr-20">
                   Epoch {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : formatNumber(epoch || "N/A")}
                 </span>
               </div>
               <div className="absolute inset-0 flex justify-end items-center pr-2 text-white font-semibold text-lg">
-                <span className="m-2">
+                <span className="mr-14">
                   {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : `${epochProgressPercent}%`}
                 </span>
               </div>
