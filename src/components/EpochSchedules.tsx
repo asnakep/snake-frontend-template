@@ -12,7 +12,7 @@ interface EpochData {
 }
 
 export const EpochStats = () => {
-  const [epochData, setEpochData] = useState<EpochData | null>(null); // Updated state to only handle current epoch data
+  const [epochData, setEpochData] = useState<EpochData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -20,7 +20,7 @@ export const EpochStats = () => {
     const getData = async () => {
       try {
         const data = await fetchEpochSchedules();
-        setEpochData(data.current); // Set only the current epoch data
+        setEpochData(data.current);
       } catch (error) {
         setError('Failed to fetch epoch data.');
       } finally {
@@ -36,7 +36,7 @@ export const EpochStats = () => {
       <div className="flex flex-col items-center">
         <div className="max-w-4xl w-full bg-gray-800 rounded-lg shadow-md p-6 mb-4">
           <h3 className="text-sm font-semibold text-white">BLOCKS PRODUCTION</h3>
-          <div className="space-y-2"> {/* Reduced spacing from 4 to 2 */}
+          <div className="space-y-2">
             {[...Array(5)].map((_, index) => (
               <div key={index} className="flex justify-between text-xs gap-x-4">
                 <span className="text-blue-400 text-sm">Loading...</span>
@@ -53,16 +53,14 @@ export const EpochStats = () => {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="max-w-4xl w-full bg-gray-800 rounded-lg shadow-md p-6 mb-4"> {/* Changed background color to grey */}
-        {/* Vertical layout with both sections in one column */}
+      <div className="max-w-4xl w-full bg-gray-800 rounded-lg shadow-md p-6 mb-4">
         <div className="grid grid-cols-1 gap-4">
-          {/* Current Epoch Section */}
           <h3 className="text-sm font-semibold text-white flex items-center">
-            <img src="/block.png" alt="Blocks Icon" className="w-9 h-9 mr-3" /> {/* Adjust size and margin as needed */}
+            <img src="/block.png" alt="Blocks Icon" className="w-9 h-9 mr-3" />
             BLOCKS PRODUCTION
           </h3>
           <div>
-            <ul className="text-gray-300 space-y-2"> {/* Reduced spacing from 4 to 2 */}
+            <ul className="text-gray-300 space-y-2">
               <li className="flex justify-between text-xs gap-x-4">
                 <span style={{ marginRight: '200px' }}>
                   <i className="fas fa-calendar-day text-blue-400"></i><strong>EPOCH</strong>
