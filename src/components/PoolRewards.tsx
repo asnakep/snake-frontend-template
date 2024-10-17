@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getLastRewards } from './queries/lastRewards'; // Import the function
+import { getLastRewards } from './queries/lastRewards';
 import poolId from './variables/poolid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
@@ -12,7 +12,7 @@ const PoolRewards = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const rewards = await getLastRewards(poolId); // Fetch the rewards data
+        const rewards = await getLastRewards(poolId);
         setRewardsData(rewards);
       } catch (error) {
         setError('Failed to fetch rewards data.');
