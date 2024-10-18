@@ -1,16 +1,31 @@
 import { useState, useEffect } from 'react';
-import { getAdaPrice } from './queries/adaPrice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
+// Define the type for the ADA price data
+interface AdaPrice {
+  rank: number;
+  price: string;
+  marketCap: string;
+}
+
+// Define a function to fetch the ADA price from the API
+const fetchAdaPrice = async (): Promise<AdaPrice> => {
+  const response = await fetch('/api/adaPrice'); // Fetch from the API route
+  if (!response.ok) {
+    throw new Error('Failed to fetch ADA price');
+  }
+  return await response.json(); // Return the JSON response
+};
+
 const AdaPricePanel = () => {
-  const [adaPrice, setAdaPrice] = useState<any>(null);
+  const [adaPrice, setAdaPrice] = useState<AdaPrice | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const fetchAdaPrice = async () => {
+  const getAdaPrice = async () => {
     try {
-      const priceData = await getAdaPrice();
+      const priceData = await fetchAdaPrice(); // Fetch the ADA price
       setAdaPrice(priceData);
       setLoading(false);
     } catch (err) {
@@ -20,8 +35,8 @@ const AdaPricePanel = () => {
   };
 
   useEffect(() => {
-    fetchAdaPrice();
-    const intervalId = setInterval(fetchAdaPrice, 1800000); // Refresh every 30 minutes
+    getAdaPrice(); // Fetch the price when the component mounts
+    const intervalId = setInterval(getAdaPrice, 1800000); // Refresh every 30 minutes
     return () => clearInterval(intervalId);
   }, []);
 
@@ -51,7 +66,7 @@ const AdaPricePanel = () => {
             </li>
             <li className="flex justify-between text-xs">
               <span style={{ marginRight: '194px' }} className="mt-1">
-                <i className="fas fa-dollar-sign text-blue-400"></i> <strong>PRICE (USD)</strong>
+                <i className="fas fa-dollar-sign text-blue-400"></i> <strong>PRICE</strong>
               </span>
               <span className="text-blue-400 text-sm custom-font">
                 {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : `$${adaPrice?.price || "N/A"}`}
@@ -62,7 +77,7 @@ const AdaPricePanel = () => {
                 <i className="fas fa-landmark text-blue-400"></i> <strong>MARKET CAP</strong>
               </span>
               <span className="text-blue-400 text-sm custom-font">
-                {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : `$${formatNumber(adaPrice?.marketCap) || "N/A"}`}
+                {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : `$${formatNumber(Number(adaPrice?.marketCap)) || "N/A"}`}
               </span>
             </li>
           </ul>
