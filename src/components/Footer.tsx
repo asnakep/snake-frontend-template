@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="flex space-x-8 items-center">
           <Link href="https://gov.tools/connected/drep_directory/drep1axjcgsgh9pc38sg4gnjgv2scpdzu5fjfkmg6pa5g9e5h7dkqusm" target="_blank" rel="noopener noreferrer">
             <Image
-              className="w-auto h-auto dark:drop-shadow-[0_0_0.3rem_#ffffff70]"
+              className="dark:drop-shadow-[0_0_0.3rem_#ffffff70]"
               src="logo-govtool.svg"
               alt="Govtool Logo"
               width={16}
