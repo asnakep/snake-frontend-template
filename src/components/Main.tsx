@@ -24,7 +24,7 @@ const PoolStats = dynamic(() => import("./PoolStats"), { ssr: false });
 const PoolRewards = dynamic(() => import("./PoolRewards"), { ssr: false });
 const EpochSchedules = dynamic(() => import("./EpochSchedules"), { ssr: false });
 const CardanoStats = dynamic(() => import("./CardanoStats"), { ssr: false });
-const TokenomicsPanel = dynamic(() => import("./TokenomicsPanel"), { ssr: false });
+const TokenomicsPanel = dynamic(() => import("./Tokenomics"), { ssr: false });
 
 const componentsConfig: ComponentConfig[] = [
   {
@@ -70,9 +70,9 @@ const componentsConfig: ComponentConfig[] = [
     style: {},
   },
   {
-    id: "tokenomics",
+    id: "tokenomicspanel",
     component: TokenomicsPanel,
-    position: { bottom: "160px", right: "60px", position: "fixed" },
+    position: { bottom: "80px", right: "60px", position: "fixed" },
     style: {},
   },  
 ];
