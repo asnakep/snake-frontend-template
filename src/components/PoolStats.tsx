@@ -50,7 +50,7 @@ const PoolStats = () => {
     const intervalId = setInterval(() => {
       fetchPoolStats();
       fetchLifetimeRewards();
-    }, 60000); // Refreshes the data every 60 seconds
+    }, 1800000); // Refreshes the data every 30 minutes
 
     return () => clearInterval(intervalId);
   }, []);

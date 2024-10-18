@@ -79,21 +79,21 @@ const PoolRewards = () => {
               <i className="fas fa-calendar-day text-blue-400"></i>
               <strong>EPOCH</strong>
             </span>
-            <span className="custom-font">{rewardsData?.epoch}</span> {/* Apply custom font class */}
+            <span className="custom-font">{rewardsData?.epoch}</span>
           </li>
           <li className="flex justify-between text-xs gap-x-4">
             <span style={{ marginRight: '180px' }}>
               <i className="fas fa-coins text-blue-400"></i>
               <strong>TOTAL</strong>
             </span>
-            <span className="custom-font">{rewardsData?.rewards}</span> {/* Apply custom font class */}
+            <span className="custom-font">{rewardsData?.rewards}</span>
           </li>
           <li className="flex justify-between text-xs gap-x-4">
             <span style={{ marginRight: '180px' }}>
               <i className="fas fa-percentage text-blue-400"></i>
               <strong>EPOCH ROS</strong>
             </span>
-            <span className="custom-font">{rewardsData?.ros}%</span> {/* Apply custom font class */}
+            <span className="custom-font">{rewardsData?.ros}%</span>
           </li>
         </ul>
       </div>

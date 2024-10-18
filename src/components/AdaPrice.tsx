@@ -46,7 +46,7 @@ const AdaPricePanel = () => {
             </li>
             <li className="flex justify-between text-xs">
               <span className="mr-40 mt-2">
-                <i className="fas fa-dollar-sign text-blue-400"></i> <strong>PRICE (USD)</strong>
+                <i className="fas fa-dollar-sign text-blue-400"></i> <strong>PRICE</strong>
               </span>
               <span className="text-blue-400 text-sm custom-font">
                 {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : adaPrice?.price || "N/A"}
