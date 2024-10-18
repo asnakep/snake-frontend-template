@@ -37,7 +37,7 @@ const AdaPricePanel = () => {
         <div>
           {/* Header with ADA icon and title */}
           <div className="flex items-center mb-4">
-            <img src="/austral.png" alt="ADA Icon" className="w-11 h-11 mr-2" />
+            <img src="/austral.png" alt="ADA Icon" className="w-11 h-11 mr-1" />
             <h2 className="text-lg text-gray-300 font-bold ml-3">ADA</h2>
           </div>
 
