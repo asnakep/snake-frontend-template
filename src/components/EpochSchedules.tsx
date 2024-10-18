@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { fetchEpochSchedules } from './queries/epochSchedules';
-import formatAda from './variables/formatAda';
 
 interface EpochData {
   epoch: number;

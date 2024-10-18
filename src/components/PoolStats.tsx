@@ -6,7 +6,7 @@ import { getPoolStats } from './queries/poolStats';
 import { getLifetimeRewards } from './queries/lifetimeRewards';
 import { getTip } from './queries/queryTip';
 import { getBlocksCount } from './queries/blocksCount';
-import { fetchEpochSchedules } from './queries/epochSchedules'; // Importing fetchEpochSchedules
+import { fetchEpochSchedules } from './queries/epochSchedules';
 
 const PoolStats = () => {
   const [poolStats, setPoolStats] = useState<any>(null);
@@ -27,7 +27,7 @@ const PoolStats = () => {
       const count = await getBlocksCount(poolId, tip.currEpoch);
       setBlockCount(count);
 
-      const epochData = await fetchEpochSchedules(); // Preloading the epoch schedule
+      const epochData = await fetchEpochSchedules();
       setScheduledBlocks(epochData.current.epochSlots);
     } catch (err) {
       setError((err as Error).message);
