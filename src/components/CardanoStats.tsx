@@ -92,7 +92,7 @@ const CardanoStats = () => {
                 </span>
               </div>
               <div className="absolute inset-0 flex justify-end items-center pr-2 text-white font-semibold text-sm">
-                <span className="px-8">
+                <span className="px-6">
                   {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : `${epochProgressPercent}%`}
                 </span>
               </div>

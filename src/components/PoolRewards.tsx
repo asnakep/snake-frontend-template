@@ -28,7 +28,7 @@ const PoolRewards = () => {
     <div className="flex flex-col items-center">
       <div className="max-w-4xl w-full bg-gray-800 rounded-lg shadow-md p-6 mb-2">
         <h3 className="text-sm font-semibold text-white mb-4 flex items-center">
-          <img src="/austral.svg" alt="Rewards Icon" className="w-8 h-8 mr-2" />
+          <img src="/austral.png" alt="Rewards Icon" className="w-8 h-8 mr-2" />
           LAST REWARDS
         </h3>
         <ul className="text-gray-300 space-y-2">
