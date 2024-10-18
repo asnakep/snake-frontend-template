@@ -35,7 +35,7 @@ const TokenomicsPanel = () => {
         <div>
           <ul className="text-gray-300 space-y-2">
             <li className="flex justify-between text-xs">
-              <span className="mr-60 mt-2">
+              <span className="mr-40 mt-2">
                 <i className="fas fa-coins text-blue-400"></i> <strong>CIRCULATION</strong>
               </span>
               <span className="text-blue-400 text-sm mt-2 custom-font">
@@ -43,7 +43,7 @@ const TokenomicsPanel = () => {
               </span>
             </li>
             <li className="flex justify-between text-xs">
-              <span className="mr-60 mt-2">
+              <span className="mr-40 mt-2">
                 <i className="fas fa-boxes text-blue-400"></i> <strong>SUPPLY</strong>
               </span>
               <span className="text-blue-400 text-sm custom-font">
@@ -51,7 +51,7 @@ const TokenomicsPanel = () => {
               </span>
             </li>
             <li className="flex justify-between text-xs">
-              <span className="mr-60 mt-2">
+              <span className="mr-40 mt-2">
                 <i className="fas fa-piggy-bank text-blue-400"></i> <strong>TREASURY</strong>
               </span>
               <span className="text-blue-400 text-sm custom-font">
