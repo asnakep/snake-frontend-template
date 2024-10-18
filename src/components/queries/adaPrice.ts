@@ -1,3 +1,6 @@
+import coinMarketcapApiKey from '../variables/coinMCAPKey'; // new not used yet
+
+
 export const getAdaPrice = async () => {
     try {
       const response = await fetch('https://api.coinpaprika.com/v1/tickers/ada-cardano');
