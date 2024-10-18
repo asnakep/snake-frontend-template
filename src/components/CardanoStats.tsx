@@ -64,7 +64,6 @@ const CardanoStats = () => {
         <p className="text-red-500">Error: {error}</p>
       ) : (
         <div className="max-w-4xl w-full bg-gray-800 rounded-lg shadow-md p-4 mb-4">
-          {/* Epoch Progress Bar at the top */}
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center">
               <img src="logo-cardano.svg" alt="Cardano Logo" className="h-12 w-12" />

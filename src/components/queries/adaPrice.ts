@@ -8,8 +8,8 @@ export const getAdaPrice = async () => {
   
         return {
           rank: data.rank,
-          price: Number(usdQuote.price).toFixed(2), // Keep price to 2 decimal places
-          marketCap: Number(usdQuote.market_cap).toLocaleString('en-US'), // Thousands separator for market cap
+          price: Number(usdQuote.price).toFixed(2),
+          marketCap: Number(usdQuote.market_cap).toLocaleString('en-US'), 
         };
       } else {
         console.error("Error fetching ADA price:", response.status);

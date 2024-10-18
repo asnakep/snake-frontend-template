@@ -19,7 +19,6 @@ export const getPoolStats = async (poolId: string) => {
 
     return {
       poolIDBech: poolData.pool_id_bech32,
-      //description: poolData.meta_json.description,
       margin: `${(poolData.margin * 100).toFixed(0)}`,
       fixedCost: formatAda(poolData.fixed_cost),
       pledge: formatAda(poolData.pledge),

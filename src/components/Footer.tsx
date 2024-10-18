@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="footer footer-center p-10">
       <div className="absolute bottom-4 right-0 flex justify-end items-center w-full mr-10">
-        <div className="flex space-x-12 items-center"> {/* Increased space between icons */}
+        <div className="flex space-x-12 items-center">
           <Link
             href="https://gov.tools/connected/drep_directory/drep1axjcgsgh9pc38sg4gnjgv2scpdzu5fjfkmg6pa5g9e5h7dkqusm"
             target="_blank"
