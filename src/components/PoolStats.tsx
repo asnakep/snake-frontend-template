@@ -18,21 +18,25 @@ const PoolStats = () => {
 
   const fetchPoolStats = async () => {
     try {
-      const stats = await getPoolStats(poolId);
+      const [stats, tip, epochData] = await Promise.all([
+        getPoolStats(poolId),
+        getTip(),
+        fetchEpochSchedules(),
+      ]);
+  
       setPoolStats(stats);
-
-      const tip = await getTip();
-      setCurrentEpoch(tip.currEpoch);
-
+      setScheduledBlocks(epochData.current.epochSlots);
+  
       const count = await getBlocksCount(poolId, tip.currEpoch);
       setBlockCount(count);
-
-      const epochData = await fetchEpochSchedules();
-      setScheduledBlocks(epochData.current.epochSlots);
+  
+      setCurrentEpoch(tip.currEpoch);
+  
     } catch (err) {
       setError((err as Error).message);
     }
   };
+  
 
   const fetchLifetimeRewards = async () => {
     try {
