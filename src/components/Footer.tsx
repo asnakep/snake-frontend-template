@@ -12,7 +12,7 @@ export default function Footer() {
             rel="noopener noreferrer"
           >
             <Image
-              className="dark:drop-shadow-[0_0_0.3rem_#ffffff70] transition-transform transform hover:scale-110"
+              className="transition-transform transform hover:scale-130 hover:rotate-12 hover:scale-130 hover:text-blue-400 duration-600"
               src="logo-govtool.svg"
               alt="Govtool Logo"
               width={24}
@@ -26,7 +26,7 @@ export default function Footer() {
             rel="noopener noreferrer"
           >
             <Image
-              className="dark:drop-shadow-[0_0_0.3rem_#ffffff70] transition-transform transform hover:scale-110"
+              className="transition-transform transform hover:scale-130 hover:rotate-12 hover:scale-130 hover:text-blue-400 duration-600"
               src="logo-telegram.svg"
               alt="Telegram Logo"
               width={20}
@@ -40,7 +40,7 @@ export default function Footer() {
             rel="noopener noreferrer"
           >
             <Image
-              className="dark:drop-shadow-[0_0_0.3rem_#ffffff70] transition-transform transform hover:scale-110"
+              className="transition-transform transform hover:scale-130 hover:rotate-12 hover:scale-130 hover:text-blue-400 duration-600"
               src="logo-x.svg"
               alt="Twitter Logo"
               width={16}
@@ -54,7 +54,7 @@ export default function Footer() {
             rel="noopener noreferrer"
           >
             <Image
-              className="dark:drop-shadow-[0_0_0.3rem_#ffffff70] transition-transform transform hover:scale-110"
+              className="transition-transform transform hover:scale-130 hover:rotate-12 hover:scale-130 hover:text-blue-400 duration-600"
               src="logo-linkedin.svg"
               alt="LinkedIn Logo"
               width={18}
@@ -68,7 +68,7 @@ export default function Footer() {
             rel="noopener noreferrer"
           >
             <Image
-              className="dark:drop-shadow-[0_0_0.3rem_#ffffff70] transition-transform transform hover:scale-110"
+              className="transition-transform transform hover:scale-130 hover:rotate-12 hover:scale-130 hover:text-blue-400 duration-600"
               src="logo-github.svg"
               alt="Github Logo"
               width={18}
@@ -82,7 +82,7 @@ export default function Footer() {
             rel="noopener noreferrer"
           >
             <Image
-              className="dark:drop-shadow-[0_0_0.3rem_#ffffff70] transition-transform transform hover:scale-110"
+              className="transition-transform transform hover:scale-130 hover:rotate-12 hover:scale-130 hover:text-blue-400 duration-600"
               src="logo-adastat.svg"
               alt="Adastat Logo"
               width={18}
@@ -96,7 +96,7 @@ export default function Footer() {
             rel="noopener noreferrer"
           >
             <Image
-              className="dark:drop-shadow-[0_0_0.3rem_#ffffff70] transition-transform transform hover:scale-110"
+              className="transition-transform transform hover:scale-130 hover:rotate-12 hover:scale-130 hover:text-blue-400 duration-600"
               src="logo-pooltool.svg"
               alt="Pooltool Logo"
               width={19}
@@ -110,7 +110,7 @@ export default function Footer() {
             rel="noopener noreferrer"
           >
             <Image
-              className="dark:drop-shadow-[0_0_0.3rem_#ffffff70] transition-transform transform hover:scale-110"
+              className="transition-transform transform hover:scale-130 hover:rotate-12 hover:scale-130 hover:text-blue-400 duration-600"
               src="logo-poolpm.svg"
               alt="Poolpm Logo"
               width={18}
