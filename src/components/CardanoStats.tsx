@@ -1,14 +1,12 @@
 import { useState, useEffect } from 'react';
 import { getCardanoStats } from './queries/cardanoStats';
 import { getTip } from './queries/queryTip';
-import { getTokenomicStats } from './queries/tokenomicStats';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 const CardanoStats = () => {
   const [cardanoStats, setCardanoStats] = useState<any>(null);
   const [tipData, setTipData] = useState<any>(null);
-  const [tokenomicStats, setTokenomicStats] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -33,19 +31,10 @@ const CardanoStats = () => {
     }
   };
 
-  const fetchTokenomicStats = async () => {
-    try {
-      const stats = await getTokenomicStats();
-      setTokenomicStats(stats);
-    } catch (err) {
-      setError((err as Error).message);
-    }
-  };
-
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-      await Promise.all([fetchTipData(), fetchCardanoStats(), fetchTokenomicStats()]);
+      await Promise.all([fetchTipData(), fetchCardanoStats()]);
       setLoading(false);
     };
 
@@ -141,51 +130,6 @@ const CardanoStats = () => {
                 </span>
                 <span className="text-blue-400 text-sm custom-font">
                   {formatNumber(cardanoStats?.blkCount) || (loading ? <FontAwesomeIcon icon={faSpinner} spin /> : "N/A")}
-                </span>
-              </li>
-
-              {/* Add TOKENOMICS header here */}
-              <h3 className="text-sm font-semibold text-white">TOKENOMICS</h3>
-
-              {/* Bottom section from tokenomicStats */}
-              <li className="flex justify-between text-xs">
-                <span className="mr-60 mt-2">
-                  <i className="fas fa-coins text-blue-400"></i> <strong>CIRCULATION</strong>
-                </span>
-                <span className="text-blue-400 text-sm mt-2 custom-font">
-                  {formatNumber(tokenomicStats?.circulation) || (loading ? <FontAwesomeIcon icon={faSpinner} spin /> : "N/A")}
-                </span>
-              </li>
-              <li className="flex justify-between text-xs">
-                <span className="mr-60 mt-2">
-                  <i className="fas fa-boxes text-blue-400"></i> <strong>SUPPLY</strong>
-                </span>
-                <span className="text-blue-400 text-sm custom-font">
-                  {formatNumber(tokenomicStats?.supply) || (loading ? <FontAwesomeIcon icon={faSpinner} spin /> : "N/A")}
-                </span>
-              </li>
-              <li className="flex justify-between text-xs">
-                <span className="mr-60 mt-2">
-                  <i className="fas fa-receipt text-blue-400"></i> <strong>RESERVES</strong>
-                </span>
-                <span className="text-blue-400 text-sm custom-font">
-                  {formatNumber(tokenomicStats?.reserves) || (loading ? <FontAwesomeIcon icon={faSpinner} spin /> : "N/A")}
-                </span>
-              </li>              
-              <li className="flex justify-between text-xs">
-                <span className="mr-60 mt-2">
-                  <i className="fas fa-piggy-bank text-blue-400"></i> <strong>TREASURY</strong>
-                </span>
-                <span className="text-blue-400 text-sm custom-font">
-                  {formatNumber(tokenomicStats?.treasury) || (loading ? <FontAwesomeIcon icon={faSpinner} spin /> : "N/A")}
-                </span>
-              </li>
-              <li className="flex justify-between text-xs">
-                <span className="mr-60 mt-2">
-                  <i className="fas fa-receipt text-blue-400"></i> <strong>REWARD</strong>
-                </span>
-                <span className="text-blue-400 text-sm custom-font">
-                  {formatNumber(tokenomicStats?.reward) || (loading ? <FontAwesomeIcon icon={faSpinner} spin /> : "N/A")}
                 </span>
               </li>
             </ul>
