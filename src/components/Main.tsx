@@ -86,7 +86,7 @@ export default function Main() {
     const loadData = async () => {
       setLoading(true);
       // Simulate data fetching delay
-      await new Promise(resolve => setTimeout(resolve, 5000)); // Simulate 2 seconds of loading
+      await new Promise(resolve => setTimeout(resolve, 6000)); // Simulate 6 seconds of loading
       setLoading(false);
     };
 
