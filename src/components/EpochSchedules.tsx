@@ -61,21 +61,21 @@ export const EpochStats = () => {
           <div>
             <ul className="text-gray-300 space-y-2">
               <li className="flex justify-between text-xs gap-x-4">
-                <span style={{ marginRight: '200px' }}>
+                <span style={{ marginRight: '218px' }}>
                   <i className="fas fa-calendar-day text-blue-400"></i>
                   <strong>EPOCH</strong>
                 </span>
                 <span className="text-blue-400 text-sm custom-font">{epochData?.epoch}</span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
-                <span style={{ marginRight: '200px' }}>
+                <span style={{ marginRight: '218px' }}>
                   <i className="fas fa-cubes text-blue-400"></i>
                   <strong>ASSIGNED</strong>
                 </span>
                 <span className="text-blue-400 text-sm custom-font">{epochData?.epochSlots}</span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
-                <span style={{ marginRight: '200px' }}>
+                <span style={{ marginRight: '218px' }}>
                   <i className="fas fa-chart-bar text-blue-400"></i>
                   <strong>EXPECTED</strong>
                 </span>
@@ -84,7 +84,7 @@ export const EpochStats = () => {
                 </span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
-                <span style={{ marginRight: '200px' }}>
+                <span style={{ marginRight: '218px' }}>
                   <i className="fas fa-trophy text-blue-400"></i>
                   <strong>LUCK</strong>
                 </span>

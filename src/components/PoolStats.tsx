@@ -37,7 +37,6 @@ const PoolStats = () => {
     }
   };
   
-
   const fetchLifetimeRewards = async () => {
     try {
       const rewards = await getLifetimeRewards(poolId);
@@ -70,94 +69,28 @@ const PoolStats = () => {
             SN₳KE STATISTICS
           </h3>
           <ul className="text-gray-300 space-y-2">
-            <li className="flex justify-between text-xs">
-              <span className="mr-40">
-                <strong>EPOCH</strong>
-              </span>
-              <span className="text-blue-400 text-sm custom-font">
-                {currentEpoch !== null ? currentEpoch : <FontAwesomeIcon icon={faSpinner} spin />}
-              </span>
-            </li>
-            <li className="flex justify-between text-xs">
-              <span className="mr-40">
-                <strong>MINTED BLOCKS</strong>
-              </span>
-              <span className="text-blue-400 text-sm custom-font">
-                {blockCount !== null && scheduledBlocks !== null ? `${blockCount} / ${scheduledBlocks}` : <FontAwesomeIcon icon={faSpinner} spin />}
-              </span>
-            </li>
-            <li className="flex justify-between text-xs">
-              <span className="mr-40">
-                <strong>LIVE STAKE</strong>
-              </span>
-              <span className="text-blue-400 text-sm custom-font">
-                {poolStats?.liveStake !== undefined ? poolStats.liveStake : <FontAwesomeIcon icon={faSpinner} spin />}
-              </span>
-            </li>
-            <li className="flex justify-between text-xs">
-              <span className="mr-40">
-                <strong>ACTIVE STAKE</strong>
-              </span>
-              <span className="text-blue-400 text-sm custom-font">
-                {poolStats?.activeStake !== undefined ? poolStats.activeStake : <FontAwesomeIcon icon={faSpinner} spin />}
-              </span>
-            </li>
-            <li className="flex justify-between text-xs">
-              <span className="mr-40">
-                <strong>PLEDGE</strong>
-              </span>
-              <span className="text-blue-400 text-sm custom-font">
-                {poolStats?.pledge !== undefined ? poolStats.pledge : <FontAwesomeIcon icon={faSpinner} spin />}
-              </span>
-            </li>
-            <li className="flex justify-between text-xs">
-              <span className="mr-40">
-                <strong>SATURATION</strong>
-              </span>
-              <span className="text-blue-400 text-sm custom-font">
-                {poolStats?.liveSaturation !== undefined ? `${poolStats.liveSaturation}%` : <FontAwesomeIcon icon={faSpinner} spin />}
-              </span>
-            </li>
-            <li className="flex justify-between text-xs">
-              <span className="mr-40">
-                <strong>DELEGATORS</strong>
-              </span>
-              <span className="text-blue-400 text-sm custom-font">
-                {poolStats?.liveDelegators !== undefined ? poolStats.liveDelegators : <FontAwesomeIcon icon={faSpinner} spin />}
-              </span>
-            </li>
-            <li className="flex justify-between text-xs">
-              <span className="mr-40">
-                <strong>EPOCH COST</strong>
-              </span>
-              <span className="text-blue-400 text-sm custom-font">
-                {poolStats?.fixedCost !== undefined ? poolStats.fixedCost : <FontAwesomeIcon icon={faSpinner} spin />}
-              </span>
-            </li>
-            <li className="flex justify-between text-xs">
-              <span className="mr-40">
-                <strong>MARGIN</strong>
-              </span>
-              <span className="text-blue-400 text-sm custom-font">
-                {poolStats?.margin !== undefined ? `${poolStats.margin}%` : <FontAwesomeIcon icon={faSpinner} spin />}
-              </span>
-            </li>
-            <li className="flex justify-between text-xs">
-              <span className="mr-40">
-                <strong>LIFETIME BLOCKS</strong>
-              </span>
-              <span className="text-blue-400 text-sm custom-font">
-                {poolStats?.blockCount !== undefined ? poolStats.blockCount : <FontAwesomeIcon icon={faSpinner} spin />}
-              </span>
-            </li>
-            <li className="flex justify-between text-xs">
-              <span className="mr-40">
-                <strong>LIFETIME REWARDS</strong>
-              </span>
-              <span className="text-blue-400 text-sm custom-font">
-                {lifetimeRewards !== null ? lifetimeRewards : <FontAwesomeIcon icon={faSpinner} spin />}
-              </span>
-            </li>
+            {[
+              { label: 'EPOCH', value: currentEpoch },
+              { label: 'MINTED BLOCKS', value: blockCount !== null && scheduledBlocks !== null ? `${blockCount} / ${scheduledBlocks}` : null },
+              { label: 'LIVE STAKE', value: poolStats?.liveStake },
+              { label: 'ACTIVE STAKE', value: poolStats?.activeStake },
+              { label: 'PLEDGE', value: poolStats?.pledge },
+              { label: 'SATURATION', value: poolStats?.liveSaturation !== undefined ? `${poolStats.liveSaturation}%` : undefined },
+              { label: 'DELEGATORS', value: poolStats?.liveDelegators },
+              { label: 'EPOCH COST', value: poolStats?.fixedCost },
+              { label: 'MARGIN', value: poolStats?.margin !== undefined ? `${poolStats.margin}%` : undefined },
+              { label: 'LIFETIME BLOCKS', value: poolStats?.blockCount },
+              { label: 'LIFETIME REWARDS', value: lifetimeRewards },
+            ].map(({ label, value }, index) => (
+              <li key={index} className="flex justify-between text-xs">
+                <span className="w-40">
+                  <strong>{label}</strong>
+                </span>
+                <span className="text-blue-400 text-sm custom-font" style={{ width: '180px', textAlign: 'right' }}>
+                  {value !== undefined && value !== null ? value : <FontAwesomeIcon icon={faSpinner} spin />}
+                </span>
+              </li>
+            ))}
           </ul>
         </div>
       )}
