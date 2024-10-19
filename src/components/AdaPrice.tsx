@@ -25,12 +25,13 @@ const AdaPricePanel = () => {
 
   const getAdaPrice = async () => {
     try {
+      setLoading(true); // Set loading state before fetching
       const priceData = await fetchAdaPrice(); // Fetch the ADA price
       setAdaPrice(priceData);
-      setLoading(false);
     } catch (err) {
       setError((err as Error).message);
-      setLoading(false);
+    } finally {
+      setLoading(false); // Set loading state to false in either case
     }
   };
 
@@ -41,7 +42,9 @@ const AdaPricePanel = () => {
   }, []);
 
   const formatNumber = (num: number | undefined | null): string => {
-    return num != null ? num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : '';
+    return num != null
+      ? num.toLocaleString(undefined, { maximumFractionDigits: 2 })
+      : '';
   };
 
   return (
@@ -56,30 +59,20 @@ const AdaPricePanel = () => {
           </div>
 
           <ul className="text-gray-300 space-y-1">
-            <li className="flex justify-between text-xs">
-              <span style={{ marginRight: '194px' }} className="mt-1">
-                <i className="fas fa-chart-line text-blue-400"></i> <strong>RANK</strong>
-              </span>
-              <span className="text-blue-400 text-sm mt-2 custom-font">
-                {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : adaPrice?.rank || "N/A"}
-              </span>
-            </li>
-            <li className="flex justify-between text-xs">
-              <span style={{ marginRight: '194px' }} className="mt-1">
-                <i className="fas fa-dollar-sign text-blue-400"></i> <strong>PRICE</strong>
-              </span>
-              <span className="text-blue-400 text-sm custom-font">
-                {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : `$${adaPrice?.price || "N/A"}`}
-              </span>
-            </li>
-            <li className="flex justify-between text-xs">
-              <span style={{ marginRight: '194px' }} className="mt-2">
-                <i className="fas fa-landmark text-blue-400"></i> <strong>MARKET CAP</strong>
-              </span>
-              <span className="text-blue-400 text-sm custom-font">
-                {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : `$${formatNumber(Number(adaPrice?.marketCap)) || "N/A"}`}
-              </span>
-            </li>
+            {[
+              { label: 'RANK', value: adaPrice?.rank },
+              { label: 'PRICE', value: `$${adaPrice?.price}` },
+              { label: 'MARKET CAP', value: `$${formatNumber(Number(adaPrice?.marketCap))}` },
+            ].map(({ label, value }, index) => (
+              <li key={index} className="flex justify-between text-xs">
+                <span className="mt-1">
+                  <strong>{label}</strong>
+                </span>
+                <span className="text-blue-400 text-sm custom-font" style={{ width: '338px', textAlign: 'right' }}>
+                  {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : value || "N/A"}
+                </span>
+              </li>
+            ))}
           </ul>
         </div>
       )}
