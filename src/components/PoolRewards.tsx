@@ -31,7 +31,7 @@ const PoolRewards = () => {
           <i className="fas fa-calendar-day text-blue-400"></i>
           <strong>EPOCH</strong>
         </span>
-        <span className="text-blue-400 text-sm custom-font min-w-[60px]">
+        <span className="text-blue-400 text-sm custom-font min-w-[60px] text-right">
           {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : rewardsData?.epoch}
         </span>
       </li>
@@ -40,7 +40,7 @@ const PoolRewards = () => {
           <i className="fas fa-coins text-blue-400"></i>
           <strong>TOTAL</strong>
         </span>
-        <span className="text-blue-400 text-sm custom-font min-w-[60px]">
+        <span className="text-blue-400 text-sm custom-font min-w-[60px] text-right">
           {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : rewardsData?.rewards}
         </span>
       </li>
@@ -49,7 +49,7 @@ const PoolRewards = () => {
           <i className="fas fa-percentage text-blue-400"></i>
           <strong>EPOCH ROS</strong>
         </span>
-        <span className="text-blue-400 text-sm custom-font min-w-[60px]">
+        <span className="text-blue-400 text-sm custom-font min-w-[60px] text-right">
           {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : `${rewardsData?.ros}%`}
         </span>
       </li>
