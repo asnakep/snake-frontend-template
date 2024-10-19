@@ -66,13 +66,13 @@ const componentsConfig: ComponentConfig[] = [
   {
     id: "cardanostats",
     component: CardanoStats,
-    position: { top: "169px", right: "60px", position: "fixed" },
+    position: { top: "166px", right: "60px", position: "fixed" },
     style: {},
   },
   {
     id: "adaprice",
     component: AdaPricePanel,
-    position: { bottom: "86px", right: "60px", position: "fixed" },
+    position: { bottom: "84px", right: "60px", position: "fixed" },
     style: {},
   },  
 ];
