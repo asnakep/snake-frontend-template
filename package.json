@@ -24,11 +24,9 @@
     "eslint": "9.11.0",
     "fast-check": "^3.22.0",
     "lucid-cardano": "^0.10.10",
-    "lucid@0.3.42": "link:lucid-evolution/lucid@0.3.42",
     "next": "^14.2.15",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-loading-skeleton": "^3.5.0",
     "typescript": "5.6.2"
   },
   "devDependencies": {
