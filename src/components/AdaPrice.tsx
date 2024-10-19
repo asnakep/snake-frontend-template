@@ -18,6 +18,23 @@ const fetchAdaPrice = async (): Promise<AdaPrice> => {
   return await response.json(); // Return the JSON response
 };
 
+// Loading Popup Component
+const LoadingPopup: React.FC<{ message?: string }> = ({ message = "Loading..." }) => {
+  return (
+    <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-70 z-50">
+      <div className="bg-white p-4 rounded-lg shadow-lg flex items-center">
+        <div className="animate-spin mr-2">
+          <svg className="w-8 h-8 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <circle className="opacity-25" cx="12" cy="12" r="10" strokeWidth="4" />
+            <path className="opacity-75" fill="blue" d="M4 12a8 8 0 0014.488 3.36l1.428-1.428A10 10 0 10 4 12z" />
+          </svg>
+        </div>
+        <p className="text-lg text-gray-800">{message}</p>
+      </div>
+    </div>
+  );
+};
+
 const AdaPricePanel = () => {
   const [adaPrice, setAdaPrice] = useState<AdaPrice | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -48,7 +65,7 @@ const AdaPricePanel = () => {
   };
 
   return (
-    <div className="max-w-4xl w-full bg-gray-800 rounded-lg shadow-md p-4 mb-1">
+    <div className="max-w-4xl w-full bg-gray-800 rounded-lg shadow-md p-4 mb-1 relative">
       {error ? (
         <p className="text-red-500">Error: {error}</p>
       ) : (
@@ -59,7 +76,7 @@ const AdaPricePanel = () => {
           </div>
 
           <ul className="text-gray-300 space-y-1">
-            {[
+            {[ 
               { label: 'RANK', value: adaPrice?.rank },
               { label: 'PRICE', value: `$${adaPrice?.price}` },
               { label: 'MARKET CAP', value: `$${formatNumber(Number(adaPrice?.marketCap))}` },
@@ -76,6 +93,7 @@ const AdaPricePanel = () => {
           </ul>
         </div>
       )}
+      {loading && <LoadingPopup />} {/* Show LoadingPopup when loading */}
     </div>
   );
 };
