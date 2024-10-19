@@ -1,6 +1,7 @@
 "use client";
 import dynamic from "next/dynamic";
-import { CSSProperties } from "react";
+import { CSSProperties, useEffect, useState } from "react";
+import LoadingPopup from './LoadingPopup'; // Import the LoadingPopup
 
 // Define the interface for component configuration
 interface ComponentConfig {
@@ -32,7 +33,7 @@ const componentsConfig: ComponentConfig[] = [
     component: TopHeaders,
     position: { top: "10px", left: "30px", position: "fixed" },
     style: {},
-  },  
+  },
   {
     id: "stake",
     component: Stake,
@@ -44,7 +45,7 @@ const componentsConfig: ComponentConfig[] = [
     component: PoolDescription,
     position: { top: "80px", left: "30px", position: "fixed" },
     style: {},
-  },  
+  },
   {
     id: "poolstats",
     component: PoolStats,
@@ -74,19 +75,34 @@ const componentsConfig: ComponentConfig[] = [
     component: AdaPricePanel,
     position: { bottom: "84px", right: "60px", position: "fixed" },
     style: {},
-  },  
+  },
 ];
 
 export default function Main() {
+  const [loading, setLoading] = useState(true);
+
+  // Simulating data fetching for the Main component
+  useEffect(() => {
+    const loadData = async () => {
+      setLoading(true);
+      // Simulate data fetching delay
+      await new Promise(resolve => setTimeout(resolve, 5000)); // Simulate 2 seconds of loading
+      setLoading(false);
+    };
+
+    loadData();
+  }, []);
+
   return (
     <>
+      {loading && <LoadingPopup />} {/* Show LoadingPopup when loading is true */}
       {componentsConfig.map((config) => (
         <div
           key={config.id}
           className="absolute"
           style={{ ...config.position, ...config.style }}
         >
-          <config.component />
+          <config.component setLoading={setLoading} /> {/* Pass setLoading to CardanoStats */}
         </div>
       ))}
     </>

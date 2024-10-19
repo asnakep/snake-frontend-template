@@ -1,15 +1,17 @@
-import LoadingPopup from './LoadingPopup';
 import { useState, useEffect } from 'react';
 import { getCardanoStats } from './queries/cardanoStats';
 import { getTip } from './queries/queryTip';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
-const CardanoStats = () => {
+interface CardanoStatsProps {
+  setLoading: (loading: boolean) => void; // Callback to set loading state
+}
+
+const CardanoStats = ({ setLoading }: CardanoStatsProps) => {
   const [cardanoStats, setCardanoStats] = useState<any>(null);
   const [tipData, setTipData] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
 
   const fetchCardanoStats = async () => {
     try {
@@ -39,7 +41,7 @@ const CardanoStats = () => {
     fetchData();
     const intervalId = setInterval(fetchTipData, 20000);
     return () => clearInterval(intervalId);
-  }, []);
+  }, [setLoading]);
 
   const totalSlots = 432000;
   const epochSlot = tipData?.epochSlot;
@@ -62,7 +64,8 @@ const CardanoStats = () => {
               <h3 className="text-white text-lg font-bold ml-4">CARDANO</h3>
             </div>
             <div className="relative w-60 bg-black-800 h-7 overflow-hidden rounded-sm ml-2">
-              {loading ? (
+              {/* Loading spinner should be shown while fetching data */}
+              {(!cardanoStats || !tipData) ? (
                 <div className="absolute inset-0 flex justify-center items-center text-white">
                   <FontAwesomeIcon icon={faSpinner} spin className="text-white" />
                 </div>
@@ -85,7 +88,7 @@ const CardanoStats = () => {
 
           <div className="mt-2">
             <ul className="text-gray-300 space-y-2">
-              {[
+              {[ 
                 { label: 'EPOCH', value: epoch },
                 { label: 'SLOT', value: epochSlot },
                 { label: 'BLOCK', value: tipData?.blockNum },
@@ -103,8 +106,6 @@ const CardanoStats = () => {
               ))}
             </ul>
           </div>
-
-          {loading && <LoadingPopup />}
         </div>
       )}
     </div>
