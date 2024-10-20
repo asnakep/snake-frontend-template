@@ -499,8 +499,8 @@ packages:
   bare-fs@3.1.0:
     resolution: {integrity: sha512-8qGUva/yp75zBZjxvfJ60b5yHK55UYHgQYJY+HtTxM/j/N2wVWh36Ao1kCU0KEukcmKp6WDnxSz0lyAd9YRhzg==}
 
-  bare-os@3.2.0:
-    resolution: {integrity: sha512-IR5QjWR4sXBHI8VrXyeJ8BwwTRMlerNROVQRUJXwYd5sCHfxxTzpnKp1bJfe3Mg/MfWSzqNbpDC8sR9+X2LJkQ==}
+  bare-os@3.2.1:
+    resolution: {integrity: sha512-2DK/A2wc9+9RySMGv0s4rX9cYlnyuu8nYXL1/XxObnlaQhIAABJXQi5PX5ChMep1xCVXF9TDVhgdq/Y+Qb5meg==}
     engines: {bare: '>=1.6.0'}
 
   bare-path@3.0.0:
@@ -2380,12 +2380,12 @@ snapshots:
       bare-stream: 2.3.1
     optional: true
 
-  bare-os@3.2.0:
+  bare-os@3.2.1:
     optional: true
 
   bare-path@3.0.0:
     dependencies:
-      bare-os: 3.2.0
+      bare-os: 3.2.1
     optional: true
 
   bare-stream@2.3.1:
