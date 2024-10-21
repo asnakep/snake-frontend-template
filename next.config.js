@@ -25,7 +25,7 @@ const nextConfig = {
       },
       {
         source: '/api/current',  // Local endpoint to fetch current data
-        destination: 'https://136.243.208.16:12777/json/current.json',
+        destination: 'https://136.243.208.16:443/json/current.json',
       },
     ];
   },
