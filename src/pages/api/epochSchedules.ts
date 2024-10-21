@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const currentUrl = 'https://136.243.208.16:443/json/current.json'; // Only current.json URL
+  const currentUrl = 'https://data.snakepool.link/json/current.json'; // Only current.json URL
 
   // Set CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*'); // Allow all origins
