@@ -19,7 +19,11 @@ export const EpochStats = () => {
     const getData = async () => {
       try {
         const data = await fetchEpochSchedules();
-        setEpochData(data.current);
+
+        // Only update the state if the data is new
+        if (JSON.stringify(data.current) !== JSON.stringify(epochData)) {
+          setEpochData(data.current);
+        }
       } catch (error) {
         setError('Failed to fetch epoch data.');
       } finally {
@@ -27,8 +31,17 @@ export const EpochStats = () => {
       }
     };
 
+    // Fetch data on page load
     getData();
-  }, []);
+
+    // Poll for new data every hour (3600000 ms)
+    const interval = setInterval(() => {
+      getData();
+    }, 3600000); // 1 hour
+
+    // Cleanup interval on component unmount
+    return () => clearInterval(interval);
+  }, [epochData]); // Add epochData to the dependency array to compare on each interval
 
   if (loading) {
     return (

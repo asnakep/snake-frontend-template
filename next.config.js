@@ -25,11 +25,7 @@ const nextConfig = {
       },
       {
         source: '/api/current',  // Local endpoint to fetch current data
-        destination: 'http://136.243.208.16:12777/json/current.json',
-      },
-      {
-        source: '/api/next',  // Local endpoint to fetch next data
-        destination: 'http://136.243.208.16:12777/json/next.json',
+        destination: 'https://data.snakepool.link/json/current.json',
       },
     ];
   },
