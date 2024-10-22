@@ -94,11 +94,6 @@ export default function Main() {
   }, []);
 
   return (
-<<<<<<< HEAD
-    <div className="absolute top-18 right-20">
-      <Stake />
-    </div>
-=======
     <>
       {loading && <LoadingPopup />} {/* Show LoadingPopup when loading is true */}
       {componentsConfig.map((config) => (
@@ -111,6 +106,5 @@ export default function Main() {
         </div>
       ))}
     </>
->>>>>>> snakesite_description_stats
   );
 }
