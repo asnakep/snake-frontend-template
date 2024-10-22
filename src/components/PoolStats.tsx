@@ -58,6 +58,16 @@ const PoolStats = () => {
     return () => clearInterval(intervalId);
   }, []);
 
+  // Specify the type for saturation parameter
+  const getSaturationClass = (saturation: number) => {
+    if (saturation > 95) {
+      return 'text-red-500'; // Red for saturation > 95%
+    } else if (saturation > 90) {
+      return 'text-orange-500'; // Orange for saturation > 90%
+    }
+    return 'text-blue-400'; // Default color for saturation <= 90%
+  };
+
   return (
     <div className="flex flex-col items-center">
       {error ? (
@@ -75,7 +85,11 @@ const PoolStats = () => {
               { label: 'LIVE STAKE', value: poolStats?.liveStake },
               { label: 'ACTIVE STAKE', value: poolStats?.activeStake },
               { label: 'PLEDGE', value: poolStats?.pledge },
-              { label: 'SATURATION', value: poolStats?.liveSaturation !== undefined ? `${poolStats.liveSaturation}%` : undefined },
+              { label: 'SATURATION', value: poolStats?.liveSaturation !== undefined ? (
+                <span className={getSaturationClass(poolStats.liveSaturation)}>
+                  {`${poolStats.liveSaturation}%`}
+                </span>
+              ) : undefined },
               { label: 'DELEGATORS', value: poolStats?.liveDelegators },
               { label: 'EPOCH COST', value: poolStats?.fixedCost },
               { label: 'MARGIN', value: poolStats?.margin !== undefined ? `${poolStats.margin}%` : undefined },
@@ -86,7 +100,7 @@ const PoolStats = () => {
                 <span className="w-40">
                   <strong>{label}</strong>
                 </span>
-                <span className="text-blue-400 text-sm custom-font" style={{ width: '180px', textAlign: 'right' }}>
+                <span className="text-sm custom-font" style={{ width: '180px', textAlign: 'right' }}>
                   {value !== undefined && value !== null ? value : <FontAwesomeIcon icon={faSpinner} spin />}
                 </span>
               </li>
