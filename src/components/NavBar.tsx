@@ -6,16 +6,6 @@ export default function NavBar() {
   return (
     <div className="flex flex-wrap w-full max-w-5xl items-center justify-between font-mono text-sm mt-[-50px] mr-[-180px]">
       <div className="">
-<<<<<<< HEAD
-        <Image
-        // src="icon.svg"
-        // alt="Vercel Logo"
-        // width={60}
-        // height={24}
-        // priority
-        />
-=======
->>>>>>> snakesite_description_stats
       </div>
       <WalletConnect />
     </div>
