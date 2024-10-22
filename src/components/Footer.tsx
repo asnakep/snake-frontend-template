@@ -4,16 +4,6 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="footer footer-center p-10">
-<<<<<<< HEAD
-      <div>
-        <p className="font-bold">
-          NAME Stake Pool <br />
-        </p>
-      </div>
-      <div>
-        <div className="grid grid-flow-col gap-4">
-          <Link href="https://twitter.com">
-=======
       <div className="absolute bottom-4 right-0 flex justify-end items-center w-full mr-10">
         <div className="flex space-x-12 items-center">
           <Link
@@ -21,7 +11,6 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
           >
->>>>>>> snakesite_description_stats
             <Image
               className="transition-transform transform hover:scale-130 hover:rotate-12 hover:scale-130 hover:text-blue-400 duration-600"
               src="logo-govtool.svg"
