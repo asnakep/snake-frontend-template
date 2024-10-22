@@ -21,6 +21,7 @@ const WalletModal = () => {
       <button
         className="btn btn-outline"
         onClick={() => window.my_modal.showModal()}
+        disabled={isConnected} // Disable the button if already connected
       >
         {isConnected ? "CONNECTED" : "CONNECT"}
       </button>
@@ -32,6 +33,7 @@ const WalletModal = () => {
                 <button
                   className="btn btn-outline"
                   onClick={() => connect(provider)}
+                  disabled={isConnected} // Disable the connection buttons if already connected
                 >
                   {provider.toUpperCase()}
                 </button>
