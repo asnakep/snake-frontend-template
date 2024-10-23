@@ -4,16 +4,16 @@ export const useKoios = (fetchQuery: () => Promise<any>, interval: number = 5000
   const [data, setData] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchData = async () => {
-    try {
-      const result = await fetchQuery();
-      setData(result);
-    } catch (err) {
-      setError((err as Error).message);
-    }
-  };
-
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await fetchQuery();
+        setData(result);
+      } catch (err) {
+        setError((err as Error).message);
+      }
+    };
+
     fetchData(); // Fetch data initially
 
     // Set up interval to refresh data
@@ -21,7 +21,7 @@ export const useKoios = (fetchQuery: () => Promise<any>, interval: number = 5000
 
     // Clear interval on component unmount
     return () => clearInterval(intervalId);
-  }, [fetchQuery, interval]);
+  }, [fetchQuery, interval]); // No need to include fetchData
 
   return { data, error };
 };
