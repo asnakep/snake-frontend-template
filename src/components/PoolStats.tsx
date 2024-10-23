@@ -76,11 +76,17 @@ const PoolStats = () => {
       ) : (
         <div className="max-w-4xl w-full bg-gray-800 rounded-lg shadow-md p-6 mb-4">
           <h3 className="text-sm font-semibold text-white mb-4 flex items-center">
-            <Image src="/snake.png" alt="Snake Icon" className="w-9 h-9 mr-3" />
+            <Image 
+              src="/snake.png" 
+              alt="Snake Icon" 
+              width={36} // Set the width in pixels
+              height={36} // Set the height in pixels
+              className="mr-3" // Keep your margin class
+            />
             SN₳KE STATISTICS
           </h3>
           <ul className="text-gray-300 space-y-2">
-            {[
+            {[ 
               { label: 'EPOCH', value: currentEpoch },
               { label: 'MINTED BLOCKS', value: blockCount !== null && scheduledBlocks !== null ? `${blockCount} / ${scheduledBlocks}` : null },
               { label: 'LIVE STAKE', value: poolStats?.liveStake },

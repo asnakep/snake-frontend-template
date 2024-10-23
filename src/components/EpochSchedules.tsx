@@ -69,7 +69,13 @@ export const EpochStats = () => {
       <div className="max-w-4xl w-full bg-gray-800 rounded-lg shadow-md p-6 mb-4">
         <div className="grid grid-cols-1 gap-4">
           <h3 className="text-sm font-semibold text-white flex items-center">
-            <Image src="/block.png" alt="Blocks Icon" className="w-9 h-9 mr-3" />
+            <Image 
+              src="/block.png" 
+              alt="Blocks Icon" 
+              width={36} // Set the width in pixels
+              height={36} // Set the height in pixels
+              className="mr-3" // Keep your margin class
+            />
             BLOCKS PRODUCTION
           </h3>
           <div>
