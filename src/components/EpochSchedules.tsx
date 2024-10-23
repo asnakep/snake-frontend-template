@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { fetchEpochSchedules } from './queries/epochSchedules';
+import Image from 'next/image';
 
 interface EpochData {
   epoch: number;
@@ -68,7 +69,7 @@ export const EpochStats = () => {
       <div className="max-w-4xl w-full bg-gray-800 rounded-lg shadow-md p-6 mb-4">
         <div className="grid grid-cols-1 gap-4">
           <h3 className="text-sm font-semibold text-white flex items-center">
-            <img src="/block.png" alt="Blocks Icon" className="w-9 h-9 mr-3" />
+            <Image src="/block.png" alt="Blocks Icon" className="w-9 h-9 mr-3" />
             BLOCKS PRODUCTION
           </h3>
           <div>

@@ -3,7 +3,7 @@ import { getCardanoStats } from './queries/cardanoStats';
 import { getTip } from './queries/queryTip';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
-import Image from 'next/image'; // Import the Next.js Image component
+import Image from 'next/image';
 
 interface CardanoStatsProps {
   setLoading: (loading: boolean) => void; // Callback to set loading state
