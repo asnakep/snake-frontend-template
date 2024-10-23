@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
-import Image from 'next/image'; // Import the Next.js Image component
+import Image from 'next/image';
 
 // Define the type for the ADA price data
 interface AdaPrice {

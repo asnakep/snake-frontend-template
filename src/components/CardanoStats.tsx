@@ -3,6 +3,7 @@ import { getCardanoStats } from './queries/cardanoStats';
 import { getTip } from './queries/queryTip';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import Image from 'next/image'; // Import the Next.js Image component
 
 interface CardanoStatsProps {
   setLoading: (loading: boolean) => void; // Callback to set loading state
@@ -60,7 +61,13 @@ const CardanoStats = ({ setLoading }: CardanoStatsProps) => {
         <div className="max-w-4xl w-full bg-gray-800 rounded-lg shadow-md p-6 mb-4 relative">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center">
-              <img src="logo-cardano.svg" alt="Cardano Logo" className="h-12 w-12" />
+              <Image 
+                src="logo-cardano.svg" 
+                alt="Cardano Logo" 
+                width={48} // Adjust width as needed
+                height={48} // Adjust height as needed
+                className="h-12 w-12"
+              />
               <h3 className="text-white text-lg font-bold ml-4">CARDANO</h3>
             </div>
             <div className="relative w-60 bg-black-800 h-7 overflow-hidden rounded-sm ml-2">
