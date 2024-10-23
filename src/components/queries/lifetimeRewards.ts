@@ -1,8 +1,9 @@
 import formatAda from '../variables/formatAda'; 
 import koiosToken from '../variables/koiosToken';
+import { retryFetch } from '../utils/retryFetch'; // Import retry function
 
 export const getLifetimeRewards = async (poolID: string): Promise<string> => {
-    const response = await fetch(`/api/pool_history?_pool_bech32=${poolID}`, {
+    const response = await retryFetch(`/api/pool_history?_pool_bech32=${poolID}`, {
         method: 'GET',
         headers: {
             "Content-Type": "application/json",

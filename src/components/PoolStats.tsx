@@ -24,20 +24,19 @@ const PoolStats = () => {
         getTip(),
         fetchEpochSchedules(),
       ]);
-  
+
       setPoolStats(stats);
       setScheduledBlocks(epochData.current.epochSlots);
-  
+
       const count = await getBlocksCount(poolId, tip.currEpoch);
       setBlockCount(count);
-  
+
       setCurrentEpoch(tip.currEpoch);
-  
     } catch (err) {
       setError((err as Error).message);
     }
   };
-  
+
   const fetchLifetimeRewards = async () => {
     try {
       const rewards = await getLifetimeRewards(poolId);
@@ -86,7 +85,7 @@ const PoolStats = () => {
             SN₳KE STATISTICS
           </h3>
           <ul className="text-gray-300 space-y-2">
-            {[ 
+            {[
               { label: 'EPOCH', value: currentEpoch },
               { label: 'MINTED BLOCKS', value: blockCount !== null && scheduledBlocks !== null ? `${blockCount} / ${scheduledBlocks}` : null },
               { label: 'LIVE STAKE', value: poolStats?.liveStake },

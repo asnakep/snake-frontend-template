@@ -19,13 +19,15 @@ export const EpochStats = () => {
   useEffect(() => {
     const getData = async () => {
       try {
+        setLoading(true); // Set loading state
         const data = await fetchEpochSchedules();
 
-        // Only update the state if the data is new
-        if (JSON.stringify(data.current) !== JSON.stringify(epochData)) {
+        // Update state if the epoch is different
+        if (!epochData || data.current.epoch !== epochData.epoch) {
           setEpochData(data.current);
         }
       } catch (error) {
+        console.error(error); // Log the error for debugging
         setError('Failed to fetch epoch data.');
       } finally {
         setLoading(false);
@@ -42,7 +44,7 @@ export const EpochStats = () => {
 
     // Cleanup interval on component unmount
     return () => clearInterval(interval);
-  }, [epochData]); // Add epochData to the dependency array to compare on each interval
+  }, [epochData]); // Add epochData to the dependency array
 
   if (loading) {
     return (
@@ -72,9 +74,9 @@ export const EpochStats = () => {
             <Image 
               src="/block.png" 
               alt="Blocks Icon" 
-              width={36} // Set the width in pixels
-              height={36} // Set the height in pixels
-              className="mr-3" // Keep your margin class
+              width={36} 
+              height={36} 
+              className="mr-3" 
             />
             BLOCKS PRODUCTION
           </h3>
@@ -85,14 +87,14 @@ export const EpochStats = () => {
                   <i className="fas fa-calendar-day text-blue-400"></i>
                   <strong>EPOCH</strong>
                 </span>
-                <span className="text-blue-400 text-sm custom-font">{epochData?.epoch}</span>
+                <span className="text-blue-400 text-sm custom-font">{epochData?.epoch ?? 'N/A'}</span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
                 <span style={{ marginRight: '218px' }}>
                   <i className="fas fa-cubes text-blue-400"></i>
                   <strong>ASSIGNED</strong>
                 </span>
-                <span className="text-blue-400 text-sm custom-font">{epochData?.epochSlots}</span>
+                <span className="text-blue-400 text-sm custom-font">{epochData?.epochSlots ?? 'N/A'}</span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
                 <span style={{ marginRight: '218px' }}>
@@ -100,7 +102,7 @@ export const EpochStats = () => {
                   <strong>EXPECTED</strong>
                 </span>
                 <span className="text-blue-400 text-sm custom-font">
-                  {epochData?.epochSlotsIdeal !== undefined ? Math.round(epochData.epochSlotsIdeal) : null}
+                  {epochData?.epochSlotsIdeal !== undefined ? Math.round(epochData.epochSlotsIdeal) : 'N/A'}
                 </span>
               </li>
               <li className="flex justify-between text-xs gap-x-4">
@@ -108,7 +110,7 @@ export const EpochStats = () => {
                   <i className="fas fa-trophy text-blue-400"></i>
                   <strong>LUCK</strong>
                 </span>
-                <span className="text-blue-400 text-sm custom-font">{epochData?.maxPerformance}%</span>
+                <span className="text-blue-400 text-sm custom-font">{epochData?.maxPerformance ?? 'N/A'}%</span>
               </li>
             </ul>
           </div>
