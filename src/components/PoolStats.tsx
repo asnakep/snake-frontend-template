@@ -7,6 +7,7 @@ import { getLifetimeRewards } from './queries/lifetimeRewards';
 import { getTip } from './queries/queryTip';
 import { getBlocksCount } from './queries/blocksCount';
 import { fetchEpochSchedules } from './queries/epochSchedules';
+import Image from 'next/image';
 
 const PoolStats = () => {
   const [poolStats, setPoolStats] = useState<any>(null);
@@ -75,7 +76,7 @@ const PoolStats = () => {
       ) : (
         <div className="max-w-4xl w-full bg-gray-800 rounded-lg shadow-md p-6 mb-4">
           <h3 className="text-sm font-semibold text-white mb-4 flex items-center">
-            <img src="/snake.png" alt="Snake Icon" className="w-9 h-9 mr-3" />
+            <Image src="/snake.png" alt="Snake Icon" className="w-9 h-9 mr-3" />
             SN₳KE STATISTICS
           </h3>
           <ul className="text-gray-300 space-y-2">
