@@ -3,6 +3,7 @@ import { getLastRewards } from './queries/lastRewards';
 import poolId from './variables/poolid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import Image from 'next/image';
 
 const PoolRewards = () => {
   const [rewardsData, setRewardsData] = useState<{ epoch: number; rewards: string; ros: string } | null>(null);
@@ -62,7 +63,7 @@ const PoolRewards = () => {
     <div className="flex flex-col items-center">
       <div className="max-w-4xl w-full bg-gray-800 rounded-lg shadow-md p-6 mb-2">
         <h3 className="text-sm font-semibold text-white mb-4 flex items-center">
-          <img src="/austral.png" alt="Rewards Icon" className="w-9 h-9 mr-3" />
+          <Image src="/austral.png" alt="Rewards Icon" className="w-9 h-9 mr-3" />
           LAST REWARDS
         </h3>
         {renderContent()}
