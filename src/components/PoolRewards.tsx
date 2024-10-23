@@ -16,7 +16,6 @@ const PoolRewards = () => {
         const rewards = await getLastRewards(poolId);
         setRewardsData(rewards);
       } catch (error) {
-        console.error(error); // Log the error for debugging
         setError('Failed to fetch rewards data.');
       } finally {
         setLoading(false);
@@ -24,7 +23,7 @@ const PoolRewards = () => {
     };
 
     getData();
-  }, [poolId]); // Consider adding poolId to the dependency array
+  }, []);
 
   const renderContent = () => (
     <ul className="text-gray-300 space-y-2">
@@ -34,7 +33,7 @@ const PoolRewards = () => {
           <strong>EPOCH</strong>
         </span>
         <span className="text-blue-400 text-sm custom-font min-w-[60px] text-right">
-          {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : rewardsData?.epoch ?? 'N/A'}
+          {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : rewardsData?.epoch}
         </span>
       </li>
       <li className="flex justify-between text-xs gap-x-4">
@@ -43,7 +42,7 @@ const PoolRewards = () => {
           <strong>TOTAL</strong>
         </span>
         <span className="text-blue-400 text-sm custom-font min-w-[60px] text-right">
-          {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : rewardsData?.rewards ?? 'N/A'}
+          {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : rewardsData?.rewards}
         </span>
       </li>
       <li className="flex justify-between text-xs gap-x-4">
@@ -52,7 +51,7 @@ const PoolRewards = () => {
           <strong>EPOCH ROS</strong>
         </span>
         <span className="text-blue-400 text-sm custom-font min-w-[60px] text-right">
-          {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : `${rewardsData?.ros ?? 'N/A'}%`}
+          {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : `${rewardsData?.ros}%`}
         </span>
       </li>
     </ul>
@@ -67,9 +66,9 @@ const PoolRewards = () => {
           <Image 
             src="/austral.png" 
             alt="Rewards Icon" 
-            width={36} 
-            height={36} 
-            className="mr-3" 
+            width={36} // Set the width in pixels
+            height={36} // Set the height in pixels
+            className="mr-3" // Keep your margin class
           />
           LAST REWARDS
         </h3>

@@ -5,28 +5,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
 
+
 interface CardanoStatsProps {
   setLoading: (loading: boolean) => void; // Callback to set loading state
 }
 
-interface CardanoStats {
-  epochNo: number;
-  txCount: string;
-  blkCount: string;
-  activeStake: string;
-}
-
-interface TipData {
-  currEpoch: number;
-  absSlot: number;
-  epochSlot: number;
-  blockNum: number;
-  blockTime: string;
-}
-
 const CardanoStats = ({ setLoading }: CardanoStatsProps) => {
-  const [cardanoStats, setCardanoStats] = useState<CardanoStats | null>(null);
-  const [tipData, setTipData] = useState<TipData | null>(null);
+  const [cardanoStats, setCardanoStats] = useState<any>(null);
+  const [tipData, setTipData] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false); // New loading state
 
@@ -123,7 +109,7 @@ const CardanoStats = ({ setLoading }: CardanoStatsProps) => {
                     <i className={`fas fa-${label === 'EPOCH' ? 'calendar-alt' : label === 'SLOT' ? 'clock' : 'cube'} text-blue-400`}></i> <strong>{label}</strong>
                   </span>
                   <span className="text-blue-400 text-sm custom-font">
-                  {value !== undefined && value !== null ? formatNumber(Number(value)) : <FontAwesomeIcon icon={faSpinner} spin />}
+                    {value !== undefined && value !== null ? formatNumber(value) : <FontAwesomeIcon icon={faSpinner} spin />}
                   </span>
                 </li>
               ))}

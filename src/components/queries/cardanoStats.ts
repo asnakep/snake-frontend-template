@@ -1,7 +1,6 @@
 import formatAda from '../variables/formatAda';
 import koiosToken from '../variables/koiosToken';
 import { getTip } from './queryTip';
-import { retryFetch } from '../utils/retryFetch'; // Import retryFetch
 
 const formatNumber = (value: string | number) => {
   return Number(value).toLocaleString();
@@ -15,14 +14,13 @@ export const getCardanoStats = async () => {
       throw new Error("Epoch data is unavailable.");
     }
 
-    // Use retryFetch instead of fetch
-    const response = await retryFetch(`/api/epoch_info?_epoch_no=${currEpoch}`, {
+    const response = await fetch(`/api/epoch_info?_epoch_no=${currEpoch}`, {
       method: 'GET',
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${koiosToken}`
       }
-    });
+    })
 
     if (response.ok) {
       const dataArray = await response.json();

@@ -1,14 +1,13 @@
 import formatAda from '../variables/formatAda';
 import koiosToken from '../variables/koiosToken';
 import { getTip } from './queryTip';
-import { retryFetch } from '../utils/retryFetch'; // Import retry function
 
 export const getLastRewards = async (poolID: string): Promise<{ epoch: number; rewards: string; ros: string }> => {
     const { currEpoch } = await getTip();
 
     const targetEpoch = currEpoch - 2;
 
-    const response = await retryFetch(`/api/pool_history?_pool_bech32=${poolID}&_epoch_no=${targetEpoch}`, {
+    const response = await fetch(`/api/pool_history?_pool_bech32=${poolID}&_epoch_no=${targetEpoch}`, {
         method: 'GET',
         headers: {
             "Content-Type": "application/json",
@@ -16,7 +15,7 @@ export const getLastRewards = async (poolID: string): Promise<{ epoch: number; r
         },
     });
 
-    if (!response?.ok) {
+    if (!response.ok) {
         throw new Error("Error fetching recent rewards and ROS");
     }
 
