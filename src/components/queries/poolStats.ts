@@ -5,6 +5,7 @@ export const getPoolStats = async (poolId: string) => {
   const response = await fetch('/api/pool_info', {
     method: 'POST',
     headers: {
+      "Accept": "application/json",      
       "Content-Type": "application/json",
       "Authorization": `Bearer ${koiosToken}`
     },

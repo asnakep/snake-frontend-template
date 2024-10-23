@@ -17,6 +17,7 @@ export const getCardanoStats = async () => {
     const response = await fetch(`/api/epoch_info?_epoch_no=${currEpoch}`, {
       method: 'GET',
       headers: {
+        "Accept": "application/json",
         "Content-Type": "application/json",
         "Authorization": `Bearer ${koiosToken}`
       }

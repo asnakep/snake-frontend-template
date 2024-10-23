@@ -4,6 +4,7 @@ export const getTip = async () => {
     const response = await fetch('/api/tip', {
       method: 'GET',
       headers: {
+        "Accept": "application/json",
         "Content-Type": "application/json",
         "Authorization": `Bearer ${koiosToken}`
       },

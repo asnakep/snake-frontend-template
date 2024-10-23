@@ -4,6 +4,7 @@ export const getBlocksCount = async (poolID: string, epochNo: number) => {
     const response = await fetch(`/api/pool_blocks?_pool_bech32=${poolID}&_epoch_no=${epochNo}`, {
       method: 'GET',
       headers: {
+        "Accept": "application/json",
         "Content-Type": "application/json",
         "Authorization": `Bearer ${koiosToken}`
       },

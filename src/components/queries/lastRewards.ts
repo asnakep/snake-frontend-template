@@ -10,6 +10,7 @@ export const getLastRewards = async (poolID: string): Promise<{ epoch: number; r
     const response = await fetch(`/api/pool_history?_pool_bech32=${poolID}&_epoch_no=${targetEpoch}`, {
         method: 'GET',
         headers: {
+            "Accept": "application/json",
             "Content-Type": "application/json",
             "Authorization": `Bearer ${koiosToken}`
         },

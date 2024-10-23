@@ -5,6 +5,7 @@ export const getLifetimeRewards = async (poolID: string): Promise<string> => {
     const response = await fetch(`/api/pool_history?_pool_bech32=${poolID}`, {
         method: 'GET',
         headers: {
+            "Accept": "application/json",            
             "Content-Type": "application/json",
             "Authorization": `Bearer ${koiosToken}`
         },
