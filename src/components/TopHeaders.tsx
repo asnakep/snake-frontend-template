@@ -3,7 +3,7 @@ import Image from "next/image"; // If you want to use Next.js Image component
 
 const TopHeaders: React.FC = () => {
   return (
-    <div className="flex flex-col p-4 bg-black-800 rounded-lg shadow-md">
+    <div className="flex flex-col p-4 bg-black-800 bg-opacity-100 rounded-lg shadow-2xl">
       <div className="flex items-center space-x-4">
         <Image
           src="logo.svg" // Update the logo path as needed

@@ -3,7 +3,7 @@ import poolId from './variables/poolid';
 
 const PoolDescription: React.FC = () => {
   return (
-    <div className="max-w-4xl w-full bg-black-800 bg-opacity-80 rounded-lg shadow-md p-6 mb-4">
+    <div className="max-w-4xl w-full bg-black-800 rounded-lg p-6 mt-4">
       <p className="text-white mb-4">
         SN₳KE is your 24/7/365 Reliable Pioneer Stake Pool - Enjoy a 0% pool margin and a fixed cost of 170₳ forever.
       </p>
