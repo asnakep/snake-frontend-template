@@ -63,7 +63,13 @@ const PoolRewards = () => {
     <div className="flex flex-col items-center">
       <div className="max-w-4xl w-full bg-gray-800 rounded-lg shadow-md p-6 mb-2">
         <h3 className="text-sm font-semibold text-white mb-4 flex items-center">
-          <Image src="/austral.png" alt="Rewards Icon" className="w-9 h-9 mr-3" />
+          <Image 
+            src="/austral.png" 
+            alt="Rewards Icon" 
+            width={36} // Set the width in pixels
+            height={36} // Set the height in pixels
+            className="mr-3" // Keep your margin class
+          />
           LAST REWARDS
         </h3>
         {renderContent()}
