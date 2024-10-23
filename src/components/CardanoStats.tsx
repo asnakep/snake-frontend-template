@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
 
+
 interface CardanoStatsProps {
   setLoading: (loading: boolean) => void; // Callback to set loading state
 }
@@ -13,6 +14,7 @@ const CardanoStats = ({ setLoading }: CardanoStatsProps) => {
   const [cardanoStats, setCardanoStats] = useState<any>(null);
   const [tipData, setTipData] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false); // New loading state
 
   const fetchCardanoStats = async () => {
     try {
@@ -35,8 +37,10 @@ const CardanoStats = ({ setLoading }: CardanoStatsProps) => {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true); // Start loading
+      setIsLoading(true); // Indicate loading
       await Promise.all([fetchTipData(), fetchCardanoStats()]);
       setLoading(false); // End loading
+      setIsLoading(false); // Data fetching complete
     };
 
     fetchData();
@@ -64,18 +68,16 @@ const CardanoStats = ({ setLoading }: CardanoStatsProps) => {
               <Image 
                 src="logo-cardano.svg" 
                 alt="Cardano Logo" 
-                width={48} // Adjust width as needed
-                height={48} // Adjust height as needed
+                width={48} 
+                height={48} 
                 className="h-12 w-12"
               />
               <h3 className="text-white text-lg font-bold ml-4">CARDANO</h3>
             </div>
             <div className="relative w-60 bg-black-800 h-7 overflow-hidden rounded-sm ml-2">
-              {/* Loading spinner should be shown while fetching data */}
-              {(!cardanoStats || !tipData) ? (
-                <div className="absolute inset-0 flex justify-center items-center text-white">
-                  <FontAwesomeIcon icon={faSpinner} spin className="text-white" />
-                </div>
+              {/* Loading bar while fetching data */}
+              {isLoading ? (
+                <div className="absolute top-0 left-10 h-full bg-blue-800 transition-all duration-300" style={{ width: `${epochProgressPercent}%` }}></div>
               ) : (
                 <>
                   <div
