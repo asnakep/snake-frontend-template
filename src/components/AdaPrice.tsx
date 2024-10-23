@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import Image from 'next/image'; // Import the Next.js Image component
 
 // Define the type for the ADA price data
 interface AdaPrice {
@@ -54,7 +55,13 @@ const AdaPricePanel = () => {
       ) : (
         <div>
           <div className="flex items-center mb-4">
-            <img src="/austral.png" alt="ADA Icon" className="w-11 h-11 mr-1" />
+            <Image 
+              src="/austral.png" 
+              alt="ADA Icon" 
+              width={44} // Adjust as needed 
+              height={44} // Adjust as needed 
+              className="mr-1"
+            />
             <h2 className="text-lg text-gray-300 font-bold ml-3">ADA</h2>
           </div>
 
