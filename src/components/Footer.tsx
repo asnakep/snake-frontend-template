@@ -6,13 +6,14 @@ export default function Footer() {
     <footer className="footer footer-center p-10">
       <div className="absolute bottom-4 right-0 flex justify-end items-center w-full mr-10">
         <div className="flex space-x-12 items-center">
+          {/* Links with hover and click effects */}
           <Link
             href="https://gov.tools/connected/drep_directory/drep1axjcgsgh9pc38sg4gnjgv2scpdzu5fjfkmg6pa5g9e5h7dkqusm"
             target="_blank"
             rel="noopener noreferrer"
           >
             <Image
-              className="transition-transform transform hover:scale-130 hover:rotate-12 hover:scale-130 hover:text-blue-400 duration-600"
+              className="transition-transform transform hover:scale-110 active:scale-95 active:translate-y-1 duration-300"
               src="logo-govtool.svg"
               alt="Govtool Logo"
               width={24}
@@ -26,7 +27,7 @@ export default function Footer() {
             rel="noopener noreferrer"
           >
             <Image
-              className="transition-transform transform hover:scale-130 hover:rotate-12 hover:scale-130 hover:text-blue-400 duration-600"
+              className="transition-transform transform hover:scale-110 active:scale-95 active:translate-y-1 duration-300"
               src="logo-telegram.svg"
               alt="Telegram Logo"
               width={20}
@@ -40,7 +41,7 @@ export default function Footer() {
             rel="noopener noreferrer"
           >
             <Image
-              className="transition-transform transform hover:scale-130 hover:rotate-12 hover:scale-130 hover:text-blue-400 duration-600"
+              className="transition-transform transform hover:scale-110 active:scale-95 active:translate-y-1 duration-300"
               src="logo-x.svg"
               alt="Twitter Logo"
               width={16}
@@ -54,7 +55,7 @@ export default function Footer() {
             rel="noopener noreferrer"
           >
             <Image
-              className="transition-transform transform hover:scale-130 hover:rotate-12 hover:scale-130 hover:text-blue-400 duration-600"
+              className="transition-transform transform hover:scale-110 active:scale-95 active:translate-y-1 duration-300"
               src="logo-linkedin.svg"
               alt="LinkedIn Logo"
               width={18}
@@ -68,7 +69,7 @@ export default function Footer() {
             rel="noopener noreferrer"
           >
             <Image
-              className="transition-transform transform hover:scale-130 hover:rotate-12 hover:scale-130 hover:text-blue-400 duration-600"
+              className="transition-transform transform hover:scale-110 active:scale-95 active:translate-y-1 duration-300"
               src="logo-github.svg"
               alt="Github Logo"
               width={18}
@@ -82,7 +83,7 @@ export default function Footer() {
             rel="noopener noreferrer"
           >
             <Image
-              className="transition-transform transform hover:scale-130 hover:rotate-12 hover:scale-130 hover:text-blue-400 duration-600"
+              className="transition-transform transform hover:scale-110 active:scale-95 active:translate-y-1 duration-300"
               src="logo-adastat.svg"
               alt="Adastat Logo"
               width={18}
@@ -96,7 +97,7 @@ export default function Footer() {
             rel="noopener noreferrer"
           >
             <Image
-              className="transition-transform transform hover:scale-130 hover:rotate-12 hover:scale-130 hover:text-blue-400 duration-600"
+              className="transition-transform transform hover:scale-110 active:scale-95 active:translate-y-1 duration-300"
               src="logo-pooltool.svg"
               alt="Pooltool Logo"
               width={19}
@@ -110,7 +111,7 @@ export default function Footer() {
             rel="noopener noreferrer"
           >
             <Image
-              className="transition-transform transform hover:scale-130 hover:rotate-12 hover:scale-130 hover:text-blue-400 duration-600"
+              className="transition-transform transform hover:scale-110 active:scale-95 active:translate-y-1 duration-300"
               src="logo-poolpm.svg"
               alt="Poolpm Logo"
               width={18}
