@@ -18,9 +18,6 @@ interface ComponentConfig {
   style?: CSSProperties; // Optional additional styles
 }
 
-const Stake = dynamic(() => import("./Delegate"), { ssr: false });
-const TopHeaders = dynamic(() => import("./TopHeaders"), { ssr: false });
-const PoolDescription = dynamic(() => import("./PoolDescription"), { ssr: false });
 const PoolStats = dynamic(() => import("./PoolStats"), { ssr: false });
 const PoolRewards = dynamic(() => import("./PoolRewards"), { ssr: false });
 const EpochSchedules = dynamic(() => import("./EpochSchedules"), { ssr: false });
@@ -28,24 +25,6 @@ const CardanoStats = dynamic(() => import("./CardanoStats"), { ssr: false });
 const AdaPricePanel = dynamic(() => import("./AdaPrice"), { ssr: false });
 
 const componentsConfig: ComponentConfig[] = [
-  {
-    id: "topheader",
-    component: TopHeaders,
-    position: { top: "10px", left: "30px", position: "fixed" },
-    style: {},
-  },
-  {
-    id: "stake",
-    component: Stake,
-    position: { top: "83px", right: "80px", position: "fixed" },
-    style: {},
-  },
-  {
-    id: "pooldescription",
-    component: PoolDescription,
-    position: { top: "80px", left: "30px", position: "fixed" },
-    style: {},
-  },
   {
     id: "poolstats",
     component: PoolStats,

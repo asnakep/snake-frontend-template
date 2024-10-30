@@ -8,3 +8,30 @@
       color: #60a5fa;
       font-weight: bold;
     }
+
+    /* In globals.css */
+
+    .custom-title-font {
+      font-family: 'Poppins', sans-serif;
+      /* Replace with your desired font */
+      font-size: 1.5rem;
+      /* Adjust as needed */
+      color: #ffffff;
+      /* You can adjust the color if needed */
+      font-weight: 700;
+      /* Adjust the weight to your preference */
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(100%);
+      }
+
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+    .animate-scroll {
+      animation: scroll 30s linear infinite;
+    }

@@ -49,7 +49,7 @@ const Delegate: React.FC = () => {
   return (
     <>
       {isConnected ? (
-        <div className="flex items-center gap-3 sm:gap-6 lg:gap-8 mt-[-53px] mr-[-30px]">
+        <div className="flex items-center gap-3 sm:gap-6 lg:gap-8">
           <button
             className={`btn btn-outline px-4 py-2 text-[12px] font-bold transition-transform duration-150 ease-in-out ${
               clicked ? "scale-110" : "scale-100"
