@@ -74,7 +74,7 @@ const PoolStats = () => {
       {error ? (
         <p className="text-red-500">Error: {error}</p>
       ) : (
-        <div className="max-w-4xl w-full bg-gray-900 rounded-lg shadow-2xl p-6 mb-4">
+        <div className="max-w-4xl w-full bg-base-300 rounded-lg p-6 mb-4">
           <h3 className="text-sm font-semibold text-white mb-4 flex items-center">
             <Image 
               src="/snake.png" 
