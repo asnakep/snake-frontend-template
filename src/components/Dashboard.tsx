@@ -3,25 +3,42 @@
 import React from 'react';
 import PoolStats from './PoolStats';
 import CardanoStats from './CardanoStats';
+import EpochStats from './BlocksProduction';
+import PoolRewards from './PoolRewards';
+import AdaPricePanel from './AdaPrice';
 
 const Dashboard: React.FC = () => {
   return (
     <div
-      className="w-[calc(100%+4rem)] h-[calc(100vh-200px)] bg-gray-800 p-6 rounded-lg shadow-md overflow-hidden lg:w-[calc(100%+8rem)] lg:mx-[-4rem] md:w-[calc(100%+6rem)] md:mx-[-3rem] sm:w-[calc(100%+4rem)] sm:mx-[-2rem]"
+      className="w-full h-auto min-h-[calc(100vh-200px)] bg-gray-900 p-6 rounded-lg overflow-hidden lg:mx-[-4rem] md:mx-[-3rem] sm:mx-[-2rem]"
       style={{
         marginLeft: '-2rem', // Expand the width to compensate for the negative margin
         zIndex: 1, // Ensure content stays below the navbar
       }}
     >
-      {/* Unified Dashboard with Pool Stats and Cardano Stats */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
+      {/* Unified Dashboard with Pool Stats, Cardano Stats, Blocks Production, Last Rewards, and ADA Price Panels */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Pool Stats Panel */}
-        <div className="bg-gray-900 p-4 rounded-lg shadow-md">
+        <div className="bg-gray-800 p-4 rounded-lg h-full">
           <PoolStats />
         </div>
         {/* Cardano Stats Panel */}
-        <div className="bg-gray-900 p-4 rounded-lg shadow-md">
+        <div className="bg-gray-800 p-4 rounded-lg h-full">
           <CardanoStats setLoading={() => {}} />
+        </div>
+      </div>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
+        {/* Blocks Production Panel */}
+        <div className="bg-gray-800 p-6 rounded-lg h-full flex flex-col justify-center">
+          <EpochStats />
+        </div>
+        {/* Last Rewards Panel */}
+        <div className="bg-gray-800 p-6 rounded-lg h-full flex flex-col justify-center">
+          <PoolRewards />
+        </div>
+        {/* ADA Price Panel */}
+        <div className="bg-gray-800 p-6 rounded-lg h-full flex flex-col justify-center">
+          <AdaPricePanel />
         </div>
       </div>
     </div>
