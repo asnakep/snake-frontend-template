@@ -65,7 +65,7 @@ const AdaPricePanel = () => {
             <h2 className="text-lg text-gray-300 font-bold ml-3">ADA</h2>
           </div>
 
-          <ul className="text-gray-300 space-y-1">
+          <ul className="text-gray-300 space-y-2">
             {[
               { label: 'RANK', value: adaPrice?.rank },
               { label: 'PRICE', value: `$${adaPrice?.price}` },

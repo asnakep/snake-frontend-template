@@ -12,7 +12,7 @@ const Ticker: React.FC = () => {
     <div className="overflow-hidden whitespace-nowrap" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <div
         ref={tickerRef}
-        className="inline-block px-6 text-white font-semibold animate-scroll"
+        className="inline-block px-6 text-white font-semibold animate-scroll text-lg"
         style={{ animationPlayState: isPaused ? 'paused' : 'running' }}
       >
         SN₳KE is your 24/7/365 Reliable Pioneer Stake Pool - Enjoy a 0% pool margin and a fixed cost of 170₳ forever. &nbsp;
@@ -24,7 +24,7 @@ const Ticker: React.FC = () => {
           className="text-blue-500 hover:underline"
         >
           {poolId}
-        </a> &nbsp; | &nbsp;
+        </a> &nbsp;
         <strong>Ticker: </strong> 
         <a
           href={`https://adastat.net/ticker/SNAKE`}
