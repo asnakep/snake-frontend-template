@@ -19,25 +19,25 @@ const Dashboard: React.FC = () => {
       {/* Unified Dashboard with Pool Stats, Cardano Stats, Blocks Production, Last Rewards, and ADA Price Panels */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Pool Stats Panel */}
-        <div className="bg-gray-800 p-4 rounded-lg h-full">
+        <div className="bg-gray-900 p-4 rounded-lg h-full">
           <PoolStats />
         </div>
         {/* Cardano Stats Panel */}
-        <div className="bg-gray-800 p-4 rounded-lg h-full">
+        <div className="bg-gray-900 p-4 rounded-lg h-full">
           <CardanoStats setLoading={() => {}} />
         </div>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
         {/* Blocks Production Panel */}
-        <div className="bg-gray-800 p-6 rounded-lg h-full flex flex-col justify-center">
+        <div className="bg-gray-900 p-6 rounded-lg h-full flex flex-col justify-between items-center w-full">
           <EpochStats />
         </div>
         {/* Last Rewards Panel */}
-        <div className="bg-gray-800 p-6 rounded-lg h-full flex flex-col justify-center">
+        <div className="bg-gray-900 p-6 rounded-lg h-full flex flex-col justify-between items-center w-full">
           <PoolRewards />
         </div>
         {/* ADA Price Panel */}
-        <div className="bg-gray-800 p-6 rounded-lg h-full flex flex-col justify-center">
+        <div className="bg-gray-900 p-6 rounded-lg h-full flex flex-col justify-between items-center w-full">
           <AdaPricePanel />
         </div>
       </div>

@@ -66,7 +66,7 @@ export const EpochStats = () => {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="max-w-4xl w-full bg-gray-900 rounded-lg p-6 mb-4">
+      <div className="max-w-4xl w-full bg-gray-900 rounded-lg p-6 mb-4 shadow-2xl">
         <div className="grid grid-cols-1 gap-4">
           <h3 className="text-sm font-semibold text-white flex items-center">
             <Image 

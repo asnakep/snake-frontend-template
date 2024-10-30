@@ -61,7 +61,7 @@ const PoolRewards = () => {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="max-w-4xl w-full bg-gray-900 rounded-lg p-6 mb-2">
+      <div className="max-w-4xl w-full bg-gray-900 rounded-lg p-6 mb-2 shadow-2xl">
         <h3 className="text-sm font-semibold text-white mb-4 flex items-center">
           <Image 
             src="/austral.png" 
