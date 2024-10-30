@@ -49,7 +49,7 @@ const AdaPricePanel = () => {
   };
 
   return (
-    <div className="max-w-4xl w-full bg-gray-800 rounded-lg shadow-md p-4 mb-1">
+    <div className="max-w-4xl w-full bg-gray-900 rounded-lg p-4 mb-1">
       {error ? (
         <p className="text-red-500">Error: {error}</p>
       ) : (
