@@ -1,7 +1,6 @@
 import Footer from "@/components/Footer";
 import Main from "@/components/Main";
 import NavBar from "@/components/NavBar";
-import Image from "next/image";
 
 export default async function Home() {
   return (
