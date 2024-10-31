@@ -14,7 +14,7 @@ const TopHeaders: React.FC = () => {
           priority
         />
         <div className="custom-title-font">
-          Cardano Stakepool SN₳KE
+          SN₳KE Cardano Staking
         </div>
       </div>
     </div>
