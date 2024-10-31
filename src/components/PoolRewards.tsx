@@ -26,8 +26,8 @@ const PoolRewards = () => {
   }, []);
 
   const renderContent = () => (
-    <ul className="text-gray-300 space-y-2">
-      <li className="flex justify-between text-xs gap-x-4">
+    <ul className="text-gray-300 space-y-3">
+      <li className="flex justify-between items-center text-xs gap-x-4">
         <span className="flex-grow-0 min-w-[60px]" style={{ marginRight: '180px' }}>
           <i className="fas fa-calendar-day text-blue-400"></i>
           <strong>EPOCH</strong>
@@ -36,7 +36,7 @@ const PoolRewards = () => {
           {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : rewardsData?.epoch}
         </span>
       </li>
-      <li className="flex justify-between text-xs gap-x-4">
+      <li className="flex justify-between items-center text-xs gap-x-4">
         <span className="flex-grow-0 min-w-[60px]" style={{ marginRight: '180px' }}>
           <i className="fas fa-coins text-blue-400"></i>
           <strong>TOTAL</strong>
@@ -45,12 +45,12 @@ const PoolRewards = () => {
           {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : rewardsData?.rewards}
         </span>
       </li>
-      <li className="flex justify-between text-xs gap-x-4">
+      <li className="flex justify-between items-center text-xs gap-x-4 whitespace-nowrap">
         <span className="flex-grow-0 min-w-[60px]" style={{ marginRight: '180px' }}>
           <i className="fas fa-percentage text-blue-400"></i>
           <strong>EPOCH ROS</strong>
         </span>
-        <span className="text-blue-400 text-sm custom-font min-w-[60px] text-right">
+        <span className="text-blue-400 text-sm custom-font min-w-[60px] text-right whitespace-nowrap">
           {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : `${rewardsData?.ros}%`}
         </span>
       </li>
@@ -61,8 +61,8 @@ const PoolRewards = () => {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="max-w-4xl w-full bg-base-300 rounded-lg p-6 mb-2">
-        <h3 className="text-sm font-semibold text-white mb-4 flex items-center">
+      <div className="max-w-4xl w-full bg-base-300 rounded-lg p-6 mt-1">
+        <h3 className="text-sm font-semibold text-white mb-6 flex items-center">
           <Image 
             src="/austral.png" 
             alt="Rewards Icon" 

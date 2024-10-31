@@ -65,14 +65,14 @@ const AdaPricePanel = () => {
             <h2 className="text-lg text-gray-300 font-bold ml-3">ADA</h2>
           </div>
 
-          <ul className="text-gray-300 space-y-2">
+          <ul className="text-gray-300 space-y-3">
             {[
               { label: 'RANK', value: adaPrice?.rank },
               { label: 'PRICE', value: `$${adaPrice?.price}` },
               { label: 'MARKET CAP', value: `$${formatNumber(Number(adaPrice?.marketCap))}` },
             ].map(({ label, value }, index) => (
-              <li key={index} className="flex justify-between text-xs">
-                <span className="mt-1">
+              <li key={index} className="flex justify-between items-center text-xs">
+                <span className="mt-2 whitespace-nowrap">
                   <strong>{label}</strong>
                 </span>
                 <span className="text-blue-400 text-sm custom-font" style={{ width: '338px', textAlign: 'right' }}>
