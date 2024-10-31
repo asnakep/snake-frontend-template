@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="fixed bottom-0 left-0 right-0 w-full px-4 py-2 bg-base-100 z-60">
-      <div className="flex justify-end items-center space-x-6">
+      <div className="flex justify-end items-center space-x-8">
         {/* Links with hover and click effects */}
         <Link
           href="https://gov.tools/connected/drep_directory/drep1axjcgsgh9pc38sg4gnjgv2scpdzu5fjfkmg6pa5g9e5h7dkqusm"
