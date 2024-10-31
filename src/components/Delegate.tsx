@@ -63,15 +63,15 @@ const Delegate: React.FC = () => {
 
       {/* Bottom-left notification message */}
       {txMessage && (
-        <div className="fixed bottom-4 left-12 bg-gray-800 text-white px-4 py-2 rounded shadow-lg z-50 flex items-center text-xs">
+        <div className="fixed bottom-4 left-12 bg-base-300 text-white px-4 py-2 rounded shadow-lg z-50 flex items-center text-xs">
           <span className="uppercase font-bold mr-1">
-            Wallet delegated to SNAKE. TX 
+            Wallet delegated to SNAKE. TXID: 
           </span>
           <a
             href={`https://adastat.net/transactions/${txMessage}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="custom-font" // Applying the custom font
+            className="uppercase font-bold"
           >
             {txMessage}
           </a>
