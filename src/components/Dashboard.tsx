@@ -1,7 +1,7 @@
 import React from 'react';
 import PoolStats from './PoolStats';
 import CardanoStats from './CardanoStats';
-import EpochStats from './BlocksProduction';
+import EpochStats from './EpochStats';
 import PoolRewards from './PoolRewards';
 import AdaPricePanel from './AdaPrice';
 
