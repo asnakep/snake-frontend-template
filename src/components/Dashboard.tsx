@@ -10,7 +10,7 @@ const Dashboard: React.FC = () => {
     <div
       className="w-full h-auto min-h-[calc(100vh-200px)] bg-base-100 p-6 rounded-lg overflow-hidden lg:mx-[-4rem] md:mx-[-3rem] sm:mx-[-2rem]"
       style={{
-        marginLeft: '-2rem', // Expand the width to compensate for the negative margin
+        marginLeft: '-1rem', // Expand the width to compensate for the negative margin
         zIndex: 0, // Ensure dashboard content stays below the navbar
         position: 'relative', // Make sure the Dashboard is positioned correctly to allow layering
       }}
