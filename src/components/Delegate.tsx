@@ -51,7 +51,7 @@ const Delegate: React.FC = () => {
       {isConnected ? (
         <div className="flex items-center gap-3 sm:gap-6 lg:gap-8">
           <button
-            className={`btn btn-outline px-4 py-2 text-[12px] font-bold transition-transform duration-150 ease-in-out ${
+            className={`btn btn-outline px-4 py-2 text-[14px] font-bold transition-transform duration-150 ease-in-out ${
               clicked ? "scale-110" : "scale-100"
             }`}
             onClick={handleAPI}

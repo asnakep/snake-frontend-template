@@ -4,12 +4,11 @@ import TopHeaders from "./TopHeaders";
 import Ticker from "./Ticker";
 
 const Delegate = dynamic(() => import('./Delegate'), { ssr: false });
-
 const WalletConnect = dynamic(() => import("./WalletConnect"), { ssr: false });
 
 export default function NavBar() {
   return (
-    <div className="flex items-center w-full px-4 py-2 font-mono text-sm fixed top-0 left-0 right-0 max-w-full bg-base-100 z-60">
+    <div className="flex items-center w-full px-4 py-2 font-mono text-sm fixed top-0 left-0 right-0 max-w-full bg-base-100 z-[100]">
       {/* Left section with logo and title */}
       <div className="flex-shrink-0 mr-4">
         <TopHeaders />
