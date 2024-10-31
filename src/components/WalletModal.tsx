@@ -19,7 +19,7 @@ const WalletModal = () => {
   return (
     <div>
       <button
-        className="btn btn-outline"
+        className="btn btn-outline hidden md:block sm:block"
         onClick={() => window.my_modal.showModal()}
         disabled={isConnected} // Disable the button if already connected
       >
