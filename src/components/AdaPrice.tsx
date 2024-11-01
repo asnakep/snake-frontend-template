@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAustralSign } from '@fortawesome/free-solid-svg-icons';
+import { faAustralSign, faRankingStar, faMoneyBillWave, faLandmarkFlag } from '@fortawesome/free-solid-svg-icons';
 
 // Define the type for the ADA price data
 interface AdaPrice {
@@ -48,7 +48,7 @@ const AdaPricePanel = () => {
   };
 
   return (
-    <div className="max-w-4xl w-full bg-base-300 rounded-lg p-4 mt-1">
+    <div className="max-w-4xl w-full bg-base-300 rounded-lg p-4 mt-1 font-light">
       {error ? (
         <p className="text-red-500">Error: {error}</p>
       ) : (
@@ -60,16 +60,17 @@ const AdaPricePanel = () => {
 
           <ul className="text-gray-400 space-y-2">
             {[
-              { label: 'RANK', value: adaPrice?.rank },
-              { label: 'PRICE', value: `$${adaPrice?.price}` },
-              { label: 'MARKET CAP', value: `$${formatNumber(Number(adaPrice?.marketCap))}` },
-            ].map(({ label, value }, index) => (
-              <li key={index} className="flex justify-between items-center text-xs">
-                <span className="mt-2 whitespace-nowrap">
+              { label: 'Rank', value: adaPrice?.rank, icon: faRankingStar },
+              { label: 'Price', value: `$${adaPrice?.price}`, icon: faMoneyBillWave },
+              { label: 'Market Cap', value: `$${formatNumber(Number(adaPrice?.marketCap))}`, icon: faLandmarkFlag },
+            ].map(({ label, value, icon }, index) => (
+              <li key={index} className="flex justify-between items-center text-sm">
+                <span className="flex items-center mt-2 whitespace-nowrap">
+                  <FontAwesomeIcon icon={icon} className="text-gray-400 mr-2" />
                   <strong>{label}</strong>
                 </span>
                 <span className="text-blue-400 text-sm custom-font" style={{ width: '338px', textAlign: 'right' }}>
-                  {loading ? <span className="loading loading-ring loading-sm"></span> : value || "N/A"}
+                  {loading ? <span className="loading loading-ring loading-sm"></span> : value || 'N/A'}
                 </span>
               </li>
             ))}
