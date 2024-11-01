@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCube } from '@fortawesome/free-solid-svg-icons';
 import { fetchEpochSchedules } from './queries/epochSchedules';
-import Image from 'next/image';
 
 interface EpochData {
   epoch: number;
@@ -70,13 +71,7 @@ export const EpochStats = () => {
         <div className="grid gap-4">
           <div className="flex items-center justify-between">
             <h3 className="text-base font-bold text-white">BLOCKS</h3>
-            <Image 
-              src="/block.apng" 
-              alt="Blocks Icon" 
-              width={50}
-              height={50}
-              className="ml-6"
-            />
+            <FontAwesomeIcon icon={faCube} className="text-blue-400 text-3xl ml-6" />
           </div>
           <div>
             <ul className="text-gray-300 space-y-2">
@@ -89,7 +84,6 @@ export const EpochStats = () => {
               </li>
               <li className="flex justify-between text-xs gap-x-4">
                 <span style={{ marginRight: '218px' }}>
-                  <i className="fas fa-cubes text-blue-400"></i>
                   <strong>ASSIGNED</strong>
                 </span>
                 <span className="text-blue-400 text-sm custom-font">{epochData?.epochSlots}</span>
