@@ -68,16 +68,16 @@ export const EpochStats = () => {
     <div className="flex flex-col items-center">
       <div className="max-w-4xl w-full bg-base-300 rounded-lg p-6 mb-4">
         <div className="grid gap-4">
-          <h3 className="text-sm font-semibold text-white flex items-center">
+          <div className="flex items-center justify-between">
+            <h3 className="text-base font-bold text-white">BLOCKS</h3>
             <Image 
               src="/block.apng" 
               alt="Blocks Icon" 
-              width={56}
-              height={56}
-              className="mr-6"
+              width={50}
+              height={50}
+              className="ml-6"
             />
-            BLOCKS PRODUCTION
-          </h3>
+          </div>
           <div>
             <ul className="text-gray-300 space-y-2">
               <li className="flex justify-between text-xs gap-x-4">

@@ -72,17 +72,17 @@ const PoolStats = () => {
       {error ? (
         <p className="text-red-500">Error: {error}</p>
       ) : (
-        <div className="max-w-4xl w-full bg-base-300 rounded-lg p-6 mb-4  ">
-          <h3 className="text-lg font-bold text-white mb-4 flex items-center">
+        <div className="max-w-4xl w-full bg-base-300 rounded-lg p-6 mb-4">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-lg font-bold text-white">SN₳KE</h3>
             <Image 
               src="/snake.apng" 
               alt="Snake Icon" 
-              width={56}
-              height={56}
-              className="mr-6"
+              width={50}
+              height={50}
+              className="ml-6"
             />
-            SN₳KE
-          </h3>
+          </div>
           <ul className="text-gray-300 space-y-2">
             {[ 
               { label: 'EPOCH', value: currentEpoch },
