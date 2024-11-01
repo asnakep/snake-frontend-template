@@ -1,7 +1,5 @@
 import poolId from './variables/poolid';
 import { useState, useEffect } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { getPoolStats } from './queries/poolStats';
 import { getLifetimeRewards } from './queries/lifetimeRewards';
 import { getTip } from './queries/queryTip';
@@ -108,7 +106,7 @@ const PoolStats = () => {
                   <strong>{label}</strong>
                 </span>
                 <span className="text-sm custom-font" style={{ width: '180px', textAlign: 'right' }}>
-                  {value !== undefined && value !== null ? value : <FontAwesomeIcon icon={faSpinner} spin />}
+                  {value !== undefined && value !== null ? value : <span className="loading loading-ring loading-sm"></span>}
                 </span>
               </li>
             ))}

@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getLastRewards } from './queries/lastRewards';
 import poolId from './variables/poolid';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
 
 const PoolRewards = () => {
@@ -33,7 +31,7 @@ const PoolRewards = () => {
           <strong>EPOCH</strong>
         </span>
         <span className="text-blue-400 text-sm custom-font min-w-[60px] text-right">
-          {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : rewardsData?.epoch}
+          {loading ? <span className="loading loading-ring loading-sm"></span> : rewardsData?.epoch}
         </span>
       </li>
       <li className="flex justify-between items-center text-xs gap-x-4">
@@ -42,7 +40,7 @@ const PoolRewards = () => {
           <strong>TOTAL</strong>
         </span>
         <span className="text-blue-400 text-sm custom-font min-w-[60px] text-right">
-          {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : rewardsData?.rewards}
+          {loading ? <span className="loading loading-ring loading-sm"></span> : rewardsData?.rewards}
         </span>
       </li>
       <li className="flex justify-between items-center text-xs gap-x-4 whitespace-nowrap">
@@ -51,7 +49,7 @@ const PoolRewards = () => {
           <strong>EPOCH ROS</strong>
         </span>
         <span className="text-blue-400 text-sm custom-font min-w-[60px] text-right whitespace-nowrap">
-          {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : `${rewardsData?.ros}%`}
+          {loading ? <span className="loading loading-ring loading-sm"></span> : `${rewardsData?.ros}%`}
         </span>
       </li>
     </ul>

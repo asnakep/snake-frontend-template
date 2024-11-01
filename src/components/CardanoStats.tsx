@@ -1,10 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getCardanoStats } from './queries/cardanoStats';
 import { getTip } from './queries/queryTip';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
-
 
 interface CardanoStatsProps {
   setLoading: (loading: boolean) => void; // Callback to set loading state
@@ -109,7 +106,7 @@ const CardanoStats = ({ setLoading }: CardanoStatsProps) => {
                     <i className={`fas fa-${label === 'EPOCH' ? 'calendar-alt' : label === 'SLOT' ? 'clock' : 'cube'} text-blue-400`}></i> <strong>{label}</strong>
                   </span>
                   <span className="text-blue-400 text-sm custom-font">
-                    {value !== undefined && value !== null ? formatNumber(value) : <FontAwesomeIcon icon={faSpinner} spin />}
+                    {value !== undefined && value !== null ? formatNumber(value) : <span className="loading loading-ring loading-sm"></span>}
                   </span>
                 </li>
               ))}
