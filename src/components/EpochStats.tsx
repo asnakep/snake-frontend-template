@@ -70,11 +70,11 @@ export const EpochStats = () => {
         <div className="grid gap-4">
           <h3 className="text-sm font-semibold text-white flex items-center">
             <Image 
-              src="/block.png" 
+              src="/block.apng" 
               alt="Blocks Icon" 
-              width={36}
-              height={36}
-              className="mr-3"
+              width={56}
+              height={56}
+              className="mr-6"
             />
             BLOCKS PRODUCTION
           </h3>
