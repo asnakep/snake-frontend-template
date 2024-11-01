@@ -4,7 +4,7 @@ import NavBar from "@/components/NavBar";
 
 export default async function Home() {
   return (
-    <main className="static flex min-h-screen flex-col">
+    <main className="navbar-center static flex min-h-screen flex-col">
       <NavBar />
       <div className="static flex mt-14">
       </div>
