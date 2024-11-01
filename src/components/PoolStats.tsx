@@ -75,11 +75,11 @@ const PoolStats = () => {
         <div className="max-w-4xl w-full bg-base-300 rounded-lg p-6 mb-4">
           <h3 className="text-sm font-semibold text-white mb-4 flex items-center">
             <Image 
-              src="/snake.png" 
+              src="/snake.apng" 
               alt="Snake Icon" 
-              width={36} // Set the width in pixels
-              height={36} // Set the height in pixels
-              className="mr-3" // Keep your margin class
+              width={56} // Set the width in pixels
+              height={56} // Set the height in pixels
+              className="mr-5" // Keep your margin class
             />
             SN₳KE STATISTICS
           </h3>
