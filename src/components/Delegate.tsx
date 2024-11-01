@@ -65,7 +65,7 @@ const Delegate: React.FC = () => {
       {txMessage && (
         <div className="fixed bottom-4 left-12 bg-base-300 text-white px-4 py-2 rounded shadow-lg z-50 flex items-center text-xs">
           <span className="uppercase font-bold mr-1">
-            Wallet delegated to SNAKE. TXID: 
+            delegated to SNAKE - TXID: 
           </span>
           <a
             href={`https://adastat.net/transactions/${txMessage}`}
