@@ -71,7 +71,7 @@ const Delegate: React.FC = () => {
             href={`https://adastat.net/transactions/${txMessage}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="uppercase font-bold"
+            className="uppercase font-bold link-primary"
           >
             {txMessage}
           </a>
