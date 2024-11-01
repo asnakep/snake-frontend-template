@@ -78,8 +78,8 @@ const PoolStats = () => {
             <Image 
               src="/snake.svg" 
               alt="Snake Icon" 
-              width={60}
-              height={60}
+              width={50}
+              height={50}
               className="ml-6"
             />
           </div>
