@@ -58,7 +58,7 @@ const AdaPricePanel = () => {
             <FontAwesomeIcon icon={faAustralSign} className="text-blue-400 text-3xl ml-1 mb-4" />
           </div>
 
-          <ul className="text-gray-300 space-y-2">
+          <ul className="text-gray-400 space-y-2">
             {[
               { label: 'RANK', value: adaPrice?.rank },
               { label: 'PRICE', value: `$${adaPrice?.price}` },

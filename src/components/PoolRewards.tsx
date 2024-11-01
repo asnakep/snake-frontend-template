@@ -25,7 +25,7 @@ const PoolRewards = () => {
   }, []);
 
   const renderContent = () => (
-    <ul className="text-gray-300 space-y-3">
+    <ul className="text-gray-400 space-y-3">
       <li className="flex justify-between items-center text-xs gap-x-4">
         <span className="flex-grow-0 min-w-[60px]" style={{ marginRight: '180px' }}>
           <i className="fas fa-calendar-day text-blue-400"></i>

@@ -70,11 +70,11 @@ export const EpochStats = () => {
       <div className="max-w-4xl w-full bg-base-300 rounded-lg p-6 mb-4">
         <div className="grid gap-4">
           <div className="flex items-center justify-between">
-            <h3 className="text-base font-bold text-white">BLOCKS</h3>
+            <h3 className="text-sm font-bold text-white">BLOCKS</h3>
             <FontAwesomeIcon icon={faCube} className="text-blue-400 text-3xl ml-6" />
           </div>
           <div>
-            <ul className="text-gray-300 space-y-2">
+            <ul className="text-gray-400 space-y-2">
               <li className="flex justify-between text-xs gap-x-4">
                 <span style={{ marginRight: '218px' }}>
                   <i className="fas fa-calendar-day text-blue-400"></i>
