@@ -76,7 +76,7 @@ const PoolStats = () => {
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-lg font-bold text-white">SN₳KE</h3>
             <Image 
-              src="/snake.apng" 
+              src="/snake.svg" 
               alt="Snake Icon" 
               width={60}
               height={60}
