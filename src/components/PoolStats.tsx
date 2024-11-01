@@ -6,7 +6,7 @@ import { getTip } from './queries/queryTip';
 import { getBlocksCount } from './queries/blocksCount';
 import { fetchEpochSchedules } from './queries/epochSchedules';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCube } from '@fortawesome/free-solid-svg-icons';
+import { faCube, faCubes, faUsers, faPercentage, faChartLine, faCoins, faCalendarAlt, faPiggyBank, faCircleNotch, faAward } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
 
 const PoolStats = () => {
@@ -69,6 +69,24 @@ const PoolStats = () => {
     return 'text-blue-400'; // Default color for saturation <= 90%
   };
 
+  const statsList = [
+    { label: 'Epoch', value: currentEpoch, icon: faCalendarAlt },
+    { label: 'Minted Blocks', value: blockCount !== null && scheduledBlocks !== null ? `${blockCount} / ${scheduledBlocks}` : null, icon: faCube },
+    { label: 'Live Stake', value: poolStats?.liveStake, icon: faCoins },
+    { label: 'Active Stake', value: poolStats?.activeStake, icon: faChartLine },
+    { label: 'Pledge', value: poolStats?.pledge, icon: faPiggyBank },
+    { label: 'Saturation', value: poolStats?.liveSaturation !== undefined ? (
+        <span className={getSaturationClass(poolStats.liveSaturation)}>
+          {`${poolStats.liveSaturation}%`}
+        </span>
+      ) : undefined, icon: faPercentage },
+    { label: 'Delegators', value: poolStats?.liveDelegators, icon: faUsers },
+    { label: 'Epoch Cost', value: poolStats?.fixedCost, icon: faCircleNotch },
+    { label: 'Margin', value: poolStats?.margin !== undefined ? `${poolStats.margin}%` : undefined, icon: faPercentage },
+    { label: 'Lifetime Blocks', value: poolStats?.blockCount, icon: faCubes },
+    { label: 'Lifetime Rewards', value: lifetimeRewards, icon: faAward },
+  ];
+
   return (
     <div className="flex flex-col items-center">
       {error ? (
@@ -85,27 +103,11 @@ const PoolStats = () => {
               className="ml-6"
             />
           </div>
-          <ul className="text-gray-400 space-y-2">
-            {[ 
-              { label: 'Epoch', value: currentEpoch },
-              { label: 'Minted Blocks', value: blockCount !== null && scheduledBlocks !== null ? `${blockCount} / ${scheduledBlocks}` : null },
-              { label: 'Live Stake', value: poolStats?.liveStake },
-              { label: 'Active Stake', value: poolStats?.activeStake },
-              { label: 'Pledge', value: poolStats?.pledge },
-              { label: 'Saturation', value: poolStats?.liveSaturation !== undefined ? (
-                <span className={getSaturationClass(poolStats.liveSaturation)}>
-                  {`${poolStats.liveSaturation}%`}
-                </span>
-              ) : undefined },
-              { label: 'Delegators', value: poolStats?.liveDelegators },
-              { label: 'Epoch Cost', value: poolStats?.fixedCost },
-              { label: 'Margin', value: poolStats?.margin !== undefined ? `${poolStats.margin}%` : undefined },
-              { label: 'Lifetime Blocks', value: poolStats?.blockCount },
-              { label: 'Lifetime Rewards', value: lifetimeRewards },
-            ].map(({ label, value }, index) => (
+          <ul className="text-gray-400 space-y-3 font-light">
+            {statsList.map(({ label, value, icon }, index) => (
               <li key={index} className="flex justify-between items-center text-sm gap-x-4">
                 <span className="flex items-center">
-                  <FontAwesomeIcon icon={faCube} className="text-gray-400 mr-2" />
+                  <FontAwesomeIcon icon={icon} className="text-gray-400 mr-2 size-4" />
                   <strong>{label}</strong>
                 </span>
                 <span className="text-blue-400 text-sm custom-font" style={{ width: '180px', textAlign: 'right' }}>
