@@ -5,6 +5,8 @@ import { getLifetimeRewards } from './queries/lifetimeRewards';
 import { getTip } from './queries/queryTip';
 import { getBlocksCount } from './queries/blocksCount';
 import { fetchEpochSchedules } from './queries/epochSchedules';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCube } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
 
 const PoolStats = () => {
@@ -85,27 +87,28 @@ const PoolStats = () => {
           </div>
           <ul className="text-gray-400 space-y-2">
             {[ 
-              { label: 'EPOCH', value: currentEpoch },
-              { label: 'MINTED BLOCKS', value: blockCount !== null && scheduledBlocks !== null ? `${blockCount} / ${scheduledBlocks}` : null },
-              { label: 'LIVE STAKE', value: poolStats?.liveStake },
-              { label: 'ACTIVE STAKE', value: poolStats?.activeStake },
-              { label: 'PLEDGE', value: poolStats?.pledge },
-              { label: 'SATURATION', value: poolStats?.liveSaturation !== undefined ? (
+              { label: 'Epoch', value: currentEpoch },
+              { label: 'Minted Blocks', value: blockCount !== null && scheduledBlocks !== null ? `${blockCount} / ${scheduledBlocks}` : null },
+              { label: 'Live Stake', value: poolStats?.liveStake },
+              { label: 'Active Stake', value: poolStats?.activeStake },
+              { label: 'Pledge', value: poolStats?.pledge },
+              { label: 'Saturation', value: poolStats?.liveSaturation !== undefined ? (
                 <span className={getSaturationClass(poolStats.liveSaturation)}>
                   {`${poolStats.liveSaturation}%`}
                 </span>
               ) : undefined },
-              { label: 'DELEGATORS', value: poolStats?.liveDelegators },
-              { label: 'EPOCH COST', value: poolStats?.fixedCost },
-              { label: 'MARGIN', value: poolStats?.margin !== undefined ? `${poolStats.margin}%` : undefined },
-              { label: 'LIFETIME BLOCKS', value: poolStats?.blockCount },
-              { label: 'LIFETIME REWARDS', value: lifetimeRewards },
+              { label: 'Delegators', value: poolStats?.liveDelegators },
+              { label: 'Epoch Cost', value: poolStats?.fixedCost },
+              { label: 'Margin', value: poolStats?.margin !== undefined ? `${poolStats.margin}%` : undefined },
+              { label: 'Lifetime Blocks', value: poolStats?.blockCount },
+              { label: 'Lifetime Rewards', value: lifetimeRewards },
             ].map(({ label, value }, index) => (
-              <li key={index} className="flex justify-between text-xs">
-                <span className="w-40">
+              <li key={index} className="flex justify-between items-center text-sm gap-x-4">
+                <span className="flex items-center">
+                  <FontAwesomeIcon icon={faCube} className="text-gray-400 mr-2" />
                   <strong>{label}</strong>
                 </span>
-                <span className="text-sm custom-font" style={{ width: '180px', textAlign: 'right' }}>
+                <span className="text-blue-400 text-sm custom-font" style={{ width: '180px', textAlign: 'right' }}>
                   {value !== undefined && value !== null ? value : <span className="loading loading-ring loading-sm"></span>}
                 </span>
               </li>
