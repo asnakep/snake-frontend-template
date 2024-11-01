@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { fetchEpochSchedules } from './queries/epochSchedules';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCube, faClockRotateLeft, faChartLine } from '@fortawesome/free-solid-svg-icons';
+import { faCube, faClockRotateLeft, faChartLine, faCubes } from '@fortawesome/free-solid-svg-icons';
 
 interface EpochData {
   epoch: number;
@@ -72,21 +72,21 @@ export const EpochStats = () => {
             <ul className="text-gray-400 space-y-2">
               <li className="flex justify-between text-sm gap-x-4">
                 <span className="flex items-center w-full">
-                  <FontAwesomeIcon icon={faClockRotateLeft} className="text-gray-400 mr-2" />
+                  <FontAwesomeIcon icon={faClockRotateLeft} className="text-gray-400 mr-2 size-4" />
                   <strong className="truncate">Epoch</strong>
                 </span>
                 <span className="text-blue-400 text-sm custom-font">{epochData?.epoch}</span>
               </li>
               <li className="flex justify-between text-sm gap-x-4">
                 <span className="flex items-center w-full">
-                  <FontAwesomeIcon icon={faChartLine} className="text-gray-400 mr-2" />
+                  <FontAwesomeIcon icon={faCubes} className="text-gray-400 mr-2 size-4" />
                   <strong className="truncate">Assigned</strong>
                 </span>
                 <span className="text-blue-400 text-sm custom-font">{epochData?.epochSlots}</span>
               </li>
               <li className="flex justify-between text-sm gap-x-4">
                 <span className="flex items-center w-full">
-                  <FontAwesomeIcon icon={faChartLine} className="text-gray-400 mr-2" />
+                  <FontAwesomeIcon icon={faCubes} className="text-gray-400 mr-2 size-4" />
                   <strong className="truncate">Expected</strong>
                 </span>
                 <span className="text-blue-400 text-sm custom-font">
@@ -95,7 +95,7 @@ export const EpochStats = () => {
               </li>
               <li className="flex justify-between text-sm gap-x-4">
                 <span className="flex items-center w-full">
-                  <FontAwesomeIcon icon={faChartLine} className="text-gray-400 mr-2" />
+                  <FontAwesomeIcon icon={faChartLine} className="text-gray-400 mr-2 size-4" />
                   <strong className="truncate">Luck</strong>
                 </span>
                 <span className="text-blue-400 text-sm custom-font">{epochData?.maxPerformance}%</span>
