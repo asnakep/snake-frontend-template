@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCube } from '@fortawesome/free-solid-svg-icons';
 import { fetchEpochSchedules } from './queries/epochSchedules';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCube, faClockRotateLeft, faChartLine } from '@fortawesome/free-solid-svg-icons';
 
 interface EpochData {
   epoch: number;
@@ -21,8 +21,6 @@ export const EpochStats = () => {
     const getData = async () => {
       try {
         const data = await fetchEpochSchedules();
-
-        // Only update the state if the data is new
         if (JSON.stringify(data.current) !== JSON.stringify(epochData)) {
           setEpochData(data.current);
         }
@@ -33,17 +31,14 @@ export const EpochStats = () => {
       }
     };
 
-    // Fetch data on page load
     getData();
 
-    // Poll for new data every hour (3600000 ms)
     const interval = setInterval(() => {
       getData();
     }, 3600000); // 1 hour
 
-    // Cleanup interval on component unmount
     return () => clearInterval(interval);
-  }, [epochData]); // Add epochData to the dependency array to compare on each interval
+  }, [epochData]);
 
   if (loading) {
     return (
@@ -66,41 +61,42 @@ export const EpochStats = () => {
   if (error) return <div className="text-red-500">{error}</div>;
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center font-light">
       <div className="max-w-4xl w-full bg-base-300 rounded-lg p-6 mb-4">
         <div className="grid gap-4">
           <div className="flex items-center justify-between">
-            <h3 className="text-sm font-bold text-white">BLOCKS</h3>
+            <h3 className="text-sm font-semibold text-white">BLOCKS</h3>
             <FontAwesomeIcon icon={faCube} className="text-blue-400 text-3xl ml-6" />
           </div>
           <div>
             <ul className="text-gray-400 space-y-2">
-              <li className="flex justify-between text-xs gap-x-4">
-                <span style={{ marginRight: '218px' }}>
-                  <i className="fas fa-calendar-day text-blue-400"></i>
-                  <strong>EPOCH</strong>
+              <li className="flex justify-between text-sm gap-x-4">
+                <span className="flex items-center w-full">
+                  <FontAwesomeIcon icon={faClockRotateLeft} className="text-gray-400 mr-2" />
+                  <strong className="truncate">Epoch</strong>
                 </span>
                 <span className="text-blue-400 text-sm custom-font">{epochData?.epoch}</span>
               </li>
-              <li className="flex justify-between text-xs gap-x-4">
-                <span style={{ marginRight: '218px' }}>
-                  <strong>ASSIGNED</strong>
+              <li className="flex justify-between text-sm gap-x-4">
+                <span className="flex items-center w-full">
+                  <FontAwesomeIcon icon={faChartLine} className="text-gray-400 mr-2" />
+                  <strong className="truncate">Assigned</strong>
                 </span>
                 <span className="text-blue-400 text-sm custom-font">{epochData?.epochSlots}</span>
               </li>
-              <li className="flex justify-between text-xs gap-x-4">
-                <span style={{ marginRight: '218px' }}>
-                  <i className="fas fa-chart-bar text-blue-400"></i>
-                  <strong>EXPECTED</strong>
+              <li className="flex justify-between text-sm gap-x-4">
+                <span className="flex items-center w-full">
+                  <FontAwesomeIcon icon={faChartLine} className="text-gray-400 mr-2" />
+                  <strong className="truncate">Expected</strong>
                 </span>
                 <span className="text-blue-400 text-sm custom-font">
                   {epochData?.epochSlotsIdeal !== undefined ? Math.round(epochData.epochSlotsIdeal) : null}
                 </span>
               </li>
-              <li className="flex justify-between text-xs gap-x-4">
-                <span style={{ marginRight: '218px' }}>
-                  <i className="fas fa-trophy text-blue-400"></i>
-                  <strong>LUCK</strong>
+              <li className="flex justify-between text-sm gap-x-4">
+                <span className="flex items-center w-full">
+                  <FontAwesomeIcon icon={faChartLine} className="text-gray-400 mr-2" />
+                  <strong className="truncate">Luck</strong>
                 </span>
                 <span className="text-blue-400 text-sm custom-font">{epochData?.maxPerformance}%</span>
               </li>

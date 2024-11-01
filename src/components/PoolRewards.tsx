@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCoins } from '@fortawesome/free-solid-svg-icons';
+import { faCoins, faClockRotateLeft } from '@fortawesome/free-solid-svg-icons';
 import { getLastRewards } from './queries/lastRewards';
 import poolId from './variables/poolid';
 
@@ -26,27 +26,27 @@ const PoolRewards = () => {
 
   const renderContent = () => (
     <ul className="text-gray-400 space-y-3">
-      <li className="flex justify-between items-center text-xs gap-x-4">
+      <li className="flex justify-between items-center text-sm gap-x-4">
         <span className="flex-grow-0 min-w-[60px]" style={{ marginRight: '180px' }}>
-          <i className="fas fa-calendar-day text-blue-400"></i>
-          <strong>EPOCH</strong>
+          <FontAwesomeIcon icon={faClockRotateLeft} className="text-gray-400 mr-2" />
+          <strong>Epoch</strong>
         </span>
         <span className="text-blue-400 text-sm custom-font min-w-[60px] text-right">
           {loading ? <span className="loading loading-ring loading-sm"></span> : rewardsData?.epoch}
         </span>
       </li>
-      <li className="flex justify-between items-center text-xs gap-x-4">
+      <li className="flex justify-between items-center text-sm gap-x-4">
         <span className="flex-grow-0 min-w-[60px]" style={{ marginRight: '180px' }}>
-          <strong>TOTAL</strong>
+          <strong>Total</strong>
         </span>
         <span className="text-blue-400 text-sm custom-font min-w-[60px] text-right">
           {loading ? <span className="loading loading-ring loading-sm"></span> : rewardsData?.rewards}
         </span>
       </li>
-      <li className="flex justify-between items-center text-xs gap-x-4 whitespace-nowrap">
+      <li className="flex justify-between items-center text-sm gap-x-4 whitespace-nowrap">
         <span className="flex-grow-0 min-w-[60px]" style={{ marginRight: '180px' }}>
           <i className="fas fa-percentage text-blue-400"></i>
-          <strong>EPOCH ROS</strong>
+          <strong>Epoch ROS</strong>
         </span>
         <span className="text-blue-400 text-sm custom-font min-w-[60px] text-right whitespace-nowrap">
           {loading ? <span className="loading loading-ring loading-sm"></span> : `${rewardsData?.ros}%`}
