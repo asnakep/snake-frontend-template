@@ -60,16 +60,16 @@ const PoolRewards = () => {
   return (
     <div className="flex flex-col items-center">
       <div className="max-w-4xl w-full bg-base-300 rounded-lg p-6 mt-1">
-        <h3 className="text-sm font-semibold text-white mb-6 flex items-center">
+        <div className="flex items-center justify-between mb-6">
+          <h3 className="text-sm font-semibold text-white">LAST REWARDS</h3>
           <Image 
             src="/rewards.apng" 
             alt="Rewards Icon" 
-            width={50}
-            height={50}
-            className="mr-3"
+            width={40}
+            height={40}
+            className="ml-3"
           />
-          LAST REWARDS
-        </h3>
+        </div>
         {renderContent()}
       </div>
     </div>

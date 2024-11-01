@@ -1,6 +1,4 @@
 import { useState, useEffect } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
 
 // Define the type for the ADA price data
@@ -49,23 +47,23 @@ const AdaPricePanel = () => {
   };
 
   return (
-    <div className="max-w-4xl w-full bg-base-300 rounded-lg p-4 mb-1">
+    <div className="max-w-4xl w-full bg-base-300 rounded-lg p-4 mt-1">
       {error ? (
         <p className="text-red-500">Error: {error}</p>
       ) : (
         <div>
-          <div className="flex items-center mb-4">
+          <div className="flex items-center justify-between mt-2">
+            <h2 className="text-lg text-gray-300 font-bold mb-4">ADA</h2>
             <Image 
               src="/austral.png" 
               alt="ADA Icon" 
-              width={44} // Adjust as needed 
-              height={44} // Adjust as needed 
-              className="mr-1"
+              width={32} // Adjust as needed 
+              height={32} // Adjust as needed 
+              className="ml-1 mb-4"
             />
-            <h2 className="text-lg text-gray-300 font-bold ml-3">ADA</h2>
           </div>
 
-          <ul className="text-gray-300 space-y-3">
+          <ul className="text-gray-300 space-y-2">
             {[
               { label: 'RANK', value: adaPrice?.rank },
               { label: 'PRICE', value: `$${adaPrice?.price}` },
@@ -76,7 +74,7 @@ const AdaPricePanel = () => {
                   <strong>{label}</strong>
                 </span>
                 <span className="text-blue-400 text-sm custom-font" style={{ width: '338px', textAlign: 'right' }}>
-                  {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : value || "N/A"}
+                  {loading ? <span className="loading loading-ring loading-sm"></span> : value || "N/A"}
                 </span>
               </li>
             ))}
