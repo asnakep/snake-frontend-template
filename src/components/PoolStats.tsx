@@ -83,7 +83,7 @@ const PoolStats = () => {
               className="ml-6"
             />
           </div>
-          <ul className="text-gray-300 space-y-2">
+          <ul className="text-gray-400 space-y-2">
             {[ 
               { label: 'EPOCH', value: currentEpoch },
               { label: 'MINTED BLOCKS', value: blockCount !== null && scheduledBlocks !== null ? `${blockCount} / ${scheduledBlocks}` : null },

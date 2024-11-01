@@ -97,7 +97,7 @@ const CardanoStats = ({ setLoading }: CardanoStatsProps) => {
           </div>
 
           <div className="mt-2">
-            <ul className="text-gray-300 space-y-2">
+            <ul className="text-gray-400 space-y-2">
               {[ 
                 { label: 'EPOCH', value: epoch },
                 { label: 'SLOT', value: epochSlot },
