@@ -72,16 +72,16 @@ const PoolStats = () => {
       {error ? (
         <p className="text-red-500">Error: {error}</p>
       ) : (
-        <div className="max-w-4xl w-full bg-base-300 rounded-lg p-6 mb-4">
-          <h3 className="text-sm font-semibold text-white mb-4 flex items-center">
+        <div className="max-w-4xl w-full bg-base-300 rounded-lg p-6 mb-4  ">
+          <h3 className="text-lg font-bold text-white mb-4 flex items-center">
             <Image 
               src="/snake.apng" 
               alt="Snake Icon" 
-              width={56} // Set the width in pixels
-              height={56} // Set the height in pixels
-              className="mr-5" // Keep your margin class
+              width={56}
+              height={56}
+              className="mr-6"
             />
-            SN₳KE STATISTICS
+            SN₳KE
           </h3>
           <ul className="text-gray-300 space-y-2">
             {[ 
