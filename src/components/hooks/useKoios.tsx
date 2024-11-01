@@ -21,7 +21,7 @@ export const useKoios = (fetchQuery: () => Promise<any>, interval: number = 5000
 
     // Clear interval on component unmount
     return () => clearInterval(intervalId);
-  }, [fetchQuery, interval]); // No need to include fetchData
-
+  }, [fetchQuery, interval]); 
+  
   return { data, error };
 };

@@ -66,9 +66,9 @@ const PoolRewards = () => {
           <Image 
             src="/austral.png" 
             alt="Rewards Icon" 
-            width={36} // Set the width in pixels
-            height={36} // Set the height in pixels
-            className="mr-3" // Keep your margin class
+            width={36}
+            height={36}
+            className="mr-3"
           />
           LAST REWARDS
         </h3>

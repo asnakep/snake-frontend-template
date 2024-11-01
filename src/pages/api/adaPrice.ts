@@ -6,7 +6,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const url = 'https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest?symbol=ada';
 
   // Set CORS headers
-  res.setHeader('Access-Control-Allow-Origin', '*'); // Allow all origins
+  res.setHeader('Access-Control-Allow-Origin', 'pro-api.coinmarketcap.com'); // Allow all origins
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS'); // Allow specific methods
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type'); // Allow specific headers
 

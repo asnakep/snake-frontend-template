@@ -4,7 +4,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const currentUrl = 'https://data.snakepool.link/json/current.json'; // Only current.json URL
 
   // Set CORS headers
-  res.setHeader('Access-Control-Allow-Origin', '*'); // Allow all origins
+  res.setHeader('Access-Control-Allow-Origin', 'data.snakepool.link'); // Allow all origins
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS'); // Allow specific methods
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type'); // Allow specific headers
 
