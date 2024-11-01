@@ -78,8 +78,8 @@ const PoolStats = () => {
             <Image 
               src="/snake.apng" 
               alt="Snake Icon" 
-              width={50}
-              height={50}
+              width={60}
+              height={60}
               className="ml-6"
             />
           </div>
