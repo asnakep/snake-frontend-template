@@ -48,7 +48,7 @@ const CardanoStats = ({ setLoading }: CardanoStatsProps) => {
     };
 
     fetchData();
-    const intervalId = setInterval(fetchTipData, 60000);
+    const intervalId = setInterval(fetchTipData, 300000);
     return () => clearInterval(intervalId);
   }, [setLoading]);
 
