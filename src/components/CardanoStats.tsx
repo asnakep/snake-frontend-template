@@ -12,22 +12,29 @@ const CardanoStats = ({ setLoading }: CardanoStatsProps) => {
   const [tipData, setTipData] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false); // New loading state
+  const [progressLoading, setProgressLoading] = useState<boolean>(false); // Loading state for progress bar
 
   const fetchCardanoStats = async () => {
     try {
+      setProgressLoading(true);
       const stats = await getCardanoStats();
       setCardanoStats(stats);
+      setProgressLoading(false);
     } catch (err) {
       setError((err as Error).message);
+      setProgressLoading(false);
     }
   };
 
   const fetchTipData = async () => {
     try {
+      setProgressLoading(true);
       const data = await getTip();
       setTipData(data);
+      setProgressLoading(false);
     } catch (err) {
       setError((err as Error).message);
+      setProgressLoading(false);
     }
   };
 
@@ -71,21 +78,18 @@ const CardanoStats = ({ setLoading }: CardanoStatsProps) => {
               />
               <h3 className="text-white text-lg font-bold ml-4">CARDANO</h3>
             </div>
-            <div className="relative w-60 bg-black-800 h-7 overflow-hidden rounded-sm ml-2">
+            <div className="relative w-60 bg-base-100 h-7 overflow-hidden rounded-sm ml-2">
               {/* Loading bar while fetching data */}
-              {isLoading ? (
-                <div className="absolute top-0 left-10 h-full bg-blue-800 transition-all duration-300" style={{ width: `${epochProgressPercent}%` }}></div>
+              {progressLoading ? (
+                <div className="absolute top-0 left-0 h-full bg-blue-800 transition-all duration-300" style={{ width: `${epochProgressPercent}%` }}></div>
               ) : (
                 <>
                   <div
-                    className="absolute top-0 left-10 bg-blue-800 h-full rounded-sm"
+                    className="absolute top-0 left-0 bg-blue-800 h-full rounded-sm"
                     style={{ width: `${epochProgressPercent}%` }}
                   ></div>
                   <div className="absolute inset-0 flex justify-center items-center text-white font-semibold text-sm">
-                    <span className="px-6">Epoch {formatNumber(epoch) || "N/A"}</span>
-                  </div>
-                  <div className="absolute inset-0 flex justify-end items-center pr-2 text-white font-semibold text-sm">
-                    <span className="px-6">{`${epochProgressPercent}%`}</span>
+                    <span>Epoch {formatNumber(epoch) || "N/A"} - {`${epochProgressPercent}%`}</span>
                   </div>
                 </>
               )}
