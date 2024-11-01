@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClockRotateLeft, faClock, faCube, faFileAlt, faCubes } from '@fortawesome/free-solid-svg-icons'; // Added icons
 import { getCardanoStats } from './queries/cardanoStats';
 import { getTip } from './queries/queryTip';
 import Image from 'next/image';
@@ -97,17 +99,18 @@ const CardanoStats = ({ setLoading }: CardanoStatsProps) => {
           </div>
 
           <div className="mt-2">
-            <ul className="text-gray-400 space-y-2">
+            <ul className="text-gray-400 space-y-4 font-light">
               {[ 
-                { label: 'EPOCH', value: epoch },
-                { label: 'SLOT', value: epochSlot },
-                { label: 'BLOCK', value: tipData?.blockNum },
-                { label: 'TXS COUNT', value: cardanoStats?.txCount },
-                { label: 'BLOCK COUNT', value: cardanoStats?.blkCount }
-              ].map(({ label, value }, index) => (
-                <li key={index} className="flex justify-between text-xs">
-                  <span className="mr-60">
-                    <i className={`fas fa-${label === 'EPOCH' ? 'calendar-alt' : label === 'SLOT' ? 'clock' : 'cube'} text-blue-400`}></i> <strong>{label}</strong>
+                { label: 'Epoch', value: epoch, icon: faClockRotateLeft },
+                { label: 'Slot', value: epochSlot, icon: faClock },
+                { label: 'Block number', value: tipData?.blockNum, icon: faCube },
+                { label: 'Transactions', value: cardanoStats?.txCount, icon: faFileAlt },
+                { label: 'Blocks', value: cardanoStats?.blkCount, icon: faCubes },
+              ].map(({ label, value, icon }, index) => (
+                <li key={index} className="flex justify-between items-center text-sm gap-x-4">
+                  <span className="flex items-center">
+                    <FontAwesomeIcon icon={icon} className="text-gray-400 mr-2 text-lg" />
+                    <strong>{label}</strong>
                   </span>
                   <span className="text-blue-400 text-sm custom-font">
                     {value !== undefined && value !== null ? formatNumber(value) : <span className="loading loading-ring loading-sm"></span>}
