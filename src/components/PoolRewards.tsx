@@ -62,10 +62,10 @@ const PoolRewards = () => {
       <div className="max-w-4xl w-full bg-base-300 rounded-lg p-6 mt-1">
         <h3 className="text-sm font-semibold text-white mb-6 flex items-center">
           <Image 
-            src="/austral.png" 
+            src="/rewards.apng" 
             alt="Rewards Icon" 
-            width={36}
-            height={36}
+            width={50}
+            height={50}
             className="mr-3"
           />
           LAST REWARDS
