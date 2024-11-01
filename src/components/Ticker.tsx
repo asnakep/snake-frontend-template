@@ -21,16 +21,16 @@ const Ticker: React.FC = () => {
           href={`https://adastat.net/pools/${poolId}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-500 hover:underline"
+          className="text-blue-400 hover:underline link-primary"
         >
           {poolId}
         </a> &nbsp;
         <strong>Ticker: </strong> 
         <a
-          href={`https://adastat.net/ticker/SNAKE`}
+          href={`https://adastat.net/pools/${poolId}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-500 hover:underline"
+          className="text-blue-400 hover:underline link-primary"
         >
           SNAKE
         </a>
