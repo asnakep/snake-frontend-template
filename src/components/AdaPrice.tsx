@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAustralSign } from '@fortawesome/free-solid-svg-icons';
 
 // Define the type for the ADA price data
 interface AdaPrice {
@@ -54,13 +55,7 @@ const AdaPricePanel = () => {
         <div>
           <div className="flex items-center justify-between mt-2">
             <h2 className="text-lg text-gray-300 font-bold mb-4">ADA</h2>
-            <Image 
-              src="/austral.png" 
-              alt="ADA Icon" 
-              width={32} // Adjust as needed 
-              height={32} // Adjust as needed 
-              className="ml-1 mb-4"
-            />
+            <FontAwesomeIcon icon={faAustralSign} className="text-blue-400 text-3xl ml-1 mb-4" />
           </div>
 
           <ul className="text-gray-300 space-y-2">
