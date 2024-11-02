@@ -6,7 +6,7 @@ import { getTip } from './queries/queryTip';
 import { getBlocksCount } from './queries/blocksCount';
 import { fetchEpochSchedules } from './queries/epochSchedules';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCube, faCubes, faUsers, faPercentage, faChartLine, faCoins, faCalendarAlt, faPiggyBank, faCircleNotch, faAward } from '@fortawesome/free-solid-svg-icons';
+import { faCube, faCubes, faUsers, faPercentage, faChartLine, faCoins, faPiggyBank, faClockRotateLeft, faCircleNotch, faAward } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
 
 const PoolStats = () => {
@@ -70,7 +70,7 @@ const PoolStats = () => {
   };
 
   const statsList = [
-    { label: 'Epoch', value: currentEpoch, icon: faCalendarAlt },
+    { label: 'Epoch', value: currentEpoch, icon: faClockRotateLeft },
     { label: 'Minted Blocks', value: blockCount !== null && scheduledBlocks !== null ? `${blockCount} / ${scheduledBlocks}` : null, icon: faCube },
     { label: 'Live Stake', value: poolStats?.liveStake, icon: faCoins },
     { label: 'Active Stake', value: poolStats?.activeStake, icon: faChartLine },
